@@ -1,14 +1,11 @@
-const breakfast = {first: 'tea',
-                    second: 'bread', 
-                    third:'steak'};
-const lunch = {
-	first: 'cofee',
-	second: 'soup'
-};
-function longer(menu1, menu2){
-  if(menu1.first.length<menu2.first.length){
-  	return menu1
-  }else{ return menu2
-  }
+function yaroslav(age, gender, job){
+	this.age = age;
+	this.gender = gender;
+	this.job = job;
+	this.getFullName = function(){
+return `${this.age} ${this.job}`;
+	}
 }
-console.log(longer(breakfast, lunch))
+const yaro = new yaroslav(
+	22, 'male', 'developer')
+console.log(yaro.getFullName())
