@@ -1,11 +1,31 @@
-function yaroslav(age, gender, job){
-	this.age = age;
-	this.gender = gender;
-	this.job = job;
-	this.getFullName = function(){
-return `${this.age} ${this.job}`;
+/*const indices = [3, 7]
+const minIndex = [4]
+function findNextIndex(array, minIndex){
+for(var element of array){
+	if(element >= minIndex){
+		return element + 1;
 	}
 }
-const yaro = new yaroslav(
-	22, 'male', 'developer')
-console.log(yaro.getFullName())
+return false;
+}
+console.log(indices);
+console.log(minIndex);
+console.log(findNextIndex(indices, minIndex));*/
+
+const word = 'string';
+console.log(word);
+function mapString(string){
+	let map={};
+  for(let i=0;i<string.length;i++){
+  	let letter = string[i];
+  	if(map[letter]){
+  		map[letter].push(i);
+  		}else{map[letter]=[i];
+  		}}
+    return map;
+};
+let stringMap = mapString(word);
+for(let letter in stringMap){
+	console.log(letter+': '+stringMap[
+		letter]);
+} 
