@@ -12,7 +12,7 @@ console.log(indices);
 console.log(minIndex);
 console.log(findNextIndex(indices, minIndex));*/
 
-const word = 'string';
+/*const word = 'string';
 console.log(word);
 function mapString(string){
 	let map={};
@@ -28,4 +28,21 @@ let stringMap = mapString(word);
 for(let letter in stringMap){
 	console.log(letter+': '+stringMap[
 		letter]);
-} 
+} */
+
+class Person{
+	constructor(first, last, bob){
+		this.first = first;
+		this.last = last;
+		this.bob = new Date(bob);
+	}
+	getBirthYear(){
+	  return this.bob.getFullYear();
+	}
+	getFullName(){
+	  return `${this.first} ${this.last}`;
+	}
+}
+const person1=new Person(
+	'John', 'Doe', '4-3-1980');
+console.log(person1.getFullName());
