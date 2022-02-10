@@ -2,16 +2,21 @@ import React, {Component} from 'react';
 import Component1 from '../functional/comp1'
 
 class Container1 extends Component {
-	
+    constructor(props){
+    	super(props)
+    	this.handleChange=this.handleChange.bind(this)
+    	this.handleSubmit=this.handleSubmit.bind(this)
+    }
 	state={
 		value: ''
 	}
 
-	handleChange=(event)=>(
-		this.setState({value:event.target.value}))
-	handleSubmit=(event)=>{
+	handleChange(event){
+		this.setState({value:event.target.value})
+	}
+	handleSubmit(event){
 		event.preventDefault()
-        console.log(event.target.name.value)
+        console.log(this.state.value)
 		}
 	render(){
 		return(
