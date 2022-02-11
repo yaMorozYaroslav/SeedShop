@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
+//import './index.css';
 
-import {Provider} from 'react-redux';
-import rootReducer from './store/reducers';
-import {createStore} from 'redux';
+ReactDOM.render(
+	<React.StrictMode>
+	  <Home />
+	</React.StrictMode>,
+  document.getElementById('root'));
 
-let store = createStore(rootReducer)
-
-ReactDOM.render( <Provider store={store}>
-	                <App/>
-	             </Provider>,
-	              document.getElementById('root'));
+  function Home(){
+  	return(
+  	<div>
+  	  <h1>Home route</h1>
+  	</div>)
+  }
