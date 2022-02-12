@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import './index.css';
 import {
-BrowserRouter as Router,Routes,Route,
-        Navigate,Link, Outlet, useParams, NavLink} 
-                               from 'react-router-dom';
+      BrowserRouter as Router,
+           Routes,Route,Navigate,Link,
+           Outlet, useParams, NavLink,
+           useNavigate, useLocation} 
+                         from 'react-router-dom';
 
 ReactDOM.render(
 	<Router>
@@ -15,10 +17,11 @@ ReactDOM.render(
 	          element={<Navigate replace to="/learn" />}/>
 	    <Route path="/learn" element={<Learn />}>
 	      <Route path="courses" element={<Courses />} >
-	         <Route path=":courseid" element={<CourseId />}/>     
-	         </Route>
+	             <Route path=":courseid" element={<CourseId />}/>     
+	      </Route>
 	       <Route path="bundles" element={<Bundles />} />
 	    </Route>
+	    <Route path="dashboard" element={<Dashboard />} />
 	  </Routes>
 	</Router>,
   document.getElementById("root"));
@@ -77,10 +80,24 @@ ReactDOM.render(
   	);
   }
   function CourseId(){
-   const {courseid} = useParams()
+   const navigate = useNavigate()
+   const {courseid} = useParams();
+  	return(
+  	 <div>
+  	  <h1>URL Parmas is : {courseid}</h1>
+  	  <button 
+        onClick={()=>{
+        	navigate("/dashboard", {state: courseid});
+        }}
+  	   className="btn btn-warning">Price</button>
+   <Link to="/dashboard" state={"DJANGO"}>Test link</Link>
+  	 </div>
+  	);
+  }
+  function Dashboard(){
+  	const location = useLocation()
   	return(
   	<div>
-  	  <h1>URL Parmas is : {courseid}</h1>
-  	</div>
-  	);
+  	<h1>Info that i got here is {location.state}</h1>
+  	</div>)
   }
