@@ -30,6 +30,7 @@ ReactDOM.render(
   	return(
   	<div>
   	  <h1>Home route</h1>
+  	  <Link className="btn btn-success" to="/learn/courses">toCourses</Link>
   	</div>
   	);
   }
