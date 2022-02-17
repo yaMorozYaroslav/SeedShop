@@ -1,30 +1,28 @@
-var express = require('express');
+var express = require("express");
+var axios = require("axios");
+var port = process.env.PORT || 3001;
 var app = express();
-var jwt = require('express-jwt');
-var jwks = require('jwks-rsa');
-var guard = require('express-jwt-permissions')();
-
-var port = process.env.PORT || 8080;
-
-var jwtCheck = jwt({
-      secret: jwks.expressJwtSecret({
-          cache: true,
-          rateLimit: true,
-          jwksRequestsPerMinute: 5,
-          jwksUri: 'https://dev-d389nipg.us.auth0.com/.well-known/jwks.json'
-    }),
-    audience: 'https://www.challenges-api.com',
-    issuer: 'https://dev-d389nipg.us.auth0.com/',
-    algorithms: ['RS256']
+var oAuth = require('./moddl/oAuth');
+ 
+const challengesAPIEndpoint = "http://localhost:8080/challenges";
+app.get("/challenges", async(req, res)=>{
+    try{
+        const{access_token}=req.oauth;
+        const response = await axios({
+            method: "get",
+            url: challengesAPIEndpoint,
+            headers: {Authorization: `Bearer ${access_token}`},
+        });
+        res.json(response.data);
+    } catch(error){
+        console.log(error);
+        if(error.response.status === 401){
+            res.status(401).json("Unathorized");
+        }else if (error.response.status === 403){
+            res.status(403).json("Permission denided");
+        }else{
+            res.status(500).json("Whoops, something");
+        }
+    }
 });
-
-app.use(jwtCheck);
-
-app.get('/challenges', guard.check(['read:challenges']), function (req, res) {
-    res.json({
-        challenge1: "This is the first challenge",
-        challenge2: 'This is another challenge',
-    });
-});
-
-app.listen(port, ()=>console.log(`Server started ${port}`));
+app.listen(port, ()=>console.log("Started"));
