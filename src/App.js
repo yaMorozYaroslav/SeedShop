@@ -1,21 +1,6 @@
-import "./App.css";
-import LoginButton from "./auth/LoginButton";
-import LogoutButton from "./auth/LogoutButton";
-import Challenges from "./Challenges";
+import React, {useEffect, useState} from 'react';
+export const App = () => {
+const [storyIds, setStoryIds]=useState([]);
+return <p>Hello</p>;
+	};
 
-import {Route, Routes} from "react-router-dom";
-function App(){
-  return(
-    <div className="App-body">
-      <span>
-         <LoginButton />
-         <LogoutButton/>
-       </span>
-       <Routes>
-         <Route path="/challenges" component={Challenges} />
-       </Routes>
-         </div>
-        
-         );
-}
-export default App;
