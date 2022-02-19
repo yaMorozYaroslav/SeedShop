@@ -7,7 +7,11 @@ import {Story} from '../components/Story'
 		getStoryIds().then(data=>setStoryIds(data));
 		getStory(30388152).then(data => console.log(data));
 	}, []);
-     return storyIds.map(storyDi=>(
-     	<Story storyDi={storyDi}/>
-     	));
-};
+     return (
+      <>
+        <h1>Hacker News Stories</h1>
+  {storyIds.map(storyDi=>(<Story key={storyDi} storyDi={storyDi}/>
+                 ))}
+            </>
+        );
+     };
