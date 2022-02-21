@@ -1,6 +1,7 @@
 import styled, {createGlobalStyle} from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 html{
+
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
@@ -24,7 +25,7 @@ ul{
 `;
 
 export const StoriesContainerWrapper = styled.main`
-max-width: 1140px;
+max-width: 1000px;
 padding: 20px 15px;
 margin: auto;
 `;
