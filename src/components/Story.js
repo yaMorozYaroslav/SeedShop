@@ -12,15 +12,15 @@ export const Story = ({storyId}) => {
 	}, []);
 
 	return story && story.url?(
-		<StoryWrapper data-testing="story">
+		<StoryWrapper data-testid="story">
 		   <StoryTitle>
 		<a href={story.url}>{story.title}</a>
 		   </StoryTitle>
 		   <StoryMeta>
-     <span data-testing="story-by">
+     <span data-testid="story-by">
 	 <StoryMetaElement color="#000">By:</StoryMetaElement>{story.by}
      </span>
-     <span data-testing="story-time">
+     <span data-testid="story-time">
        <StoryMetaElement color="#000">Posted:</StoryMetaElement>{` `}
        {mapTime(story.time)}
 	 </span>
