@@ -7,11 +7,10 @@ import {useInfiniteScroll} from '../hooks/useInfiniteScroll';
  export const StorCont = () =>{
   const {count} = useInfiniteScroll();
 	const [storyIds, setStoryIds] = useState([]);
-  //const test = useInfiniteScroll();
+  
 	useEffect(()=>{
-		getStoryIds().then(data=>setStoryIds(data));
-    console.log('count', count);
-	}, [count]);
+		getStoryIds().then(data=>setStoryIds(data)); 
+	}, []);
      return (
       <>
       <GlobalStyle />
