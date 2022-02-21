@@ -16,8 +16,8 @@ import {useInfiniteScroll} from '../hooks/useInfiniteScroll';
       <GlobalStyle />
       <StoriesContainerWrapper data-test-id="stories-container">
         <h1>Hacker News Stories</h1>
-  {storyIds.slice(0, count).map(storyDi=>
-  	        (<Story key={storyDi} storyDi={storyDi}/>
+  {storyIds.slice(0, count).map(storyId=>
+  	        (<Story key={storyId} storyId={storyId}/>
                  ))}
       </StoriesContainerWrapper>
             </>
