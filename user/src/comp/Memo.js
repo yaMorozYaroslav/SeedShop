@@ -9,6 +9,8 @@ export const Memo =({memo, setCurrentId})=>{
   return(
      <div>
        <h1>{memo.title}</h1>
+       <p>{memo.message}</p>
+       <p>{memo.creator}</p>
      </div>
 
   	)
