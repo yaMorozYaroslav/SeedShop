@@ -1,4 +1,4 @@
 import {combineReducers} from 'redux'
-import posts from './postred'
+import memos from './memoRed'
 
-export default combineReducers({posts})
+export default combineReducers({memos})

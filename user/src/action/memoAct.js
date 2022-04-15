@@ -19,7 +19,7 @@ export const createMemo =(memo)=> async(dispatch)=>{
 }
 export const deleteMemo =(id)=> async(dispatch)=>{
 	try{
-		await api.deletePost(id)
+		await api.deleteMemo(id)
 		dispatch({type: DELETE, payload: id})
 	}catch(error){
 		console.log(error)
