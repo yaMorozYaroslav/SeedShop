@@ -4,12 +4,14 @@ import {useDispatch} from 'react-redux'
 import {getMemos} from './action/memoAct'
 import {Memos} from './comp/Memos'
 
-React.useEffect(()=>{
-  dispatch(getPosts())
+export const App =()=> {
+  const dispatch = useDispatch()
+  const [currentId, setCurrentId] = React.useState(null)
+
+  React.useEffect(()=>{
+  dispatch(getMemos())
 }, [currentId, dispatch])
 
-export const App =()=> {
-  const [currentId, setCurrentId] = React.useState(null)
   return (
     <div>
      <Memos setCurrentId={setCurrentId} />
