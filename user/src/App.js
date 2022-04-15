@@ -2,7 +2,8 @@ import React from 'react'
 import {useDispatch} from 'react-redux'
 
 import {getMemos} from './action/memoAct'
-import {Memos} from './comp/Memos'
+import {Memos} from './comps/Memos'
+import {Form} from './comps/Form'
 
 export const App =()=> {
   const dispatch = useDispatch()
@@ -15,6 +16,7 @@ export const App =()=> {
   return (
     <div>
      <Memos setCurrentId={setCurrentId} />
+     <Form currentId={currentId} setCurrentId={setCurrentId} />
     </div>
   );
 }
