@@ -16,8 +16,12 @@ export const Form = ({currentId, setCurrentId}) =>{
 	}, [memo])
 	const submit =(e)=>{
 		e.preventDefault()
+		if(memoData.title&&memoData.message&&memoData.creator){
 		dispatch(createMemo(memoData))
 		clear()
+	}else{
+	  alert('fill')
+	}
 	}
 	
 	const clear =()=> {
