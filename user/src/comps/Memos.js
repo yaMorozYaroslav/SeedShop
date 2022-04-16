@@ -7,7 +7,7 @@ export const Memos=({setCurrentId})=>{
 	const ordered = memos.slice().sort((a,b)=>
 		                 b.createdAt.localeCompare(a.createdAt))
 	return(!memos.length ?'Loading...':(
-		<section>
+		<section className="memos">
 		  {ordered.map((memo)=>(
 		  	<article key={memo._id}>
 		  	   <Memo memo={memo} setCurrentId={setCurrentId}/>

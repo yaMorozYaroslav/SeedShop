@@ -14,10 +14,12 @@ export const App =()=> {
 }, [currentId, dispatch])
 
   return (
-    <>
-     <Memos setCurrentId={setCurrentId} />
-     <Form currentId={currentId} setCurrentId={setCurrentId} />
-    </>
+    <div className="app">
+    <Form currentId={currentId} setCurrentId={setCurrentId} />
+    <div>
+    <Memos setCurrentId={setCurrentId} />
+    </div>
+    </div>
   );
 }
 

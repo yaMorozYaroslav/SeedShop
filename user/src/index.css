@@ -1,8 +1,42 @@
-.form{
-	width:  100px;
+.app{
+	display:  flex;
+}
+.memos{
+	display:  grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
 }
 .memo{
-	background-color: green;
+	background-color: maroon;
 	width: 150px;
 	text-align:  center;
+}
+.memo h1{
+	background: black;
+	color:  yellow;
+	font-size: 20px;
+}
+.memo p{
+	background: dodgerblue;
+	font-size: 21px;
+	margin: 0px;
+}
+.memo button{
+	background: black;
+	color: white;
+	cursor: pointer;
+	margin: 5px;
+}
+.form{
+	width:  200px;
+}
+.form label{
+	font-size: 20px;
+
+}
+.form button{
+	width: 91px;
+	height: 40px;
+	background: white;
+	cursor:  pointer;
 }
