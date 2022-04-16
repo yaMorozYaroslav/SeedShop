@@ -25,30 +25,36 @@ export const Form = ({currentId, setCurrentId}) =>{
 		setMemoData({ title: '', message: '', creator: ''})
 	}
 	return(
-	<section>
+	<section className="form">
  <form>
+  <article>
    <label htmlFor="title">title :</label>
    <textarea 
     id="memoTitle"
     name="memoTitle"
     value={memoData.title}
     onChange={(e)=>setMemoData({...memoData, title: e.target.value})} />
-
+  </article>
+  <article>
     <label htmlFor="message">message :</label>
    <textarea 
     id="memoMessage"
     name="memoMessage"
     value={memoData.message}
     onChange={(e)=>setMemoData({...memoData, message: e.target.value})} />
-
+  </article>
+   <article>
     <label htmlFor="creator">creator :</label>
    <textarea 
     id="memoCreator"
     name="memoCreator"
     value={memoData.creator}
     onChange={(e)=>setMemoData({...memoData, creator: e.target.value})} />
+    </article>
     <button onClick={submit}>submit</button>
+    <button onClick={clear}>crear</button>
    </form>
   </section>
+
   )
 }
