@@ -11,7 +11,9 @@ export const Memo =({memo, setCurrentId})=>{
        <h1>{memo.title}</h1>
        <p>{memo.message}</p>
        <p>{memo.creator}</p>
+       <p>{moment(memo.createdAt).fromNow()}</p>
     <button onClick={()=>dispatch(deleteMemo(memo._id))}>delete</button>
+    <button onClick={()=> setCurrentId(memo._id)}>edit</button>
      </div>
 
   	)

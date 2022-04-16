@@ -19,6 +19,15 @@ export const createMemo = async(req,res)=>{
   }catch(error){res.status(409).json({message: error.message})
  }
 }
+export const updateMemo = async(req, res)=> {
+	const {id: _id} = req.params
+	const memo = req.body
+  
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404)
+    	                    .send('Undefined')
+  const updatedMemo = await Memo.findByIdAndUpdate(_id, {...memo, _id}, {new: true})
+    res.json(updatedMemo)
+}
 export const deleteMemo = async(req, res)=>{
 	const {id} = req.params
 	if(!mongoose.Types.ObjectId.isValid(id)) 

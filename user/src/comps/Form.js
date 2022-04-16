@@ -1,14 +1,14 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {createMemo} from '../action/memoAct'
+import {createMemo, updateMemo} from '../action/memoAct'
 
 export const Form = ({currentId, setCurrentId}) =>{
 	const [memoData, setMemoData] = React.useState({
 		 title: '', message: '', creator: ''
 	    })
 	const memo = useSelector((state)=>
-		    currentId?state.posts.find((p)=>p._id===currentId):null)
+		    currentId?state.memos.find((p)=>p._id===currentId):null)
 	const dispatch = useDispatch()
 
 	React.useEffect(()=>{
@@ -16,11 +16,16 @@ export const Form = ({currentId, setCurrentId}) =>{
 	}, [memo])
 	const submit =(e)=>{
 		e.preventDefault()
-		if(memoData.title&&memoData.message&&memoData.creator){
+		
+	if(currentId&&memoData.title&&memoData.message&&memoData.creator){
+		dispatch(updateMemo(currentId, memoData))
+		clear()
+	}
+	if(memoData.title&&memoData.message&&memoData.creator){
 		dispatch(createMemo(memoData))
 		clear()
 	}else{
-	  alert('fill')
+	  alert('Fill in all the fields')
 	}
 	}
 	
@@ -56,7 +61,7 @@ export const Form = ({currentId, setCurrentId}) =>{
     onChange={(e)=>setMemoData({...memoData, creator: e.target.value})} />
     </article>
     <button onClick={submit}>submit</button>
-    <button onClick={clear}>crear</button>
+    <button onClick={clear}>clear</button>
    </form>
   </section>
 

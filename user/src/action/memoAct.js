@@ -1,4 +1,4 @@
-import {FETCH_ALL, CREATE, DELETE} from '../constants'
+import {FETCH_ALL, CREATE, UPDATE, DELETE} from '../constants'
 import * as api from '../api'
 
 export const getMemos =()=> async(dispatch)=>{
@@ -13,6 +13,14 @@ export const createMemo =(memo)=> async(dispatch)=>{
 	try{
 		const {data} = await api.createMemo(memo)
 		dispatch({type: CREATE, payload: data})
+	}catch(error){
+		console.log(error)
+	}
+}
+export const updateMemo =(id, memo)=> async(dispatch)=>{
+	try{
+		const {data} = await api.updateMemo(id, memo)
+		dispatch({type: UPDATE, payload: data})
 	}catch(error){
 		console.log(error)
 	}
