@@ -1,10 +1,10 @@
-import {FETCH_ALL, CREATE, UPDATE, DELETE} from '../constants'
+import {GET_ALL, CREATE, UPDATE, DELETE} from '../constants'
 import * as api from '../api'
 
 export const getMemos =()=> async(dispatch)=>{
 	try{
 		const {data} = await api.fetchMemos()
-		dispatch({type: FETCH_ALL, payload: data})
+		dispatch({type: GET_ALL, payload: data})
 	}catch(error){
 		console.log(error.message)
 	}
