@@ -1,5 +1,5 @@
 import  React from 'react'
-import {Button} from './comps/Button/Button'
+import {Todo} from './comps/Todo'
 
 export function App(){
 	return(
