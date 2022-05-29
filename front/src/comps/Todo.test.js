@@ -7,5 +7,5 @@ test('should render todo component',()=>{
 	render(<Todo todo={todo}/>)
 	const todoElement = screen.getByTestId('todo-1')
 	expect(todoElement).toBeInTheDocument()
-	//expect(todoElement).toHaveTextContent('Some text.')
+	expect(todoElement).toHaveTextContent('wash')
 })
