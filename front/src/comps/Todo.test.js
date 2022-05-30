@@ -19,4 +19,5 @@ test('should render completed todo component',()=>{
 	const todoElement = screen.getByTestId('todo-2')
 	expect(todoElement).toBeInTheDocument()
 	expect(todoElement).toHaveTextContent('wash')
+	expect(todoElement).toContainHTML('<strike>')
 })
