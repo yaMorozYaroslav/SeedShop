@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Button(){
+export function Button(){
 	const [value, setValue] = React.useState('Press Here')
 	const dummyFunction =()=> {
 		setValue("You clicked.")

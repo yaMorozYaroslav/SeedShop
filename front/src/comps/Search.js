@@ -1,6 +1,6 @@
 import React from 'react'
 
-export fucntion Search(){
+export function Search(){
 	const [inputValue, setInputValue] = React.useState('')
 
 	const handleChange =event=> {
