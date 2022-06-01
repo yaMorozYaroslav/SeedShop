@@ -1,5 +1,5 @@
 import {Button} from './Button'
-import {render, screen, cleanup} from '@testing-library/react'
+import {render, screen, cleanup, fireEvent} from '@testing-library/react'
 
 it('checkButtonRender', ()=>{
 	const {queryByTitle} = render(<Button />)
