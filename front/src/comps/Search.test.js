@@ -1,5 +1,5 @@
 import {render, fireEvent} from '@testing-library/react'
-import {Search} from './Search'
+import {Search} from './Search';
 
 it('searchRenderCheck', ()=> {
      const {queryByTitle} = render(<Search/>)
