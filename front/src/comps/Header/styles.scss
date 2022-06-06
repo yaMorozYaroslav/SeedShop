@@ -1,22 +1,28 @@
 header{
 	display: block;
 	width: 100%;
+	height: 200px;
 	margin: 0 auto;
 	padding: 0 10px;
-  .wrap{
+	background: black;
+}
+.wrap{
      position: relative;
 	 display: block;
 	 width: 100%;
+	 height:200px;
 	 margin: 0 auto;
 	 max-width: 980px;
-  .logo{
+ 
+ }
+ .logo{
 	  display: block;
 	  width: 250px;
 	  position: absolute;
-	  left: 10px; top: 50%;
+	  left: -105px; top: 50%;
 	  -webkit-transform: translateY(-50%);
 	  -moz-transform: translateY(-50%);
 	  transform: translateY(-50%)
+  
   }
- }
-}
+img{display: block; width:300px; heigth: 150px;}
