@@ -7,6 +7,11 @@ describe('Header Component', ()=>{
 			const component = shallow(<Header />)
 			//console.log(component.debug())
 			const wrapper = component.find('.headerComponent')
-			expect(wrapper.length).toBe(2)
+			expect(wrapper.length).toBe(1)
+		})
+		it('Should render a logo', ()=>{
+			const component = shallow(<Header />)
+			const logo = component.find('.logoIMG')
+			expect(logo.length).toBe(1)
 		})
       })
