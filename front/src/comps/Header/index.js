@@ -10,7 +10,7 @@ export const Header =props=> {
                <img data-test='logoIMG' src={Acorn} alt='Acorn' />
             </div>
           </div>
-          <div>Her</div>
+          <div>Header</div>
       </header>
 		  )
       }
