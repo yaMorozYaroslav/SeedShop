@@ -23,6 +23,9 @@ describe('Headline Component', ()=> {
                onlineStatus: false
             }]
          }
+         const propsErr = checkPropTypes(
+               Headline.propTypes, expectedProps, 'props', Headline.name)
+         expect(propsErr).toBeUndefined()
       })
    })
 })
