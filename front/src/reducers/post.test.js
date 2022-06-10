@@ -9,9 +9,9 @@ describe('Posts Reducer', ()=> {
 	})
 
 	it('Should return new state if receiving type', ()=> {
-		const posts = [{title: 'Test 1'},
-		               {title: 'Test 2'},
-		               {title: 'Test 3'}]
+		const posts = [{title: 'Test 0'},
+		               {title: 'Test 1'},
+		               {title: 'Test 2'}]
 		const newState = postRed(undefined, {
 			type: types.GET_POSTS,
 			payload: posts
