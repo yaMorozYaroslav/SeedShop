@@ -1,7 +1,10 @@
 import React from 'react'
-import {shallow} from 'enzyme'
+import {shallow, configure} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import {Header} from './index'
-import {findByTestAtrr} from '../../utils'
+import {findByTestAtrr} from '../../Tools/utils'
+
+configure({adapter: new Adapter()})
 const setUp =(props={})=>{
 	const component = shallow(<Header {...props}/>)
 	return component
