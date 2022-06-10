@@ -1,7 +1,7 @@
 import React from 'react'
-import {Header} from './comps/Header'
-import Headline from './comps/Headline'
-import './app.scss'
+import {Header} from '../Comps/Header'
+import Headline from '../Comps/Headline'
+import './styles.scss'
 
 const tempArr = [{
   fName: 'Joe',

@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.scss'
-import  Acorn from '../../imgs/acorn.png'
+import  Acorn from '../../Tools/imgs/acorn.png'
 
 export const Header =props=> {
 	return(
