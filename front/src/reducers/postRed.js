@@ -1,4 +1,4 @@
-import {types} from '../../actions/types'
+import {types} from '../actions/types'
 import {type} from 'os'
 
 export default (state=[], action) => {

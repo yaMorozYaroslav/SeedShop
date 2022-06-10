@@ -1,4 +1,4 @@
-import {types} from '../../actions/types'
+import {types} from '../actions/types'
 import postRed from './postRed'
 
 describe('Posts Reducer', ()=> {
@@ -12,7 +12,7 @@ describe('Posts Reducer', ()=> {
 		const posts = [{title: 'Test 1'},
 		               {title: 'Test 2'},
 		               {title: 'Test 3'}]
-		const newState = postsReducer(undefined, {
+		const newState = postRed(undefined, {
 			type: types.GET_POSTS,
 			payload: posts
 		})
