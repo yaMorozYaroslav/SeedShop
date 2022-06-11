@@ -44,6 +44,7 @@
     "jest": "^28.1.0",
     "jest-dom": "^4.0.0",
     "jest-enzyme": "^7.1.2",
+    "moxios": "^0.4.0",
     "os": "^0.1.2",
     "prop-types": "^15.8.1",
     "react-redux": "^8.0.2",

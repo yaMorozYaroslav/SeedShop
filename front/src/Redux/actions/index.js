@@ -1,4 +1,4 @@
-import types from './types'
+import {types} from './types'
 import axios from 'axios'
 
 export const fetchPosts =()=> async(dispatch)=> {
