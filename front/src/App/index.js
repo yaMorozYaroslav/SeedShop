@@ -5,7 +5,6 @@ import SharedButton from '../Comps/Button'
 import ListItem from '../Comps/ListItem'
 import {connect} from 'react-redux'
 import {fetchPosts} from '../Redux/actions'
-import {useSelector} from 'react-redux'
 
 import './styles.scss'
 
