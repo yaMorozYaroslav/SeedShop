@@ -37,5 +37,19 @@ describe('ListItem Component', ()=>{
 			const desc = findByTestAtrr(wrapper, 'componentDesc')
 			expect(desc.length).toBe(1)
 		})
+
+		describe('Should NOT render', ()=> {
+			let wrapper
+			beforeEach(()=> {
+				const props = {
+					desc: 'Some text'
+				}
+				wrapper = shallow(<ListItem {...props}/>)
+			})
+			it('Component is not rendered', ()=> {
+				const component = findByTestAtrr(wrapper, 'listItemComponent')
+				expect(component.length).toBe(0)
+			})
+		})
 	})
 })
