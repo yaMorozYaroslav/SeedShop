@@ -1,5 +1,6 @@
 import React from 'react'
 import {Paragraph} from './styled.js'
+import {SearchBox} from './SearchBox'
 export function App(){
-	return <Paragraph>Some</Paragraph>
+	return <SearchBox requestSearch={console.log}/>
 }
