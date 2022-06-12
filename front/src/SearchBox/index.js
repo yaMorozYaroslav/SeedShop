@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div`display: flex; flex-direction: row`
-
 export const SearchBox = ({requestSearch}) => {
 	const [query, setQuery] = React.useState('')
 	const searchClick =()=>{
 		if(query){
-			requstSearch(query)
+			requestSearch(query)
 		}
+		setQuery('')
 	}
 	const updateQuery =e=> {
 		setQuery(e.target.value)
@@ -25,3 +24,4 @@ export const SearchBox = ({requestSearch}) => {
 	    </Container>
 	)
 }
+const Container = styled.div`display: flex; flex-direction: row`

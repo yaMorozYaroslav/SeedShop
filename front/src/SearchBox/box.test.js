@@ -1,6 +1,6 @@
 import React from 'react'
 import {render, fireEvent} from '@testing-library/react'
-import {SearchBox} from './index'
+import {SearchBox} from '../SearchBox'
 
 it('renders correctly', ()=> {
 	const {queryByTestId, queryByPlaceholderName} = render(<SearchBox />)
