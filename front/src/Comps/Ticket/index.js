@@ -8,7 +8,7 @@ export const Ticket =props=> {
 	}
 	return(
 		<div>
-		   <h2 data-testid='name' >{props.name}</h2>
+		   <h2 data-testid='name' className='name'>{props.name}</h2>
 		   <button onClick={increment}>add</button>
 		   <h2 data-testid='count' className='count'>{count}</h2>
 		</div>
