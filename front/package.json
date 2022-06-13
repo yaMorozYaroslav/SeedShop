@@ -37,17 +37,20 @@
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
+    "axios": "^0.27.2",
     "check-prop-types": "^1.1.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "jest": "^28.1.0",
     "jest-dom": "^4.0.0",
     "jest-enzyme": "^7.1.2",
+    "moxios": "^0.4.0",
     "os": "^0.1.2",
     "prop-types": "^15.8.1",
     "react-redux": "^8.0.2",
     "react-test-renderer": "^18.1.0",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "styled-components": "^5.3.5"
   }
 }
