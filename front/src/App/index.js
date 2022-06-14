@@ -8,7 +8,7 @@ export function App(){
     dispatch(getElvs())
   },[dispatch])
   const elvs = useSelector(state=>state.elvs)
-  console.log(elvs)
+  if(elvs.length)console.log(elvs)
   return(
     <div>
       Text
