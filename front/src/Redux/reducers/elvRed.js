@@ -1,4 +1,4 @@
-import * as type from '../consts'
+import * as type from '../tools/consts'
 
 const func = (elvs=[], action) => {
 	switch(action.type){

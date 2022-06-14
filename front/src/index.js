@@ -2,13 +2,12 @@ import React from 'react'
 import {createRoot} from 'react-dom/client'
 
 import {Provider} from 'react-redux'
-import {createStore, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import reducers from './Redux/reducers'
+import {createStore, applyMiddleware} from 'redux'
+import{ store} from './Redux/store'
 
 import {App} from './App'
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)))
+export const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 const rootElement = document.getElementById('root')
 const root = createRoot(rootElement)

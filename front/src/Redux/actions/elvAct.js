@@ -1,5 +1,5 @@
-import * as type from '../consts'
-import * as api from '../api'
+import * as type from '../tools/consts'
+import * as api from '../tools/api'
 
 export const getElvs =()=> async(dispatch)=> {
 	try{

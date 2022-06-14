@@ -1,4 +1,4 @@
-import * as type from '../consts'
+import * as type from '../tools/consts'
 import elvRed from './elvRed'
 
 describe('Posts Reducer', ()=> {

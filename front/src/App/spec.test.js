@@ -1,26 +1,24 @@
-import React from 'react'
-import {mount} from 'enzyme'
-import {useDispatch, Provider} from 'react-redux'
-import {App} from '../App'
+//import React from 'react'
+//import {shallow} from 'enzyme'
+//import {useDispatch, Provider} from 'react-redux'
+//import {App} from '../App'
+const add = (a, b) => a + b
 
-jest.mock('react-redux', () => {
-	const {Provider, useSelector} = jest.requireActual('react-redux')
-
-	return {
-		useDispatch: jest.fn(),
-		useSelector,
-		Provider
-	}
-})
-it('should render App with Provider', ()=> {
-	const wrapper = mount(<Provider><App/></Provider>)
-	const globalStore = wrapper.find(Provider).prop('store')
+describe('Arithmetic', ()=> {
+	it('Adds two numbers correctly', ()=> {
+		expect(add(10, 20)).toBe(30)
+	})
+	it('Returns NaN if no args passed', ()=> {
+		expect(add()).toBeNaN()
+	})
 })
 
-//const article = wrapper.find(Footer)
-//expect(article.exists()).toBe(true)
-/*it('should render Text', ()=> {
 
+/*
+const article = wrapper.find(Footer)
+expect(article.exists()).toBe(true)
+
+it('should render Text', ()=> {
 	const wrapper = shallow(<App />)
 	const article = wrapper.find('div')
 	expect(article).toBe('Text')
