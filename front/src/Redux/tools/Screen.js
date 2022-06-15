@@ -6,7 +6,10 @@ export function Screen(){
      const elvFirst = []
      const elvSecond = []
      const elvThird = []
-     
+     if(dati){
+     	elvFirst.push(dati[0].floor)
+     }
+     console.log(elvFirst)
 	React.useEffect(()=> {
 	 async function fetcher(){
 	 	const result = await fetchElvs()
@@ -14,7 +17,6 @@ export function Screen(){
 	 }
 	 fetcher()
 	    },[dati])
-	console.log(dati)
 
     
 
