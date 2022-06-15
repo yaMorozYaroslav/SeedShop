@@ -1,6 +1,5 @@
 import React from 'react'
-//import {getElvs} from '../Redux/actions/elvAct'
-import {fetchElvs} from '../Redux/reducers/elvRed'
+import {getElvs} from '../Redux/actions/elvAct'
 import {useDispatch, useSelector} from 'react-redux'
 
 export function App(){
@@ -8,11 +7,11 @@ export function App(){
   const elvStatus = useSelector(state=>state.elvs.status)
   React.useEffect(()=> {
     if(elvStatus === 'idle'){
-    dispatch(fetchElvs())
+    dispatch(getElvs())
                }
-  },[dispatch])
-  const elvs = useSelector(state=>state.elvs.elvs)
-  if(elvs.length>0)console.log(elvs)
+  },[dispatch, elvStatus])
+  const elvs = useSelector(state=>state.elvs)
+  if(elvs.elvs.length)console.log(elvs)
   return(
     <div>
       Text

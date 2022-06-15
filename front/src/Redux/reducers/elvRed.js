@@ -1,11 +1,5 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import * as type from '../tools/consts'
-import * as api from '../tools/api'
-
-export const fetchElvs = createAsyncThunk('elvs/fetchElvs', async()=> {
-	const response = await api.fetchElvs()
-	return response.data
-})
+import {createSlice} from '@reduxjs/toolkit'
+import {getElvs} from '../actions/elvAct'
 
 const initialState = {
 	elvs: [],
@@ -15,11 +9,39 @@ const initialState = {
 const elvSlice = createSlice({
 	name: 'elvs',
 	initialState,
-	reducers: {}
+	reducers: {},
+	 extraReducers(builder) {
+    builder
+      .addCase(getElvs.pending, (state, action) => {
+        state.status = 'loading'
+            })
+      .addCase(getElvs.fulfilled, (state, action) => {
+		   	state.status = 'succeeded'
+		   	state.elvs.push(action.payload)
+		   })
+      .addCase(getElvs.rejected, (state, action)=> {
+		   	state.status = 'failed'
+		   	state.error = action.error.message
+		   })
+  }
+	
 })
 
 export default elvSlice.reducer
-
+/*extraReducers(builder){
+		builder
+		   .addCase(getElvs.pending, (state, action) => {
+		   	state.status = 'loading'
+		   })
+		   .addCase(getElvs.fullfilled, (state, action) => {
+		   	state.status = 'succeeded'
+		   	state.elvs.push(action.payload)
+		   })
+		   .addCase(getElvs.rejected, (state, action)=> {
+		   	state.status = 'failed'
+		   	state.error = action.error.message
+		   })
+	}*/
 /*
 const elvRed = (elvs=[], action) => {
 	switch(action.type){
