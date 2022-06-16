@@ -3,8 +3,15 @@ import {fetchElvs} from './api'
 
 export function Screen(){
 	const [dati, setDati] = React.useState()
-  
-     console.log('Hi')
+	let first = []
+	let second = []
+	let third = []
+     if(dati){
+      first = dati[0].floor
+      second = dati[1].floor
+      third = dati[2].floor
+     }
+     if(dati)console.log(first, second)
 	React.useEffect(()=> {
 	 async function fetcher(){
 	 	const result = await fetchElvs()
@@ -12,21 +19,6 @@ export function Screen(){
 	 }
 	 fetcher()
 	    },[])
-
-     React.useEffect(()=> {
-     	async function catcher(){
-     		const result = await fetchElvs()
-     		if(dati && result.data) {
-     		 if(dati[0].floor !== result.data[0].floor){
-                  setDati(result.data)
-                      }
-                    }
-                  }
-          catcher()
-     },[dati])
      
-
-	return (<section>
-		     {dati?dati.map((elv)=><p key={elv.id}>{elv.floor}</p>):null}
-		</section>)
+     return [first, second, third]
 }
