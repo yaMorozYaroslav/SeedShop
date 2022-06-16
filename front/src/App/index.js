@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Screen} from '../Redux/tools/Screen'
 
 export function App(){
-  //const [first, secind, third] = Screen()
+  const [first, second, third] = Screen()
   const dispatch = useDispatch()
   const elvStatus = useSelector(state=>state.elvs.status)
   React.useEffect(()=> {

@@ -11,7 +11,6 @@ export function Screen(){
       second = dati[1].floor
       third = dati[2].floor
      }
-     if(dati)console.log(first, second)
 	React.useEffect(()=> {
 	 async function fetcher(){
 	 	const result = await fetchElvs()
