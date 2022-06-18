@@ -3,7 +3,7 @@ import rootRed from './reducers'
 import thunk from 'redux-thunk'
 
 export const middle = [thunk]
-//In order to change the history
+//I 
 export const storeWithMiddleware = applyMiddleware(...middle)(createStore)
 export const store = storeWithMiddleware(rootRed)*/
 import {configureStore} from '@reduxjs/toolkit'
