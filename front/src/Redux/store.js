@@ -3,7 +3,7 @@ import rootRed from './reducers'
 import thunk from 'redux-thunk'
 
 export const middle = [thunk]
-// I need buy an adapter 
+// I have a
 export const storeWithMiddleware = applyMiddleware(...middle)(createStore)
 export const store = storeWithMiddleware(rootRed)*/
 import {configureStore} from '@reduxjs/toolkit'
