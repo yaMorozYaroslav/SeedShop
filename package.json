@@ -4,9 +4,10 @@
   "private": true,
   "proxy": "https://back-elevators.herokuapp.com",
   "dependencies": {
+    "@testing-library/dom": "^8.20.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/user-event": "^13.5.0",
-    "node-sass": "^7.0.1",
+    "node-sass": "^8.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
@@ -42,7 +43,6 @@
     "axios": "^0.27.2",
     "check-prop-types": "^1.1.2",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "jest": "^28.1.0",
     "jest-dom": "^4.0.0",
     "jest-enzyme": "^7.1.2",
@@ -52,7 +52,6 @@
     "react-redux": "^8.0.2",
     "react-test-renderer": "^18.1.0",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1",
-    "styled-components": "^5.3.5"
+    "redux-thunk": "^2.4.1"
   }
 }

@@ -1,10 +1,11 @@
 import React from 'react'
+import {Header} from './comps/Header/Header'
 
 export function App(){
   
   return(
     <div>
-      <button>Zero</button>
+      <Header/>
       
     </div>
   	)
