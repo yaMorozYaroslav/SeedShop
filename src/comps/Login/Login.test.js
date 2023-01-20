@@ -33,3 +33,19 @@ test('error message should not be visible', () => {
 	const errorEl = screen.getByTestId('error')
 	expect(errorEl).not.toBeVisible()
 	})
+test('username input should change', () => {
+	  render(<Login/>)
+	  const usernameInputEl = screen.getByPlaceholderText(/username/i)
+	  const testValue = 'text'
+	  fireEvent.change(userInputEl, {target:{value:testValue}})
+	  expect(userInputEl.value).toBe(testValue)
+	})
+test('password input should change', () => {
+	render(<Login/>)
+	const passInputEl = screen.getByPlaceholderText(/password/i)
+	const testValue = 'test'
+	
+	fireEvent.change(passInputEl, {target: {value:testValue}})
+	expect(passInputEl.value).toBe(testValue)
+	expect(passInputEl.value).toBe('')
+	})
