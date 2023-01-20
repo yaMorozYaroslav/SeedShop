@@ -7,12 +7,20 @@ export const Login =()=> {
 	return (
   <div className='container'>
 	 <form>
-	   <input type='username' placeholder='username' value={username}/>
-	   <input type='password' placeholder='password' value={password}/>
-	   <button disabled='true'>Login</button>
+	 
+	   <input 
+	       type='username' placeholder='username' 
+	       value={username} onChange={e=>setUsername(e.target.value)}/>
+	       
+	   <input
+	       type='password' placeholder='password'
+	       value={password} onChange={(e)=> setPassword(e.target.value)}/>
+	       
+	   <button disabled={true}>Login</button>
 	     <span data-testid='error' style={{visibility: error ? 'visible' : 'hidden'}}>
 	       Something went wrong.
 	     </span>
+	     
 	 </form> 
   </div>
 	 
