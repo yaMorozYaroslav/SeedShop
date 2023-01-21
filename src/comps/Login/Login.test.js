@@ -2,6 +2,17 @@ import '@testing-library/jest-dom'
 import {render, screen, fireEvent} from '@testing-library/react'
 import {Login} from './Login'
 
+jest.mock('axios', ()=>({
+	
+	__esModule:true,
+	
+	default:{
+		get:() => ({
+			data:{id:1, name:'John'}
+			})
+		}
+	}))
+
 test('username input should be rendered', () => {
 	render(<Login/>);
 	const userInputEl = screen.getByPlaceholderText(/username/i)
@@ -61,4 +72,19 @@ test('button should not be disabled when inputs exist', () => {
 	fireEvent.change(passInputEl, {target: {value: testValue}})
 	
 	expect(buttonEl).not.toBeDisabled()
-})	
+})
+test('loading should be rendered when click', () => {
+	
+	render(<Login />)
+	cont buttonEl = screen.getByRole('button')
+	const userInputEl = screen.getByPlaceholderText(/username/i)
+	const passInputEl = screen.getByPlaceholderText(/password/i)
+	
+	const testValue = 'test'
+	
+	fireEvent.change(userInputEl, {target:{value:testValue}})
+	fireEvent.change(passInputEl, {target:{value:testValue}})
+	fireEvent.click(buttonEl)
+	
+	expect(buttonEl).toHaveTextContent(/please wait/i)
+	})	
