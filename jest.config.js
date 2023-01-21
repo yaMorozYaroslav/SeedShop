@@ -1,4 +1,4 @@
 module.exports = {
-	//transformIgnorePatterns: ["node_modules/(?!axios)/"],
-	//verbose: true
-	}
+  preset:"@babel/preset-react",
+  transformIgnorePatterns: ['/node_modules/(?!(axios)/)'],
+}
