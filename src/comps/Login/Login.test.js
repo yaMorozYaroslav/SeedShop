@@ -76,7 +76,7 @@ test('button should not be disabled when inputs exist', () => {
 test('loading should be rendered when click', () => {
 	
 	render(<Login />)
-	cont buttonEl = screen.getByRole('button')
+	const buttonEl = screen.getByRole('button')
 	const userInputEl = screen.getByPlaceholderText(/username/i)
 	const passInputEl = screen.getByPlaceholderText(/password/i)
 	
