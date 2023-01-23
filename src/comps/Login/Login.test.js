@@ -29,6 +29,11 @@ test('button input should be rendered', () => {
 	const buttonInputEl = screen.getByRole('button')
     expect(buttonInputEl).toBeInTheDocument()
 	})
+test('loading should not be rendered', () => {
+	render(<Login/>)
+	const buttonInputEl = screen.getByRole('button')
+    expect(buttonInputEl).not.toHaveTextContent(/please wait/i)
+	})
 test('input should be empty', () => {
 	render(<Login/>)
 	const userInputEl = screen.getByPlaceholderText(/username/i)
