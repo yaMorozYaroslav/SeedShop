@@ -17,15 +17,16 @@ export const Login =()=> {
 		}catch{
 			setError(true)
 			}
-		//setLoading(false)
+		setLoading(false)
 		}
 	return (
   <div className='container'>
+    <span>{username.name}</span>
 	 <form>
 	 
 	   <input 
 	       type='username' placeholder='username' 
-	       value={username} onChange={e=>setUser(e.target.value)}/>
+	       value={username} onChange={(e)=>setUser(e.target.value)}/>
 	       
 	   <input
 	       type='password' placeholder='password'
