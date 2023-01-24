@@ -108,3 +108,20 @@ test('loading should be rendered when click', async () => {
 	
 	await waitFor(() => expect(buttonEl).toHaveTextContent(/please wait/i))
 	})	
+test('user should be rendered after fetching',async () => {
+	
+	render(<Login />)
+	const buttonEl = screen.getByRole('button')
+	const userInputEl = screen.getByPlaceholderText(/username/i)
+	const passInputEl = screen.getByPlaceholderText(/password/i)
+	
+	const testValue = 'test'
+	
+	fireEvent.change(userInputEl, {target:{value:testValue}})
+	fireEvent.change(passInputEl, {target:{value:testValue}})
+	fireEvent.click(buttonEl)
+	
+	const userItem = await screen.findByText('John')
+	
+	expect(userItem).toBeInTheDocument()
+	})
