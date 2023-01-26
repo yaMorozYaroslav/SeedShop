@@ -1,10 +1,9 @@
 import React from 'react'
 import {Header} from './comps/Header/Header'
 import {Login} from './comps/Login/Login'
+import {Element} from './comps/Element/Element'
 
 export function App(){
-  const a = 4
-  const b = 6
   return(
     <div>
      <Header/>
@@ -13,7 +12,7 @@ export function App(){
        <li>Mind</li>
        <li>Prosperity</li>
       </ul>
-      <h1 title='sum'>{a+b}</h1>
+     <Element/>
      <Login/>
     </div>
   	)

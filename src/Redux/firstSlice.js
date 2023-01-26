@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-	click: false, change: false
+	click: false, change: 0
 	}
 
 export const firstSlice = createSlice({
@@ -10,8 +10,8 @@ export const firstSlice = createSlice({
 	   reducers: {
 		   onClick: state => {state.click = true},
 		   offClick: state => {state.click = false},
-		   onChange: state => {state.change = 0},
-		   offChange: state = {state.change = 1}
+		   onChange: state => {state.change = 1},
+		   offChange: state => {state.change = 0}
 		 }
 	   })
 	export const {onClick, offClick, onChange, offChange} = firstSlice.actions
