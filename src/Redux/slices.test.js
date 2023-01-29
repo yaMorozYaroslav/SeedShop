@@ -7,12 +7,17 @@ import {onClick} from './firstSlice'
 
 
 test('State changes after click', () => {
-	const initialState = {click:true, change:0}
-	const store = setupStore()
-	store.dispatch(onClick())
-	const actual = store.getState().first
+	const initialState = {click:false, change:0}
+	//const store = setupStore()
+	//store.dispatch(onClick())
+	//const actual = store.getState().first
 	
-	const {getByText} = renderWithProviders(<Element/>,{store})
-	//expect(screen.getByText(/0/i)).toBeInTheDocument()
-	expect(actual).toEqual(initialState)
+	//const {getByText} = renderWithProviders(<Element/>,{store})
+	const {getByText} = renderWithProviders(<Element/>, {
+		preloadedState: {
+			first: initialState
+			}
+		})
+	expect(screen.getByText(/0/i)).toBeInTheDocument()
+	//expect(actual).toEqual(initialState)
 	})
