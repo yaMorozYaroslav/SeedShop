@@ -31,7 +31,6 @@ export const Login =()=> {
 	   <input
 	       type='password' placeholder='password'
 	       value={password} onChange={(e)=> setPass(e.target.value)}/>
-	       
 	   <button disabled={!username||!password} onClick={handleClick}>
 	      {loading?'please wait':'Login'}</button>
 	     <span data-testid='error' style={{visibility: error ? 'visible' : 'hidden'}}>
