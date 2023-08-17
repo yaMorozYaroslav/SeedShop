@@ -7,8 +7,6 @@ export async function getStaticProps() {
   const allData = await axios.get(
               'https://item-auth-back-0555af6b9518.herokuapp.com/items')
               .then((res) => res.data.items)
-  //const post = allData.filter(item => {
-	//		 return item._id === id)}
   return {
     props: {
       allData
@@ -17,8 +15,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({allData}) {
-	
-   async function getAllPostIds(){
+	async function getAllPostIds(){
 	const posts = await axios.get(
               'https://item-auth-back-0555af6b9518.herokuapp.com/items')
 	          .then((res) => res.data.items)
@@ -30,7 +27,7 @@ export default function Home({allData}) {
     }
   })
 	}
-	console.log(getAllPostIds())
+   console.log(getAllPostIds())
   return (
     <Layout home>
       <Head>
