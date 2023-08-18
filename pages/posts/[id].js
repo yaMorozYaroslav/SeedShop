@@ -20,14 +20,15 @@ async function getPostData(id){
 	const post = posts.filter(item => {
 		     if (item._id === id){return item}
 			 return null})
-	return post[0]
+	const {photo, ...rest} = post[0]
+	return rest
 	}
 export async function getStaticPaths() {
   const paths = await getAllPostIds();
   return {
     paths,
     fallback: false,
-  };
+  }
 }
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
@@ -35,10 +36,10 @@ export async function getStaticProps({ params }) {
     props: {
       postData,
     },
-  };
+  }
 }
 
 export default function Post({postData}) {
 	console.log(postData)
-  return <Layout>{postData._id}</Layout>;
+  return <Layout>{postData._id}<br/>{postData.title}</Layout>;
 }
