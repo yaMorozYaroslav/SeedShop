@@ -7,7 +7,7 @@ import html from 'remark-html'
 import Head from 'next/head'
 import { parseISO, format } from 'date-fns'
 
-function Date({ dateString }) {
+export function Date({ dateString }) {
   const date = parseISO(dateString);
   return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>;
 }

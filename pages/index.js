@@ -1,6 +1,9 @@
-import Head from 'next/head';
-import Layout, { siteTitle } from '../comps/layout/Layout';
-import utilStyles from '../styles/utils.module.css';
+import Head from 'next/head'
+import Layout, { siteTitle } from '../comps/layout/Layout'
+import utilStyles from '../styles/utils.module.css'
+import Link from 'next/link'
+//import {Data} from './posts/[id]'
+import { parseISO, format } from 'date-fns'
 import axios from 'axios'
 
 export async function getStaticProps() {
@@ -26,7 +29,11 @@ export default function Home({someData}) {
     }
   })
 	}
-   //console.log(someData)
+   console.log(someData)
+ function Date({ dateString }) {
+  const date = parseISO(dateString);
+  return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>;
+} 
   return (
     <Layout home>
       <Head>
@@ -40,12 +47,14 @@ export default function Home({someData}) {
         </p>
       </section>
       <ul>
-          {someData.map(({ _id, title }) => (
-            <li key={_id}>
-              {title}
-              <br />
-              {_id}
-            </li>
+          {someData.map(({ _id, title, createdAt }) => (
+            <li className={utilStyles.listItem} key={_id}>
+  <Link href={`/posts/${_id}`}>{title}</Link>
+  <br />
+  <small className={utilStyles.lightText}>
+    <Date dateString={createdAt} />
+  </small>
+</li>
           ))}
         </ul>
     </Layout>
