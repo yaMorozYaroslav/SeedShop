@@ -7,19 +7,18 @@ export async function getStaticProps() {
   const allData = await axios.get(
               'https://item-auth-back-0555af6b9518.herokuapp.com/items')
               .then((res) => res.data.items)
+  const someData = allData.map(({photo, ...rest}) => rest)
   return {
     props: {
-      allData
+      someData
     },
   };
 }
 
-export default function Home({allData}) {
+export default function Home({someData}) {
 	async function getAllPostIds(){
-	const posts = await axios.get(
-              'https://item-auth-back-0555af6b9518.herokuapp.com/items')
-	          .then((res) => res.data.items)
-	return posts.map((fileName) => {
+
+	return someData.map((fileName) => {
     return {
       params: {
         id: fileName._id.replace(/\.md$/, ''),
@@ -27,7 +26,7 @@ export default function Home({allData}) {
     }
   })
 	}
-   console.log(getAllPostIds())
+   //console.log(someData)
   return (
     <Layout home>
       <Head>
@@ -41,7 +40,7 @@ export default function Home({allData}) {
         </p>
       </section>
       <ul>
-          {allData.map(({ _id, title }) => (
+          {someData.map(({ _id, title }) => (
             <li key={_id}>
               {title}
               <br />
