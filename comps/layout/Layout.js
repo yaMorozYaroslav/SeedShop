@@ -4,7 +4,7 @@ import {Container, Header, BackToHome} from './Layout.styled.js';
 import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link';
 
-const name = 'Yaroslav Moroz';
+const name = 'Yaroslav Moroz alex';
 export const siteTitle = 'Next.js Sample Website';
 
 export default function Layout({ children, home }) {
