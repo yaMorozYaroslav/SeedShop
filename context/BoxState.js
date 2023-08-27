@@ -5,4 +5,14 @@ export const BoxContext = createContext()
 
 export const BoxState = ({ children }) => {
 	const [state, dispatch] = useReducer(BoxReducer, {boxes: []})
-	}
+	
+	const  addBox = payload => {
+		dispatch({ type: 'ADD_BOX', payload })
+		}
+	const delBox = boxId => {
+		dispatch({ type: 'DEL_BOX', boxId })
+		}
+	return (
+	<BoxContext.Provider
+	 value={{}}>{children}</BoxContext.Provider>
+	)}
