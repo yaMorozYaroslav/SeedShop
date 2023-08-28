@@ -29,7 +29,7 @@ export default function Home({someData}) {
     }
   })
 	}
-   console.log(someData)
+   //console.log(someData)
  function Date({ dateString }) {
   const date = parseISO(dateString)
   return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>

@@ -14,5 +14,6 @@ export const BoxState = ({ children }) => {
 		}
 	return (
 	<BoxContext.Provider
-	 value={{}}>{children}</BoxContext.Provider>
+	 value={{state: state.boxes, addBox, delBox}}>
+	 {children}</BoxContext.Provider>
 	)}
