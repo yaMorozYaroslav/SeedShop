@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../comps/layout/Layout'
+import Layout, { siteTitle } from '../components/layout/Layout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 //import {Data} from './posts/[id]'

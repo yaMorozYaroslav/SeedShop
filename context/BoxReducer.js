@@ -1,10 +1,10 @@
 export const CartReducer = (state, action) => {
 	switch(action.type){
 		case 'ADD_BOX': 
-		  return state.boxes.push({action.payload})
+		  return state.boxes.push(action.payload)
 		case 'DEL_BOX': 
 		  return state.boxes.filter((item) => 
-                                  item.id !== action.boxId)]
+                                  item.id !== action.boxId)
         default:
           return state
 		}
