@@ -1,4 +1,4 @@
-export const CartReducer = (state, action) => {
+const BoxReducer = (state, action) => {
 	switch(action.type){
 		case 'ADD_BOX': 
 		  return state.boxes.push(action.payload)
@@ -9,3 +9,4 @@ export const CartReducer = (state, action) => {
           return state
 		}
 	}
+export default BoxReducer

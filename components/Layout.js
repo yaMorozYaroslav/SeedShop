@@ -2,9 +2,9 @@ import React from 'react'
 import Head from 'next/head';
 import Image from 'next/image';
 import {Container, Header, BackToHome} from './Layout.styled.js';
-import utilStyles from '../../styles/utils.module.css';
+import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link'
-import BoxContext from '../../context/BoxState'
+import BoxContext from '../context/BoxState'
 
 const name = 'Yaroslav Moroz alex';
 export const siteTitle = 'Next.js Sample Website';
