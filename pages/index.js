@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/Layout'
 import utilStyles from '../styles/utils.module.css'
@@ -5,6 +6,7 @@ import Link from 'next/link'
 //import {Data} from './posts/[id]'
 import { parseISO, format } from 'date-fns'
 import axios from 'axios'
+import {BoxContext} from '../context/BoxState'
 
 export async function getStaticProps() {
   const allData = await axios.get(
@@ -19,6 +21,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({someData}) {
+	const {state} = React.useContext(BoxContext)
 	async function getAllPostIds(){
 
 	return someData.map((fileName) => {
