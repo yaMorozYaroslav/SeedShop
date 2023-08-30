@@ -1,4 +1,4 @@
-const BoxReducer = (state, action) => {
+export const BoxReducer = (state, action) => {
 	switch(action.type){
 		case 'ADD_BOX': 
 		  return state.boxes.push(action.payload)
@@ -9,4 +9,3 @@ const BoxReducer = (state, action) => {
           return state
 		}
 	}
-export default BoxReducer
