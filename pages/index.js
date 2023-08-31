@@ -40,11 +40,13 @@ export default function Home({someData}) {
   return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>
 }
   
- const {boxes, addBox, delBox} = React.useContext(BoxContext) 
- console.log(boxes)
+ const {boxes, addBox, delBox} = React.useContext(BoxContext)
+ const number =  boxes.length?1:0
+ console.log(boxes.length - number, boxes)
   return (
     <Layout home>
-    <button onClick={()=>addBox({fresh:'Yaro'})}>button</button>
+    <button onClick={()=>addBox({id: boxes.length, fresh:'Yaro'})}>addBox</button>
+    <button onClick={()=>delBox(boxes.length - number)}>delBox</button>
       <Head>
         <title>{siteTitle}</title>
       </Head>

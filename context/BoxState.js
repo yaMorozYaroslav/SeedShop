@@ -9,8 +9,8 @@ export const BoxState = ({ children }) => {
 	const  addBox = payload => {
 		dispatch({ type: 'ADD_BOX', payload })
 		}
-	const delBox = boxId => {
-		dispatch({ type: 'DEL_BOX', boxId })
+	const delBox = payload => {
+		dispatch({ type: 'DEL_BOX', payload })
 		}
 	return (
 	<BoxContext.Provider
