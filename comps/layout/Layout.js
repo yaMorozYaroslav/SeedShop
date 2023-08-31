@@ -4,15 +4,12 @@ import Image from 'next/image';
 import {Container, Header, BackToHome} from './Layout.styled.js';
 import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link'
-import {BoxContext} from '../../context/BoxState'
-
 
 const name = 'Yaroslav Moroz alex';
 export const siteTitle = 'Next.js Sample Website';
 
 export default function Layout({ children, home }) {
-	const {state, addBox, delBox} = React.useContext(BoxContext)
-	console.log(state.length)
+
   return (
     <Container>
       <Head>

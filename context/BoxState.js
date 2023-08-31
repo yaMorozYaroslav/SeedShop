@@ -1,10 +1,10 @@
 import {createContext, useReducer} from "react"
-import {BoxReducer } from './BoxReducer'
+import {BoxReducer}  from './BoxReducer'
 
 export const BoxContext = createContext()
 
 export const BoxState = ({ children }) => {
-	const [state, dispatch] = useReducer(BoxReducer, {boxes: []})
+	const [state, dispatch] = useReducer(BoxReducer, {boxes:[]})
 	
 	const  addBox = payload => {
 		dispatch({ type: 'ADD_BOX', payload })
@@ -14,6 +14,6 @@ export const BoxState = ({ children }) => {
 		}
 	return (
 	<BoxContext.Provider
-	 value={{state: state.boxes, addBox, delBox}}>
+	 value={{boxes: state.boxes, addBox, delBox}}>
 	 {children}</BoxContext.Provider>
 	)}

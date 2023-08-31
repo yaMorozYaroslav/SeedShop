@@ -7,6 +7,8 @@ import Link from 'next/link'
 import { parseISO, format } from 'date-fns'
 import axios from 'axios'
 
+import {BoxContext} from '../context/BoxState'
+
 export async function getStaticProps() {
   const allData = await axios.get(
               'https://item-auth-back-0555af6b9518.herokuapp.com/items')
@@ -20,6 +22,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({someData}) {
+	
 	
 	async function getAllPostIds(){
 
@@ -35,9 +38,13 @@ export default function Home({someData}) {
  function Date({ dateString }) {
   const date = parseISO(dateString)
   return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>
-} 
+}
+  
+ const {boxes, addBox, delBox} = React.useContext(BoxContext) 
+ console.log(boxes)
   return (
     <Layout home>
+    <button onClick={()=>addBox({fresh:'Yaro'})}>button</button>
       <Head>
         <title>{siteTitle}</title>
       </Head>
