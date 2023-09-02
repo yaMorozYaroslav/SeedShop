@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../comps/layout/Layout'
@@ -7,9 +9,10 @@ import Link from 'next/link'
 import { parseISO, format } from 'date-fns'
 import axios from 'axios'
 
+import {BoxState} from '../context/BoxState'
 import {BoxContext} from '../context/BoxState'
 
-export async function getStaticProps() {
+export async function generateStaticParams() {
   const allData = await axios.get(
               'https://item-auth-back-0555af6b9518.herokuapp.com/items')
               .then((res) => res.data.items)
@@ -44,6 +47,7 @@ export default function Home({someData}) {
  const number =  boxes.length?1:0
  console.log(boxes.length - number, boxes)
   return (
+  <BoxState>
     <Layout home>
     <button onClick={()=>addBox({id: boxes.length, fresh:'Yaro'})}>addBox</button>
     <button onClick={()=>delBox(boxes.length - number)}>delBox</button>
@@ -69,5 +73,6 @@ export default function Home({someData}) {
           ))}
         </ul>
     </Layout>
+    </BoxState>
   );
 }
