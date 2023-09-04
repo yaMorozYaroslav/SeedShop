@@ -1,4 +1,5 @@
-import {createContext, useReducer} from "react"
+'use client'
+import React, {createContext, useReducer} from "react"
 import {BoxReducer}  from './BoxReducer'
 
 export const BoxContext = createContext()

@@ -9,48 +9,60 @@ import Link from 'next/link'
 import { parseISO, format } from 'date-fns'
 import axios from 'axios'
 
-import {BoxState} from '../context/BoxState'
-import {BoxContext} from '../context/BoxState'
-
-export async function generateStaticParams() {
-  const allData = await axios.get(
+export async function everyName(){
+	const posts = await fetch('https://item-auth-back-0555af6b9518.herokuapp.com/items')
+	const newPosts = await posts.json()
+	//console.log(posts)
+	return newPosts.items.map((post) => {id: post._id.toString()})
+	}
+/*
+async function generateStaticParams(){
+	const posts = await fetch(
               'https://item-auth-back-0555af6b9518.herokuapp.com/items')
-              .then((res) => res.data.items)
-  const someData = allData.map(({photo, ...rest}) => rest)
-  return {
-    props: {
-      someData
-    },
-  };
-}
-
-export default function Home({someData}) {
-	
-	
-	async function getAllPostIds(){
-
-	return someData.map((fileName) => {
-    return {
-      params: {
-        id: fileName._id.replace(/\.md$/, ''),
-      },
-    }
+	const newPosts = await posts.json()
+	//console.log(posts)
+	return posts.map((post) => {
+    return {id: post._id}
+    
   })
 	}
-   //console.log(someData)
+async function getPost(params){
+	const posts = await fetch(
+              'https://item-auth-back-0555af6b9518.herokuapp.com/items')
+	          .then((res) => res.json())
+	console.log(posts)    
+	const post = posts.filter(item => {
+		     if (item._id === params.id){return item}
+			 return null})
+	const {photo, ...rest} = post[0]
+	
+	//const processedContent = await remark().use(html).process(rest.description)
+	//const contentHtml = processedContent.toString()
+	//console.log(rest)
+	return {...rest}
+	} */
+
+export async function anyName() {
+  const allData = await fetch('https://item-auth-back-0555af6b9518.herokuapp.com/items')
+  const newData = await allData.json()
+  const someData = newData.items.map(({photo, ...rest}) => rest)
+  return  someData
+}
+
+export default async function Home() {
+	const dataIds = await everyName()
+	const data = await anyName()
+	console.log(data)
+	console.log(dataIds)
+	
  function Date({ dateString }) {
   const date = parseISO(dateString)
   return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>
 }
   
- const {boxes, addBox, delBox} = React.useContext(BoxContext)
- const number =  boxes.length?1:0
- console.log(boxes.length - number, boxes)
+
   return (
-  <BoxState>
     <Layout home>
-    <button onClick={()=>addBox({id: boxes.length, fresh:'Yaro'})}>addBox</button>
-    <button onClick={()=>delBox(boxes.length - number)}>delBox</button>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -62,7 +74,7 @@ export default function Home({someData}) {
         </p>
       </section>
       <ul>
-          {someData.map(({ _id, title, createdAt }) => (
+          {data.map(({ _id, title, createdAt }) => (
             <li className={utilStyles.listItem} key={_id}>
   <Link href={`/posts/${_id}`}>{title}</Link>
   <br />
@@ -73,6 +85,5 @@ export default function Home({someData}) {
           ))}
         </ul>
     </Layout>
-    </BoxState>
   );
 }
