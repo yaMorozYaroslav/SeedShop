@@ -3,7 +3,7 @@ import styles from './page.module.css'
 import Link from 'next/link'
 
 async function anyName() {
-  const allData = await fetch('https://item-auth-back-0555af6b9518.herokuapp.com/items')
+  const allData = await fetch('https://auth-prod-back-7afcce7d449f.herokuapp.com/items')
   const newData = await allData.json()
   const someData = newData.items.map(({photo, ...rest}) => rest)
   return  someData
