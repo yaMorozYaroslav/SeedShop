@@ -15,7 +15,7 @@ export default async function Home() {
     <ul>
           {someData.map(({ _id, title, createdAt }) => (
             <li  key={_id}>
-  <Link href={`/posts/${_id}`}>{title}</Link>
+  <Link href={`/items/${_id}`}>{title}</Link>
 </li>
           ))}
         </ul>
