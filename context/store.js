@@ -1,15 +1,15 @@
 'use client'
 import {createContext, useContext, useState} from 'react'
 
-const GlobalContext = createContext()
-export const GlobalContextProvider = ({ children }) => {
-	const [userId, setUserId] = useState('')
+const UserContext = createContext()
+export const UserState = ({ children }) => {
+	const [userId, setUserId] = useState('penik')
 	const [data, setData] = useState([])
 	
 	return(
-	<GlobalContext.Provider value={{userId,setUserId,data,setData}}>
+	<UserContext.Provider value={{userId,setUserId,data,setData}}>
 	 {children}
-	</GlobalContext.Provider>
+	</UserContext.Provider>
 	)
 	}
-export const useGlobalContext = () => useContext(GlobalContext)
+export const useUserContext = () => useContext(UserContext)

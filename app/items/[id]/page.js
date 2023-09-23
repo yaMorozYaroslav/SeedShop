@@ -1,4 +1,4 @@
-//'use client'
+
 import Link from 'next/link'
 
 export const dynamicParams = false
@@ -17,7 +17,7 @@ async function getItem(params) {
      return item}
 
 export default async function Item({params}){
-	//console.log(params)
+	
 	const item = await getItem(params.id)
 	
 	return <><p>{item._id}, price - {item.price}</p>
