@@ -1,4 +1,4 @@
-
+import {ItemButts} from '../../../comps/ItemButts'
 import Link from 'next/link'
 
 export const dynamicParams = false
@@ -21,6 +21,7 @@ export default async function Item({params}){
 	const item = await getItem(params.id)
 	
 	return <><p>{item._id}, price - {item.price}</p>
+	<ItemButts/>
 	<Link href={'/'}>Back To Menu</Link>
 	</>
 	}

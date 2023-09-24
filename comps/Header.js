@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
-import {useUserContext} from '../context/store'
+import {useUserContext} from '../context/user/UserState'
 
 export function Header(){
 const {userId} =  useUserContext()
 
-console.log(userId)
-return <p>Header</p>
+//console.log(userId)
+return <p>Headerio</p>
 }
