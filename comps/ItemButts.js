@@ -2,11 +2,13 @@
 import React from 'react'
 import {useUserContext} from '../context/user/UserState'
 export function ItemButts(){
-	const {userId} =  useUserContext()
+	const {userData, signIn, error} =  useUserContext()
 	
 	if (typeof window !== 'undefined'){
-	localStorage.setItem('user', userId)
-	console.log(window)
+	//localStorage.setItem('user', userData)
+	console.log(window.localStorage)
 	}
-	return <button>{userId}</button>
+  const loginUser = () => signIn({email:'ya.moro@gmail.com',password:'HorHor'})
+  console.log(userData)
+	return <button onClick={loginUser}>{userData.token},nothing</button>
 	}
