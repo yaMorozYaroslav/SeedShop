@@ -1,5 +1,6 @@
 import {ItemButts} from '../../../comps/ItemButts'
 import Link from 'next/link'
+import {StyledLink} from './extra.styled.js'
 
 export const dynamicParams = false
 /*export async function generateStaticParams(){
@@ -22,6 +23,6 @@ export default async function Item({params}){
 	
 	return <><p>{item._id}, price - {item.price}</p>
 	<ItemButts/>
-	<Link href={'/'}>Back To Menu</Link>
+	<StyledLink href={'/'}>Back To Menu</StyledLink>
 	</>
 	}

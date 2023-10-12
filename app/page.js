@@ -12,12 +12,13 @@ async function anyName() {
 export default async function Home() {
 	const someData = await anyName()
   return (
-    <ul>
+    <ul style={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
           {someData.map(({ _id, title, createdAt }) => (
             <li  key={_id}>
   <Link href={`/items/${_id}`}>{title}</Link>
 </li>
           ))}
+          <Link href={'/auth'}>Login</Link>
         </ul>
   )
 }
