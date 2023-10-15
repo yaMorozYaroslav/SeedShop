@@ -1,18 +1,23 @@
 'use client'
 import React from 'react'
+import decode from 'jwt-decode'
 import Link from 'next/link'
 import {useUserContext} from '../../context/user/UserState'
 
 const initialState = {name: '', email: '', password: '', confPass: ''}
 
 export default function Login(){
-	const {userData, setFromStorage, signIn, 
-		                  signUp, error, clearError} =  useUserContext()
+	const {userData, setFromStorage, signIn, signUp, logout,
+		                         error, clearError} =  useUserContext()
 	const [source, setSource] = React.useState(initialState)
 	const [registered, setRegistered] = React.useState(false)
+	
 	console.log(userData.user)
+	const removeProfile = () => localStorage.removeItem('profile')
 	let profile
+	
 	let currentUser
+	
 	if (typeof window !== 'undefined'){
 	//localStorage.setItem('user', userData)
     profile = JSON.parse(localStorage.getItem('profile'))
@@ -45,6 +50,23 @@ export default function Login(){
 		
 		if(error)alert(error)
 	    if(error)clearError() 
+	    
+	     React.useEffect(()=>{
+		        console.log(userData)
+	            let token
+	        	if(userData)token = userData.token
+	        	if(token){
+	        		const decodedToken = decode(token)
+	        		//console.log(decodedToken)
+	        		if(decodedToken.exp * 1000 < new Date().getTime()){
+	        		 logout()
+	        		 removeProfile()
+	        		 alert('Token has expired')
+	              }
+	        	}
+	        },[userData, profile, logout])
+	        
+	        
 	const handChange =(e)=> setSource({...source, [e.target.name]: e.target.value})
   //const loginUser = () => signIn({email:'ya.moro@gmail.com',password:'HorHor'})
   //console.log(userData)

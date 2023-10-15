@@ -3,17 +3,18 @@ import Link from 'next/link'
 import {StyledLink} from './extra.styled.js'
 
 export const dynamicParams = false
-/*export async function generateStaticParams(){
+export async function generateStaticParams(){
  const items =
-  await fetch('https://auth-prod-back-7afcce7d449f.herokuapp.com/items')
+  await fetch('https://vite-auth-back-267a98071db5.herokuapp.com/items')
 	                                          .then((res) => res.json())
-	 const items = await rawData.json()
-    return items.items.map((item) => ({id: item._id}))
-	}*/
-async function getItem(params) {
-  //console.log(params)
+	//console.log(items)                                          
+	// const items = await rawData.json()
+    return items.data.map((item) => ({id: item._id}))
+	}
+async function getItem(source) {
+  
   const item = 
-    await fetch(`https://auth-prod-back-7afcce7d449f.herokuapp.com/items/${params}`)
+    await fetch(`https://vite-auth-back-267a98071db5.herokuapp.com/items/${source}`)
                                               .then((res) => res.json())
      return item}
 
