@@ -1,8 +1,8 @@
-import './globals.css'
+//import './globals.css'
 import { Inter } from 'next/font/google'
 import {UserState} from '../context/user/UserState'
 import {Header} from '../comps/Header'
-
+import {GlobalStyle} from './extra.styled'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
   return (
   <html lang="en">
     <body className={inter.className}>
+    <GlobalStyle/>
      <UserState>
        <Header/>
        {children}

@@ -1,7 +1,9 @@
 'use client'
 import React from 'react'
+import * as S from './auth.styled'
 import decode from 'jwt-decode'
 import Link from 'next/link'
+import {ItemButts} from '../../comps/ItemButts'
 import {useUserContext} from '../../context/user/UserState'
 
 const initialState = {name: '', email: '', password: '', confPass: ''}
@@ -12,17 +14,14 @@ export default function Login(){
 	const [source, setSource] = React.useState(initialState)
 	const [registered, setRegistered] = React.useState(false)
 	
-	console.log(userData.user)
 	const removeProfile = () => localStorage.removeItem('profile')
 	let profile
 	
 	let currentUser
 	
 	if (typeof window !== 'undefined'){
-	//localStorage.setItem('user', userData)
     profile = JSON.parse(localStorage.getItem('profile'))
 	currentUser = (source) => Object.keys(source).length > 0
-	//console.log(window.localStorage)
 	console.log(userData)
 	}else{profile = undefined, currentUser = undefined}
 	
@@ -52,7 +51,6 @@ export default function Login(){
 	    if(error)clearError() 
 	    
 	     React.useEffect(()=>{
-		        console.log(userData)
 	            let token
 	        	if(userData)token = userData.token
 	        	if(token){
@@ -68,22 +66,20 @@ export default function Login(){
 	        
 	        
 	const handChange =(e)=> setSource({...source, [e.target.name]: e.target.value})
-  //const loginUser = () => signIn({email:'ya.moro@gmail.com',password:'HorHor'})
-  //console.log(userData)
-  //return <button onClick={loginUser}>{userData.token},nothing</button>
+  
   return <form onSubmit={handSubmit} id='form'>
-	 <label>Email:</label>
-	 <input name='email'
-	 onChange={handChange} required/>
+	 <S.Label>Email:</S.Label>
+	 <S.Input name='email'
+	 onChange={handChange} required/><br/>
 	
 	 <label>Password:</label>
 	 <input name='password'
-	 onChange={handChange} required/>
+	 onChange={handChange} required/><br/>
 	 
 	 {!registered && (<>
 	 <label>Name:</label>
 	 <input name='name'
-	 onChange={handChange} required/>
+	 onChange={handChange} required/><br/>
 	 
 	 <label>Confirm Password:</label>
 	 <input name='confPass'
@@ -95,7 +91,7 @@ export default function Login(){
 	                        {!registered?'To Registration'
 								        :'To Authentication'}</button>
 								        
-	  <Link href={'/'}>{userData.user?userData.user.name:null} or</Link>
+	  <Link href={'/'}>ToMenu</Link>
 	 
 	</form>
 	}

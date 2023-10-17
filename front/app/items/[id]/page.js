@@ -1,4 +1,3 @@
-import {ItemButts} from '../../../comps/ItemButts'
 import Link from 'next/link'
 import {StyledLink} from './extra.styled.js'
 
@@ -23,7 +22,7 @@ export default async function Item({params}){
 	const item = await getItem(params.id)
 	
 	return <><p>{item._id}, price - {item.price}</p>
-	<ItemButts/>
+	
 	<StyledLink href={'/'}>Back To Menu</StyledLink>
 	</>
 	}
