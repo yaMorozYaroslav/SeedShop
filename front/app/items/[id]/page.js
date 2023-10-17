@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {StyledLink} from './extra.styled.js'
 
 export const dynamicParams = false

@@ -2,19 +2,27 @@
 import React from 'react'
 import * as S from './auth.styled'
 import decode from 'jwt-decode'
+
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
 import {ItemButts} from '../../comps/ItemButts'
 import {useUserContext} from '../../context/user/UserState'
 
 const initialState = {name: '', email: '', password: '', confPass: ''}
 
 export default function Login(){
+	const router = useRouter()
+	
 	const {userData, setFromStorage, signIn, signUp, logout,
 		                         error, clearError} =  useUserContext()
+		                         
 	const [source, setSource] = React.useState(initialState)
-	const [registered, setRegistered] = React.useState(false)
 	
+	const [registered, setRegistered] = React.useState(false)
+	//console.log(registered)
 	const removeProfile = () => localStorage.removeItem('profile')
+	
 	let profile
 	
 	let currentUser
@@ -27,10 +35,11 @@ export default function Login(){
 	
 	const handSubmit =(e)=> {
 		e.preventDefault()
-		if(!registered&&source.password
-		                     === source.confPass){signUp(source)
-	     }else{alert('Passwords do not match.')}
-        if(registered)signIn(source)        
+	    if(!registered&&source.password !== source.confPass){
+	     alert('Passwords do not match.')}else{
+			if(registered){signIn(source)}else{signUp(source)}}
+  
+       // router.push('/')          
 	  }
 	React.useEffect(()=>{
 		
@@ -46,9 +55,10 @@ export default function Login(){
 		setFromStorage(profile)
 	    }
 		},[userData, profile, setFromStorage])
-		
-		if(error)alert(error)
-	    if(error)clearError() 
+		React.useEffect(()=>{
+		 if(error)alert(error)
+	     if(error)clearError() 
+			},[error])
 	    
 	     React.useEffect(()=>{
 	            let token

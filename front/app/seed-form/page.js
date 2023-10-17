@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Link from 'next/link'
 import FileBase from 'react-file-base64'
 import {createSeed} from '../../api'
 //import {ItemContext} from '../Context/Contexts'
@@ -120,7 +121,7 @@ export default function ItemForm() {
                             ...source, photo: base64})}/><br/>
                             
 	 <button style={sButton} onMouseOver={changeBorder} type='submit'>Save</button>
-	 <button style={sButton} onMouseOver={changeBorder} >CloseForm</button>
+	<Link href={'/'}>Back To Menu</Link>
 	</form>
 	 </section>
 	 )

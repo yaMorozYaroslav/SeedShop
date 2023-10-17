@@ -14,8 +14,8 @@ export const UserReducer = (state, action) => {
 	    case 'END_LOADING':
 	      return{...state,loading: false}
         case ERROR:
-          console.log(action.payload.message)
-          return{...state,error: action.payload.message}
+          console.log(action.payload)
+          return{...state,error: action.payload}
         case NO_ERROR:
           return{...state,error: null}
 		default:

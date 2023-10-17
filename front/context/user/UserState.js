@@ -20,7 +20,8 @@ export const UserState = ({children}) => {
 		const {data} = await register(source)
         dispatch({type: AUTH, payload: data})
         dispatch({type: 'END_LOADING'})
-    }catch(err){dispatch({type: ERROR, payload: err})}
+    }catch(err){dispatch({type: ERROR, payload: 
+			       err.response?err.response.data.message:err.message})}
 	    }
 		
 	const signIn = async(source) => {
@@ -29,7 +30,8 @@ export const UserState = ({children}) => {
 		const {data}= await auth(source)
 		dispatch({type: AUTH, payload: data})
 		dispatch({type: 'END_LOADING'})
-	}catch(err){dispatch({type: ERROR, payload: err})}
+	}catch(err){dispatch({type: ERROR, payload:
+			       err.response?err.response.data.message:err.message})}
 		}
 	const setFromStorage =(source)=> {
 		dispatch({type: FROM_STORAGE, payload: source})
