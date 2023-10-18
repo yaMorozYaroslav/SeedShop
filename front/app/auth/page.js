@@ -23,15 +23,6 @@ export default function Login(){
 	//console.log(registered)
 	const removeProfile = () => localStorage.removeItem('profile')
 	
-	let profile
-	
-	let currentUser
-	
-	if (typeof window !== 'undefined'){
-    profile = JSON.parse(localStorage.getItem('profile'))
-	currentUser = (source) => Object.keys(source).length > 0
-	console.log(userData)
-	}else{profile = undefined, currentUser = undefined}
 	
 	const handSubmit =(e)=> {
 		e.preventDefault()
@@ -41,39 +32,8 @@ export default function Login(){
   
        // router.push('/')          
 	  }
-	React.useEffect(()=>{
-		
-		const shouldUpdateStorage = currentUser(userData) && 
-		         JSON.stringify(userData) !== JSON.stringify(profile)
-		if(shouldUpdateStorage){
-		  localStorage.setItem('profile', JSON.stringify(userData))
-		  }
-
-		const shouldUpdateState = profile && currentUser(profile) &&
-		         JSON.stringify(userData) !== JSON.stringify(profile)
-		if(shouldUpdateState){
-		setFromStorage(profile)
-	    }
-		},[userData, profile, setFromStorage])
-		React.useEffect(()=>{
-		 if(error)alert(error)
-	     if(error)clearError() 
-			},[error])
+	
 	    
-	     React.useEffect(()=>{
-	            let token
-	        	if(userData)token = userData.token
-	        	if(token){
-	        		const decodedToken = decode(token)
-	        		//console.log(decodedToken)
-	        		if(decodedToken.exp * 1000 < new Date().getTime()){
-	        		 logout()
-	        		 removeProfile()
-	        		 alert('Token has expired')
-	              }
-	        	}
-	        },[userData, profile, logout])
-	        
 	        
 	const handChange =(e)=> setSource({...source, [e.target.name]: e.target.value})
   

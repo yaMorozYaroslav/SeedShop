@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import {useUserContext} from '../context/user/UserState'
+import {useUserContext} from '../../context/user/UserState'
 
-export function Header(){
+export function Logo(){
 const {userId} =  useUserContext()
 
 //console.log(userId)

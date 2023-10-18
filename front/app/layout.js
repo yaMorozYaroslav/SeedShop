@@ -1,9 +1,8 @@
-//import './globals.css'
-import { Inter } from 'next/font/google'
+import { Lora } from 'next/font/google'
 import {UserState} from '../context/user/UserState'
-import {Header} from '../comps/Header'
+import {Header} from '../comps/Header/Header'
 import {GlobalStyle} from './extra.styled'
-const inter = Inter({ subsets: ['latin'] })
+const lora = Lora({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
   <html lang="en">
-    <body className={inter.className}>
+    <body className={lora.className}>
     <GlobalStyle/>
      <UserState>
        <Header/>

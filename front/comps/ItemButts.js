@@ -9,6 +9,6 @@ export function ItemButts(){
 	console.log(window.localStorage)
 	}
   const loginUser = () => signIn({email:'ya.moroz.yaroslav@gmail.com',password:'HorHor'})
-  console.log(userData)
+ // console.log(userData)
 	return <button onClick={loginUser}>{userData.token},nothing</button>
 	}
