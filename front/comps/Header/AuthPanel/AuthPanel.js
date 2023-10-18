@@ -1,11 +1,17 @@
 'use client'
 
 import React from 'react'
-import {useUserContext} from '../../context/user/UserState'
+import decode from 'jwt-decode'
+
+import {useUserContext} from '../../../context/user/UserState'
  
 export function AuthPanel(){
+	
  const {userData, setFromStorage, signIn, signUp, logout,
 		                         error, clearError} =  useUserContext()
+    	
+    	const removeProfile = () => localStorage.removeItem('profile')
+    
     let profile
 	let currentUser
 	
@@ -47,6 +53,6 @@ export function AuthPanel(){
 	              }
 	        	}
 	        },[userData, profile, logout])
-	        
-	    return <p>penik</p>
+	        console.log(userData)
+	    return <p>{userData.user?userData.user.name:null}</p>
 		}

@@ -1,5 +1,5 @@
-import {AuthPanel} from './AuthPanel'
-import {Logo} from './Logo'
+import {AuthPanel} from './AuthPanel/AuthPanel'
+
 export function Header(){
-	return <div style={{display: 'flex'}}><Logo/>.<AuthPanel/></div>
+	return <div><p>Flora</p><p>Cart</p><AuthPanel/></div>
 	}

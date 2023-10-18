@@ -1,12 +1,11 @@
 'use client'
 import React from 'react'
 import * as S from './auth.styled'
-import decode from 'jwt-decode'
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import {ItemButts} from '../../comps/ItemButts'
+//import {ItemButts} from '../../comps/ItemButts'
 import {useUserContext} from '../../context/user/UserState'
 
 const initialState = {name: '', email: '', password: '', confPass: ''}
@@ -21,7 +20,6 @@ export default function Login(){
 	
 	const [registered, setRegistered] = React.useState(false)
 	//console.log(registered)
-	const removeProfile = () => localStorage.removeItem('profile')
 	
 	
 	const handSubmit =(e)=> {
