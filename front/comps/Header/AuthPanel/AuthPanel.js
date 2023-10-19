@@ -2,6 +2,7 @@
 
 import React from 'react'
 import decode from 'jwt-decode'
+import Link from 'next/link'
 
 import {useUserContext} from '../../../context/user/UserState'
  
@@ -54,5 +55,10 @@ export function AuthPanel(){
 	        	}
 	        },[userData, profile, logout])
 	        console.log(userData)
-	    return <p>{userData.user?userData.user.name:null}</p>
+	    return <>
+	    <p>{userData.user?userData.user.name:'user'}</p>
+	    {userData.user
+			?<button onClick={()=>{logout();removeProfile();}}>Logout</button>
+			:<button> <Link href={'/auth'}>Login</Link></button>}
+		 </>
 		}

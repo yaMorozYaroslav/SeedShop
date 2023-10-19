@@ -19,7 +19,7 @@ export default async function Home() {
   <Link href={`/items/${_id}`}>{title}</Link>
 </li>
           ))}
-          <Link href={'/auth'}>Login</Link>
+          
           <Link href={'/seed-form'}>AddSeed</Link>
         </ul>
   )

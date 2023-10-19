@@ -28,7 +28,7 @@ export default function Login(){
 	     alert('Passwords do not match.')}else{
 			if(registered){signIn(source)}else{signUp(source)}}
   
-       // router.push('/')          
+        router.push('/')          
 	  }
 	
 	    

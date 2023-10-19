@@ -4,7 +4,6 @@ import Link from 'next/link'
 import FileBase from 'react-file-base64'
 import {createSeed} from '../../api'
 //import {ItemContext} from '../Context/Contexts'
-//import {OpenContext} from '../Context/Contexts'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
@@ -16,8 +15,6 @@ const subSeedlings = ['', 'fruit', 'vegies', 'flowers']
 export default function ItemForm() {
 	
 	//const {items, addSeed, updateSeed} = React.useContext(ItemContext)
-	
-	//const {itemForm, closeItemForm} = React.useContext(OpenContext)
 	
 	const ref = React.useRef()
 	const [source, setSource] = React.useState(initialState)
