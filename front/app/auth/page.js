@@ -24,11 +24,13 @@ export default function Login(){
 	
 	const handSubmit =(e)=> {
 		e.preventDefault()
-	    if(!registered&&source.password !== source.confPass){
-	     alert('Passwords do not match.')}else{
+		console.log(error)
+	    if((!registered&&source.password !== source.confPass)||error){
+	    // alert('Passwords do not match.')}else{
+	     console.log(error)}else{
+			router.push('/')  
 			if(registered){signIn(source)}else{signUp(source)}}
-  
-        router.push('/')          
+          
 	  }
 	
 	    
