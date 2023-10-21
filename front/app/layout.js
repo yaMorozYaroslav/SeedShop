@@ -1,5 +1,6 @@
 import { Lora } from 'next/font/google'
 import {UserState} from '../context/user/UserState'
+import {SeedState} from '../context/seeds/SeedState'
 import {Header} from '../comps/Header/Header'
 import {GlobalStyle} from './extra.styled'
 import StyledComponentsRegistry from './registry';
@@ -17,10 +18,12 @@ export default function RootLayout({ children }) {
     <body className={lora.className}>
      <StyledComponentsRegistry>
       <GlobalStyle/>
+       <SeedState>
        <UserState>
         <Header/>
         {children}
       </UserState>
+      </SeedState>
      </StyledComponentsRegistry>
     </body>
    </html>

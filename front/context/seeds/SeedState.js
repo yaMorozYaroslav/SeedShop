@@ -1,35 +1,32 @@
+'use client'
 import { useReducer, useContext } from "react";
-import {ItemContext} from "../Contexts";
-import {FiltContext} from "../Contexts"
-import ItemReducer from "./ItemReducer";
-import {getItems, createItem, editItem, deleteItem} from '../../api'
+import React from "react";
+import SeedReducer from "./SeedReducer";
+import {getSeeds, createSeed, editSeed, deleteSeed} from '../../api'
 
-import {GET_SEEDS, START_LOADING, END_LOADING, ADD_SEED,
-	      SET_SINGLE_ID, DEL_SINGLE_ID, UPDATE_ITEM, REMOVE_ITEM,
-	         SET_ID, REMOVE_ID, SET_SINGLE, ERROR} from "./ItemTypes"
+import {GET_SEEDS, START_LOADING, END_LOADING,
+	    ADD_SEED, UPDATE_SEED, REMOVE_SEED, ERROR} from "./SeedTypes"
 
-export const ItemState = ({ children }) => {
+const SeedContext = React.createContext()
+
+export const SeedState = ({ children }) => {
   
   const initialState = {
     seeds: {},
-    count: null,
     loading: false, 
-    error: [],
-    currentId: null, 
-    single: false,
-    singleId: null
+    error: []
   };
-  const {category, type, search} = useContext(FiltContext)
+ // const {category, type, search} = useContext(FiltContext)
 
-  const [state, dispatch] = useReducer(ItemReducer, initialState)
+  const [state, dispatch] = useReducer(SeedReducer, initialState)
 
-  const fetchItems = async(category, type, page, search, sort) => {
+  const fetchSeeds = async(category, type, page, search, sort) => {
 	try{
 		dispatch({type: START_LOADING})
 		
-		const {data} = await getItems(category, type, page, search, sort)
+		const {data} = await getSeeds(category, type, page, search, sort)
 		
-		dispatch({type: GET_ITEMS, payload: data})
+		dispatch({type: GET_SEEDS, payload: data})
 		
 		dispatch({type: END_LOADING})
 	 }
@@ -38,102 +35,56 @@ export const ItemState = ({ children }) => {
 	  }
    }
   
-  const addItem = async(source) => {
+  const addSeed = async(source) => {
     try{
-		const {data} = await createItem(source)
+		const {data} = await createSeed(source)
 		const newData = (!category||category===data.category)&&
 		                (!type||type===data.type)?data:null
-		dispatch({type: ADD_ITEM, payload: newData})
+		dispatch({type: ADD_SEED, payload: newData})
 	 }
     catch(err){
     	dispatch({type: ERROR, payload: err})
     }
   };
 
-  const updateItem = async (id, source) => {
+  const updateSeed = async (id, source) => {
 	  try{
-		  const {data} = await editItem(id, source)
+		  const {data} = await editSeed(id, source)
 		  //console.log(data)
-		  dispatch({type: UPDATE_ITEM, payload: data})
+		  dispatch({type: UPDATE_SEED, payload: data})
 		  }
 	  catch(err){
 		dispatch({type: ERROR, payload: err})
 	   }
 	  }
 
-   const removeItem = async(id) => {
+   const removeSeed = async(id) => {
 	try{
-		const {data} = await deleteItem(id)
+		const {data} = await deleteSeed(id)
 		console.log(data)
-		dispatch({type: REMOVE_ITEM, payload: data})
+		dispatch({type: REMOVE_SEED, payload: data})
 	 }
 	catch(err){
 		dispatch({type: ERROR, payload: err})
 	}
    }
 
-  const setCurrentId = (id) => {
-	  try{
-    dispatch({ type: SET_ID, payload: id });
-  }
-  catch(err){
-	  dispatch({type: ERROR, payload: err})
-	  }
-    }
-    
-     const removeCurrentId = () => {
-	  try{
-    dispatch({ type: REMOVE_ID });
-     }catch(err){
-	  dispatch({type: ERROR, payload: err})
-	  }
-    }
-    const setSingle = (bool) => {
-		try{
-			dispatch({type: SET_SINGLE, payload: bool})
-			}catch(err){
-				dispatch({type: ERROR, payload: err})
-			}
-		   }
-    const setSingleId = (id) => {
-	  try{
-    dispatch({ type: SET_SINGLE_ID, payload: id });
-  }
-  catch(err){
-	  dispatch({type: ERROR, payload: err})
-	  }
-    }
-    
-     const delSingleId = () => {
-	  try{
-    dispatch({ type: DEL_SINGLE_ID });
-     }catch(err){
-	  dispatch({type: ERROR, payload: err})
-	  }
-    }
+  
   return (
 
-    <ItemContext.Provider
+    <SeedContext.Provider
       value={{
-        items: state.items,
+        seeds: state.seeds,
         loading: state.loading,
         error: state.error,
-        currentId: state.currentId,
-        single: state.single,
-        singleId: state.singleId,
-        fetchItems,
-        addItem,
-        updateItem,
-        removeItem,
-        setCurrentId,
-        removeCurrentId,
-        setSingle,
-        setSingleId,
-        delSingleId,
+        fetchSeeds,
+        addSeed,
+        updateSeed,
+        removeSeed,  
         ...state,
-      }}
-    >
+      }}>
       {children}
     </SeedContext.Provider>
   );
 };
+export const useSeedContext = () => useContext(SeedContext)

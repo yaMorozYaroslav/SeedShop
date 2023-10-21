@@ -9,7 +9,7 @@ async function anyName() {
   return  someData
 }
 
-export default async function Home() {
+export default async function Main() {
 	const someData = await anyName()
   return (<>
   
