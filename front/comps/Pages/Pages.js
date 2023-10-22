@@ -14,7 +14,7 @@ import {useSeedContext} from '../../context/seeds/SeedState'
 
 export function Pages(total) {
 	const {seeds, fetchSeeds} = useSeedContext()
-	console.log(seeds)
+	//console.log(seeds)
 	const Buttons = () => 
 	    
         <div style={{'display':'flex', margin: '5px','fontSize':'23px'}}>

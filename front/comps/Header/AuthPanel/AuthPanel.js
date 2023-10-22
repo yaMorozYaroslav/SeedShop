@@ -19,7 +19,7 @@ export function AuthPanel(){
 	if (typeof window !== 'undefined'){
     profile = JSON.parse(localStorage.getItem('profile'))
 	currentUser = (source) => Object.keys(source).length > 0
-	console.log(userData)
+	//console.log(userData)
 	}else{profile = undefined, currentUser = undefined}
    
    React.useEffect(()=>{
@@ -54,7 +54,7 @@ export function AuthPanel(){
 	              }
 	        	}
 	        },[userData, profile, logout])
-	        console.log(userData)
+	       // console.log(userData)
 	    return <>
 	    <p>{userData.user?userData.user.name:'user'}</p>
 	    {userData.user
