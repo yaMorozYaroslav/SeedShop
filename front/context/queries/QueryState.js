@@ -1,3 +1,5 @@
+'use client'
+import React from 'react'
 import { useReducer } from "react"
 import QueryReducer from "./QueryReducer"
 
@@ -79,8 +81,8 @@ export const QueryState = ({ children }) => {
         category: state.category,
         type: state.type,
         search: state.search,
-        minPrice: state.itemPrice.min,
-        maxPrice: state.itemPrice.max,
+        minPrice: state.price.min,
+        maxPrice: state.price.max,
         setType,
         setCategory,
         setSearch,
