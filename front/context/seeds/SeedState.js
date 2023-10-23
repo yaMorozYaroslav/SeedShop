@@ -16,8 +16,7 @@ export const SeedState = ({ children }) => {
     loading: false, 
     error: []
   };
- // const {category, type, search} = useContext(FiltContext)
-
+ 
   const [state, dispatch] = useReducer(SeedReducer, initialState)
 
   const fetchSeeds = async(category, type, page, search, sort) => {
@@ -38,9 +37,10 @@ export const SeedState = ({ children }) => {
   const addSeed = async(source) => {
     try{
 		const {data} = await createSeed(source)
-		const newData = (!category||category===data.category)&&
-		                (!type||type===data.type)?data:null
-		dispatch({type: ADD_SEED, payload: newData})
+		//const newData = (!category||category===data.category)&&
+		//                (!type||type===data.type)?data:null
+		console.log(data)
+		dispatch({type: ADD_SEED, payload: data})
 	 }
     catch(err){
     	dispatch({type: ERROR, payload: err})

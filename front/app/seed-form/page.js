@@ -2,7 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 import FileBase from 'react-file-base64'
-import {createSeed} from '../../api'
+//import {createSeed} from '../../api'
+import {useSeedContext} from '../../context/seeds/SeedState'
 //import {ItemContext} from '../Context/Contexts'
 
 const initialState = {title: '', description: '', price: '', 
@@ -14,6 +15,7 @@ const subSeedlings = ['', 'fruit', 'vegies', 'flowers']
 
 export default function ItemForm() {
 	
+	const {addSeed} = useSeedContext()
 	//const {items, addSeed, updateSeed} = React.useContext(ItemContext)
 	
 	const ref = React.useRef()
@@ -64,7 +66,7 @@ export default function ItemForm() {
 	const sButton = {fontSize:'26px', margin:'14px', cursor: 'pointer'}
 	function handSubmit(e){
 		  e.preventDefault()
-		  createSeed(source)
+		  addSeed(source)
 		}
 	 return(
 	 <section style={{'display': 'block',

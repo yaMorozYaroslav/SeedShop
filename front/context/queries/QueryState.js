@@ -1,10 +1,10 @@
 'use client'
-import React from 'react'
+import React,{useContext} from 'react'
 import { useReducer } from "react"
 import QueryReducer from "./QueryReducer"
 
 import {SET_CATEGORY, SET_TYPE, SET_SEARCH, RESET,
-        SET_MIN_PRICE, SET_MAX_PRICE, ERROR} from "./QueryTypes"
+                      SET_REVERSE, ERROR} from "./QueryTypes"
 
 const QueryContext = React.createContext()
 
@@ -14,7 +14,7 @@ export const QueryState = ({ children }) => {
     category: '',
     type: '',
     search: '',
-    price: {min: true, max: false},
+    reverse: false,
     error: null
   };
 
@@ -48,9 +48,9 @@ export const QueryState = ({ children }) => {
     }
   }
   
-  const setMinPrice = (source) => {
+  const setReverse = (source) => {
 	  try{
-	     dispatch({type: SET_MIN_PRICE, payload: source})
+	     dispatch({type: SET_REVERSE, payload: source})
 	   }
 	    catch(err){
     	dispatch({type: ERROR, payload: err})
@@ -58,15 +58,7 @@ export const QueryState = ({ children }) => {
 	 }
    }
    
-  const setMaxPrice = (source) => {
-	   try{
-	     dispatch({type: SET_MAX_PRICE, payload: source})
-	   }
-	    catch(err){
-    	dispatch({type: ERROR, payload: err})
-    	console.log(err)
-	 }
-   }
+  
   const reset = () => {
 	  dispatch({type: RESET, payload: initialState})
 	  console.log(state)
@@ -81,13 +73,11 @@ export const QueryState = ({ children }) => {
         category: state.category,
         type: state.type,
         search: state.search,
-        minPrice: state.price.min,
-        maxPrice: state.price.max,
+        reverse: state.reverse,
         setType,
         setCategory,
         setSearch,
-        setMinPrice,
-        setMaxPrice,
+        setReverse,
         reset
       }}
     >
@@ -95,3 +85,4 @@ export const QueryState = ({ children }) => {
     </QueryContext.Provider>
   );
 };
+export const useQueryContext = () => useContext(QueryContext)

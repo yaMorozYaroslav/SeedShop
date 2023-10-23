@@ -14,9 +14,9 @@ const SeedReducer = (state, action) => {
 
   
     case ADD_SEED:
-      if(action.payload===null)return state
-      return {...state, seeds: {...state.seeds,
-		                data: [...state.seeds.data, action.payload]}  }
+      if(!state.seeds.data){return state}
+      else{return {...state, seeds: {...state.seeds,
+		                data: [...state.seeds.data, action.payload]}  }}
 		                
     case UPDATE_SEED: 
       return{...state, items: {...state.seeds, 

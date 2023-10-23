@@ -1,17 +1,17 @@
-import {StyledLink} from './extra.styled.js'
+import Link from 'next/link'
 
 export const dynamicParams = false
 
 export async function generateStaticParams(){
  const items = await fetch(
-                    'http://localhost:5000/items')
+                    'http://localhost:5000/seeds?category=&type=&')
 	                                 .then((res) => res.json())
     return items.data.map((item) => ({id: item._id}))
 	}
 async function getItem(source) {
   
   const item = 
-    await fetch(`http://localhost:5000/items/${source}`)
+    await fetch(`http://localhost:5000/seeds/${source}`)
                                               .then((res) => res.json())
      return item}
 
@@ -21,6 +21,6 @@ export default async function Item({params}){
 	
 	return <><p>{item._id}, price - {item.price}</p>
 	
-	<StyledLink href={'/'}>Back To Menu</StyledLink>
+	<Link href={'/'}>Back To Menu</Link>
 	</>
 	}

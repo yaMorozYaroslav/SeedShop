@@ -5,13 +5,14 @@ import {List} from '../../comps/List/List'
 import {useSeedContext} from '../../context/seeds/SeedState'
 
 async function anyName() {
-  const allData = await fetch('http://localhost:5000/seeds?page=1')
-  const newData = await allData.json()
+  const allData = 
+     await fetch('http://localhost:5000/seeds?category=&type=&page=1')
+                                              .then((res) => res.json())
 
  // const someData = newData.data.map(({photo, ...rest}) => rest)
-  const someData = newData.data
+  const someData = allData.data
   //.map(item => item)
-  const totalPages = newData.totalPages
+  const totalPages = allData.totalPages
   return  {someData, totalPages}
 }
 

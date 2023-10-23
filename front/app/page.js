@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 async function anyName() {
-  const allData = await fetch('https://vite-auth-back-267a98071db5.herokuapp.com/items')
+  const allData = await fetch('http://localhost:5000/items')
   const newData = await allData.json()
 
   const someData = newData.data.map(({photo, ...rest}) => rest)
