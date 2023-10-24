@@ -3,23 +3,23 @@ import Link from 'next/link'
 export const dynamicParams = false
 
 export async function generateStaticParams(){
- const items = await fetch(
+ const seeds = await fetch(
                     'http://localhost:5000/seeds?category=&type=&')
 	                                 .then((res) => res.json())
-    return items.data.map((item) => ({id: item._id}))
+    return seeds.data.map((seed) => ({id: seed._id}))
 	}
-async function getItem(source) {
+async function getSeed(source) {
   
-  const item = 
+  const seed = 
     await fetch(`http://localhost:5000/seeds/${source}`)
                                               .then((res) => res.json())
-     return item}
+     return seed}
 
-export default async function Item({params}){
+export default async function Seed({params}){
 	
-	const item = await getItem(params.id)
+	const seed = await getSeed(params.id)
 	
-	return <><p>{item._id}, price - {item.price}</p>
+	return <><p>{seed._id}, price - {seed.price}</p>
 	
 	<Link href={'/'}>Back To Menu</Link>
 	</>
