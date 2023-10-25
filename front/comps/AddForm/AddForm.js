@@ -4,19 +4,25 @@ import Link from 'next/link'
 import FileBase from 'react-file-base64'
 import { usePathname } from 'next/navigation';
 import {useSeedContext} from '../../context/seeds/SeedState'
-
+import {useItemContext} from '../../context/items/ItemState'
+import * as S from './add-form.styled'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
 
-const allTypes = {                  
+const seedTypes = {                  
        subVegies : ['', 'early', 'late'],
        subFlowers : ['', 'annual', 'multi-year'],
        subSeedlings : ['', 'fruit', 'vegies', 'flowers']
 	   }
+const itemTypes = {
+	  subSeed : ['', 'flowers', 'veggies', 'herbs', 'seedlings'],
+      subSoil : ['', 'for flowers','for veggies', 'for fruit'],
+      subSupplements : ['', 'fertilizers', 'pesticides', 'other'],
+      subEquipment : ['', 'gloves','tools','gear']
+			  }
 
-
-export function AddForm() {
+export function AddForm({setOpen}) {
 	
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
@@ -58,10 +64,12 @@ export function AddForm() {
 	                      (!currentId?'added.':'updated.'))},1000)
 		        }
 		       */ 
-		let currType
-    if(source.category==='vegies'){currType = subVegies}
-	if(source.category==='flowers'){currType = subFlowers}
-	if(source.category==='seedlings'){currType = subSeedlings}
+     let currType
+	{categories.map((item,i) => {
+		            if(source.category===item&&item.length){
+						           currType = Object.values(
+		                           !isSeed?seedTypes:itemTypes)[isSeed?i:i-1]}})}
+   
 	
 		
 	const handChange =(e)=> setSource({...source, [e.target.name]: e.target.value})
@@ -79,37 +87,36 @@ export function AddForm() {
 		  addSeed(source)
 		}
 	 return(
-	 <section style={{'display': 'block',
-		              'textAlign':'center'}}>
-	 <h1 style={{'fontSize':'30px'}}>Item</h1>
-	<form onSubmit={handSubmit} style={sText} ref={ref}>
+	 <S.Container>
+	 
+	 <S.Title>{isSeed?'Item':'Seed'}</S.Title>
+	<S.Form onSubmit={handSubmit} ref={ref}>
+	
 	 <label>Title:</label>
-	 <input name='title' 
-	 value={source.title}    
-	 onChange={handChange}
-	 style={sInput} required/><br/>
+	 <S.Input name='title' 
+	          value={source.title}    
+	          onChange={handChange}
+	                     required/><br/>
 	 
 	 <label style={{marginRight: '245px'}}>Description:</label><br/>
-	 <textarea name='description'
-	 value={source.description} 
-	 onChange={handChange}
-	 style={{...sInput, height: '50px', marginLeft: '45px'} } required/><br/>
+	 <S.Description name='description'
+	              value={source.description} 
+	              onChange={handChange}
+	                              required/><br/>
 	 
 	 <label>Price:</label>
-	 <input name='price'
+	 <S.Input name='price'
 	        value={source.price}
 	        onChange={e=>setSource(
 				          {...source, price: Number(e.target.value)||0})}
 	        style={sInput} required/>$<br/>
 	 
 	 <label>Category:</label>
-	 <select name='category'
+	 <S.Category name='category'
 	         value={source.category}
-	         onChange={handChange}
-	         style={{...sInput, cursor: 'pointer'}}
-	         >
-	{categories.map(item => <option value={item}>{item}</option>)}
-	 </select><br/>
+	         onChange={handChange} >
+	{categories.map((item, i) => <option key={i} value={item}>{item}</option>)}
+	 </S.Category><br/>
 	 <label>Type:</label>
 	 <select name='type'
 	         value={source.type}
@@ -127,8 +134,8 @@ export function AddForm() {
                             ...source, photo: base64})}/><br/>
                             
 	 <button style={sButton} onMouseOver={changeBorder} type='submit'>Save</button>
-	<Link href={'/'}>Back To Menu</Link>
-	</form>
-	 </section>
+	<button onClick={()=>setOpen(false)}>CloseForm</button>
+	</S.Form>
+	 </S.Container>
 	 )
 	}

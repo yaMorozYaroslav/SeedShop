@@ -17,5 +17,4 @@ export default async function ItemList() {
   
     <List servData={someData}/>
           <Link href={'/seed-form'}>AddSeed</Link>
-     <AddForm/>
   </>)}

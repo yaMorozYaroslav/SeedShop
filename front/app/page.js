@@ -13,14 +13,10 @@ export default async function Main() {
 	const someData = await anyName()
   return (<>
   
-    <ul style={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
-          {someData.map(({ _id, title, date }) => (
-            <li  key={_id}>
-  <Link href={`/items/${_id}`}>{title}</Link>
-</li>
-          ))}
-          
-          <Link href={'/seed-form'}>AddSeed</Link>
-        </ul>
+        <p>Welcome to our seed store.
+           More than 15 years of impeccable service. Now online</p>
+          <Link className='styledLink' href={'/seed-list'}>View all seeds</Link>..
+          <Link className='styledLink' href={'/item-list'}>View all products</Link>
+       
   </>)
 }
