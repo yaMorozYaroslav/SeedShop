@@ -3,8 +3,8 @@ import React from 'react'
 import Link from 'next/link'
 import FileBase from 'react-file-base64'
 import { usePathname } from 'next/navigation';
-import {useSeedContext} from '../../context/seeds/SeedState'
-import {useItemContext} from '../../context/items/ItemState'
+import {useSeedContext} from '../../../context/seeds/SeedState'
+import {useItemContext} from '../../../context/items/ItemState'
 import * as S from './add-form.styled'
 
 const initialState = {title: '', description: '', price: '', 
@@ -79,13 +79,11 @@ export function AddForm({setOpen}) {
 			setTimeout(() => e.target.style.border = null, 1000)
 			}
 	
-	const sText = {fontSize:'24px'}
-	const sInput = {fontSize:'22px', margin:'7px'}
-	const sButton = {fontSize:'26px', margin:'14px', cursor: 'pointer'}
 	function handSubmit(e){
 		  e.preventDefault()
 		  addSeed(source)
 		}
+		
 	 return(
 	 <S.Container>
 	 
@@ -98,8 +96,8 @@ export function AddForm({setOpen}) {
 	          onChange={handChange}
 	                     required/><br/>
 	 
-	 <label style={{marginRight: '245px'}}>Description:</label><br/>
-	 <S.Description name='description'
+	 <label>Description:</label><br/>
+	 <S.Textarea name='description'
 	              value={source.description} 
 	              onChange={handChange}
 	                              required/><br/>
@@ -108,8 +106,9 @@ export function AddForm({setOpen}) {
 	 <S.Input name='price'
 	        value={source.price}
 	        onChange={e=>setSource(
-				          {...source, price: Number(e.target.value)||0})}
-	        style={sInput} required/>$<br/>
+				          {...source,
+						   price: Number(e.target.value)||0})}
+	                                               required/>$<br/>
 	 
 	 <label>Category:</label>
 	 <S.Category name='category'
@@ -117,25 +116,29 @@ export function AddForm({setOpen}) {
 	         onChange={handChange} >
 	{categories.map((item, i) => <option key={i} value={item}>{item}</option>)}
 	 </S.Category><br/>
+	 
 	 <label>Type:</label>
-	 <select name='type'
+	 <S.Category name='type'
 	         value={source.type}
 	         onChange={handChange}
-	         style={{...sInput, cursor: 'pointer'}}
 	          >
 	     {currType && currType.map((item,i) => 
 			   <option key={i} value={item}>{item}</option>)}
-	 </select><br/>
-	 <label>Photo: </label>
+	 </S.Category><br/>
+	
+	  <div className='file-base'>
+	   <label>Photo: </label>
       <FileBase          
                          type="file"
                          multiple={false}
                          onDone={({base64})=>setSource({
-                            ...source, photo: base64})}/><br/>
+                            ...source, photo: base64})}/><br/></div>
                             
-	 <button style={sButton} onMouseOver={changeBorder} type='submit'>Save</button>
-	<button onClick={()=>setOpen(false)}>CloseForm</button>
-	</S.Form>
+	     <S.Submit onMouseOver={changeBorder} type='submit'>Save</S.Submit>
+	     <S.Close onMouseOver={changeBorder} 
+	              onClick={()=>setOpen(false)}>CloseForm</S.Close>
+	
+	   </S.Form>
 	 </S.Container>
 	 )
 	}

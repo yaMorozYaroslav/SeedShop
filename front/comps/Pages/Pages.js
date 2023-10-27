@@ -1,26 +1,29 @@
 'use client'
 import React from 'react'
-import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import {useSeedContext} from '../../context/seeds/SeedState'
+import {useItemContext} from '../../context/items/ItemState'
+import * as S from './pages.styled.js'
 
 
 export function Pages(total) {
+	const pathname = usePathname()
+	const isSeed = pathname === '/seed-list'
+	
 	const {seeds, fetchSeeds} = useSeedContext()
-	console.log(seeds)
-	const Buttons = () => 
-	    
-        <div style={{'display':'flex', margin: '5px','fontSize':'23px'}}>
-             Pages:{[...Array(total.total)].map((e, i) => 
-    <button style={{'margin':'5px', 'fontSize':'21px', 'cursor':'pointer',
-		             color: 0===i+1?'':'blue'}} key={i}
-		             onClick={()=>fetchSeeds('','',i+1,'','')}>
-				                               {i+1}</button>)}</div>
-				                               
-				                               
-
+	const {items, fetchItems} = useItemContext()
+	const active = (s) => seeds.currPage === s||items.currPage === s	
+	console.log(active)		                               
+    function fetchUnits(e){
+		//e.preventDefault()
+		if(isSeed){fetchSeeds('','',e.target.value,'','')
+	    }else{fetchItems('','',e.target.value,'','')}
+		} 
   return (<>
-          <Buttons/>
-          <Link href={'/'}>ToMenu</Link>
-        
+          <S.Container style={{}}>
+             Pages:{[...Array(total.total)].map((e, i) => 
+    <S.Button activer={active(i)||undefined} key={i} value={i+1}
+		             onClick={fetchUnits}>
+				                               {i+1}</S.Button>)}</S.Container>       
           </> )
 }

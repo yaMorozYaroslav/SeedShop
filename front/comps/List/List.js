@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import * as S from './list.styled'
-import {AddForm} from '../AddForm/AddForm'
+import {AddForm} from './AddForm/AddForm'
 import {useSeedContext} from '../../context/seeds/SeedState'
 import {useQueryContext} from '../../context/queries/QueryState'
 import { usePathname } from 'next/navigation';
@@ -15,14 +15,14 @@ export function List({servData}){
 	const urlSingle = isSeed?'seeds':'items'
 	
 	const [open, setOpen] = React.useState(false)
-	console.log(open)
+	
 	const {seeds} = useSeedContext()
 	const {category} = useQueryContext()
-	console.log(category)
-	//console.log(seeds)
+	
 	let someData
 	if(!seeds.data){someData=servData}else{someData=seeds.data}
 return <>
+       <Link href={'/'}>ToMain</Link>
        {open?<AddForm setOpen={setOpen}/>
 			  :<button onClick={()=>setOpen(true)}>
 			                   {!isSeed?'AddItem':'AddSeed'}</button>}

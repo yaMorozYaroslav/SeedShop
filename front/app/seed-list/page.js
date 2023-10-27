@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import {Pages} from '../../comps/Pages/Pages'
 import {List} from '../../comps/List/List'
 import {useSeedContext} from '../../context/seeds/SeedState'
@@ -21,8 +20,7 @@ export default async function SeedList() {
 	//const {seeds} = useSeedContext()
   return (<>
       <Pages total={totalPages}/>
-   <Link href={'/seed-form'}>AddSeed</Link>
-    <List servData={someData}/>
+      <List servData={someData}/>
         </>
   )
 }
