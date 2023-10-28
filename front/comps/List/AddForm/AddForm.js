@@ -22,7 +22,7 @@ const itemTypes = {
       subEquipment : ['', 'gloves','tools','gear']
 			  }
 
-export function AddForm({setOpen}) {
+export function AddForm({setOpen, currItem}) {
 	
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
@@ -37,15 +37,14 @@ export function AddForm({setOpen}) {
     let categories
     if(!isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
 	}else{categories = ['', 'soils', 'supplements', 'equipment']}
-    /*const currItem = items.data && items.data.find((item) => item._id === currentId)
+    //const currItem = items.data && items.data.find((item) => item._id === currentId)
     
     React.useEffect(()=>{
 		
-	       	   if(currItem)setSource(currItem)
-	       	   //console.log(currItem)
+	       	   if(currItem._id)setSource(currItem)
 								 
 	       },[currItem])
-	       
+	 /*      
     const reset =()=> {	
 		//setCurrentId(null)
 		setSource(initialState)
