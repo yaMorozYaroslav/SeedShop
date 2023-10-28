@@ -5,7 +5,8 @@ import {useSeedContext} from '../../context/seeds/SeedState'
 
 async function anyName() {
   const allData = 
-     await fetch('http://localhost:5000/seeds?category=&type=&page=1')
+   //  await fetch('http://localhost:5000/seeds?category=&type=')
+     await fetch('http://localhost:5000/seeds?')
                                               .then((res) => res.json())
 
  // const someData = newData.data.map(({photo, ...rest}) => rest)
