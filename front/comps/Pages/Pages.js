@@ -17,10 +17,11 @@ export function Pages(total) {
 	const idler   = (s) => !seeds.currPage&&!items.currPage&&s===1	
 			                               
     function fetchUnits(e){
-		//e.preventDefault()
+		e.preventDefault()
 		if(isSeed){fetchSeeds('','',e.target.value,'','')
 	    }else{fetchItems('','',e.target.value,'','')}
 		} 
+		console.log(total)
   return (<>
           <S.Container >
              Pages:

@@ -14,7 +14,7 @@ const ItemReducer = (state, action) => {
 
   
     case ADD_ITEM:
-      if(!state.seeds.data){return state}
+      if(!state.items.data){return state}
       else{return {...state, items: {...state.items,
 		                data: [...state.items.data, action.payload]}  }}
 		                

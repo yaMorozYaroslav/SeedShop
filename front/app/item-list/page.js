@@ -4,7 +4,7 @@ import {List} from '../../comps/List/List'
 import {Pages} from '../../comps/Pages/Pages'
 
 async function anyName() {
-  const allData = await fetch('http://localhost:5000/items')
+  const allData = await fetch('http://localhost:5000/items?')
                                          .then((res) => res.json())
   const someData = allData.data
    const totalPages = allData.totalPages

@@ -15,6 +15,7 @@ const seedTypes = {
        subFlowers : ['', 'annual', 'multi-year'],
        subSeedlings : ['', 'fruit', 'vegies', 'flowers']
 	   }
+	   
 const itemTypes = {
 	  subSeed : ['', 'flowers', 'veggies', 'herbs', 'seedlings'],
       subSoil : ['', 'for flowers','for veggies', 'for fruit'],
@@ -22,52 +23,40 @@ const itemTypes = {
       subEquipment : ['', 'gloves','tools','gear']
 			  }
 
-export function AddForm({setOpen, currItem}) {
+export function AddForm({setOpen, currItem, setCurrItem}) {
 	
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
 	//const urlSingle = isSeed?'seeds':'items'
 	
-	const {addSeed} = useSeedContext()
-	//const {items, addSeed, updateSeed} = React.useContext(ItemContext)
+	const {addSeed, updateSeed} = useSeedContext()
+	const {addItem, updateItem} = useItemContext()
 	
 	const ref = React.useRef()
 	const [source, setSource] = React.useState(initialState)
    
     let categories
-    if(!isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
+    if(isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
 	}else{categories = ['', 'soils', 'supplements', 'equipment']}
-    //const currItem = items.data && items.data.find((item) => item._id === currentId)
     
     React.useEffect(()=>{
 		
 	       	   if(currItem._id)setSource(currItem)
-								 
+	       
 	       },[currItem])
-	 /*      
+	 /*  comments    */
     const reset =()=> {	
-		//setCurrentId(null)
+		setCurrItem({})
 		setSource(initialState)
 		ref.current.reset()
 		}
 		
-	const handSubmit =(e)=> {
-		e.preventDefault()
-	   if(!currentId){addItem(source)			           
-	   }else{updateItem(currentId, source)}
-			 reset()
-		     closeItemForm()
-
-		     setTimeout(() => {
-					alert('Element has been '+
-	                      (!currentId?'added.':'updated.'))},1000)
-		        }
-		       */ 
+		       
      let currType
 	{categories.map((item,i) => {
 		            if(source.category===item&&item.length){
 						           currType = Object.values(
-		                           !isSeed?seedTypes:itemTypes)[isSeed?i:i-1]}})}
+		                           !isSeed?itemTypes:seedTypes)[isSeed?i:i-1]}})}
    
 	
 		
@@ -78,11 +67,26 @@ export function AddForm({setOpen, currItem}) {
 			setTimeout(() => e.target.style.border = null, 1000)
 			}
 	
-	function handSubmit(e){
-		  e.preventDefault()
-		  addSeed(source)
-		}
-		
+	const handClose =(e)=> {e.preventDefault();setOpen(false);}
+	const handSubmit =(e)=> {
+		e.preventDefault()
+	if(isSeed){
+	   if(!source._id){addSeed(source)			           
+	  }else{updateSeed(source._id, source)}
+			 
+   }else{
+       if(!source._id){addItem(source)			           
+	  }else{updateItem(source._id, source)}
+        }
+        reset()
+	    setOpen(false)
+		     setTimeout(() => {
+					alert('Element has been '+
+	                      (!source._id?'added.':'updated.'))},1000)
+		        }
+	
+	//const handSubmit =(e)=> {e.preventDefault();updateSeed(currItem._id, source);}
+    console.log(currItem._id)
 	 return(
 	 <S.Container>
 	 
@@ -135,7 +139,7 @@ export function AddForm({setOpen, currItem}) {
                             
 	     <S.Submit onMouseOver={changeBorder} type='submit'>Save</S.Submit>
 	     <S.Close onMouseOver={changeBorder} 
-	              onClick={()=>setOpen(false)}>CloseForm</S.Close>
+	              onClick={handClose}>CloseForm</S.Close>
 	
 	   </S.Form>
 	 </S.Container>
