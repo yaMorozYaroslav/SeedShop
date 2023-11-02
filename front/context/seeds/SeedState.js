@@ -12,7 +12,7 @@ const SeedContext = React.createContext()
 export const SeedState = ({ children }) => {
   
   const initialState = {
-    seeds: {},
+    seeds: [],
     loading: false, 
     error: []
   };
@@ -24,7 +24,6 @@ export const SeedState = ({ children }) => {
 		dispatch({type: START_LOADING})
 		
 		const {data} = await getSeeds(category, type, page, search, sort)
-		console.log(data)
 		dispatch({type: GET_SEEDS, payload: data})
 		
 		dispatch({type: END_LOADING})

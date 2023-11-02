@@ -21,7 +21,7 @@ export function Pages(total) {
 		if(isSeed){fetchSeeds('','',e.target.value,'','')
 	    }else{fetchItems('','',e.target.value,'','')}
 		} 
-		console.log(total)
+		//console.log(total)
   return (<>
           <S.Container >
              Pages:

@@ -11,7 +11,7 @@ const ItemContext = createContext()
 export const ItemState = ({ children }) => {
   
   const initialState = {
-    items: {},
+    items: [],
     loading: false, 
     error: []
   };
@@ -23,7 +23,7 @@ export const ItemState = ({ children }) => {
 		dispatch({type: START_LOADING})
 		
 		const {data} = await getItems(category, type, page, search, sort)
-		
+		//console.log(data)
 		dispatch({type: GET_ITEMS, payload: data})
 		
 		dispatch({type: END_LOADING})

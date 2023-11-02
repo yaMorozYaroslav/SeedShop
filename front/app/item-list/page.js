@@ -2,11 +2,15 @@
 //import Link from 'next/link'
 import {List} from '../../comps/List/List'
 import {Pages} from '../../comps/Pages/Pages'
+import { revalidateTag } from 'next/cache'
 
 async function anyName() {
-  const allData = await fetch('http://localhost:5000/items?')
+  const allData = 
+        await fetch('http://localhost:5000/items?search=', 
+                                 { next: { tags: ['items'] }})
                                          .then((res) => res.json())
-  const someData = allData.data
+    revalidateTag('items')
+   const someData = allData.data
    const totalPages = allData.totalPages
   return  {someData, totalPages}
 }

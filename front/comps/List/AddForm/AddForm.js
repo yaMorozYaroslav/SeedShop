@@ -86,11 +86,11 @@ export function AddForm({setOpen, currItem, setCurrItem}) {
 		        }
 	
 	//const handSubmit =(e)=> {e.preventDefault();updateSeed(currItem._id, source);}
-    console.log(currItem._id)
+    //console.log(currItem._id)
 	 return(
 	 <S.Container>
 	 
-	 <S.Title>{isSeed?'Item':'Seed'}</S.Title>
+	 <S.Title>{!isSeed?'Item':'Seed'}</S.Title>
 	<S.Form onSubmit={handSubmit} ref={ref}>
 	
 	 <label>Title:</label>
