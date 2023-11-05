@@ -23,7 +23,8 @@ const itemTypes = {
       subEquipment : ['', 'gloves','tools','gear']
 			  }
 
-export function AddForm({setOpen, currItem, setCurrItem}) {
+export function AddForm({setOpen, currItem,
+	                     setCurrItem, updStaticUnit, addStaticUnit}){
 	
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
@@ -71,12 +72,12 @@ export function AddForm({setOpen, currItem, setCurrItem}) {
 	const handSubmit =(e)=> {
 		e.preventDefault()
 	if(isSeed){
-	   if(!source._id){addSeed(source)			           
-	  }else{updateSeed(source._id, source)}
+	   if(!source._id){addSeed(source) && addStaticUnit(source)		           
+	  }else{updateSeed(source._id, source) && updStaticUnit(source)}
 			 
    }else{
-       if(!source._id){addItem(source)			           
-	  }else{updateItem(source._id, source)}
+       if(!source._id){addItem(source) && addStaticUnit(source)		           
+	  }else{updateItem(source._id, source)&& updStaticUnit(source)}
         }
         reset()
 	    setOpen(false)

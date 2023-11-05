@@ -14,14 +14,15 @@ const ItemReducer = (state, action) => {
 
   
     case ADD_ITEM:
-         if(!state.items.data){return {...state, items:  [...state.items, action.payload]}
+         if(!state.items.data){return state
 	    }else{return {...state, items: {...state.items,
 	                  data: [...state.items.data, action.payload]}  }}
 		                
     case UPDATE_ITEM: 
-      return{...state, items: {...state.items, 
+         if(!state.items.data){return state
+		}else{return{...state, items: {...state.items, 
 			 data: state.items.data.map((item) =>
-         (item._id === action.payload._id ? action.payload : item))}  }
+         (item._id === action.payload._id ? action.payload : item))}  }}
 
     case REMOVE_ITEM:
     console.log(action.payload)
