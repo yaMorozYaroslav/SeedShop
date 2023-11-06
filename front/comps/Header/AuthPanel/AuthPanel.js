@@ -19,7 +19,7 @@ export function AuthPanel(){
 	if (typeof window !== 'undefined'){
     profile = JSON.parse(localStorage.getItem('profile'))
 	currentUser = (source) => Object.keys(source).length > 0
-	//console.log(userData)
+	
 	}else{profile = undefined, currentUser = undefined}
    
    React.useEffect(()=>{
@@ -36,6 +36,7 @@ export function AuthPanel(){
 		setFromStorage(profile)
 	    }
 		},[userData, profile, setFromStorage])
+		
 		React.useEffect(()=>{
 		 if(error)alert(error)
 	     if(error)clearError() 

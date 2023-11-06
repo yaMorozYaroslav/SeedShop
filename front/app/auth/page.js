@@ -5,7 +5,6 @@ import * as S from './auth.styled'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-//import {ItemButts} from '../../comps/ItemButts'
 import {useUserContext} from '../../context/user/UserState'
 
 const initialState = {name: '', email: '', password: '', confPass: ''}
@@ -24,7 +23,7 @@ export default function Login(){
 	
 	const handSubmit =(e)=> {
 		e.preventDefault()
-		console.log(error)
+		//console.log(error)
 	    if((!registered&&source.password !== source.confPass)||error){
 	    // alert('Passwords do not match.')}else{
 	     console.log(error)}else{

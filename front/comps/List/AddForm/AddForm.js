@@ -45,7 +45,7 @@ export function AddForm({setOpen, currItem,
 	       	   if(currItem._id)setSource(currItem)
 	       
 	       },[currItem])
-	 /*  comments    */
+
     const reset =()=> {	
 		setCurrItem({})
 		setSource(initialState)
@@ -85,9 +85,6 @@ export function AddForm({setOpen, currItem,
 					alert('Element has been '+
 	                      (!source._id?'added.':'updated.'))},1000)
 		        }
-	
-	//const handSubmit =(e)=> {e.preventDefault();updateSeed(currItem._id, source);}
-    //console.log(currItem._id)
 	 return(
 	 <S.Container>
 	 
