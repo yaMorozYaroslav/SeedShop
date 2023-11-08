@@ -7,6 +7,7 @@ import {AddForm} from './AddForm/AddForm'
 import {useItemContext} from '../../context/items/ItemState'
 import {useSeedContext} from '../../context/seeds/SeedState'
 import {useQueryContext} from '../../context/queries/QueryState'
+import {useUserContext} from '../../context/user/UserState'
 import { usePathname } from 'next/navigation'
 
 export function List({servData}){
@@ -19,10 +20,13 @@ export function List({servData}){
 	const [currItem, setCurrItem] = React.useState({})
 	const [staticData, setStaticData] = React.useState(servData)
 	
+	const {userData} = useUserContext()
 	const {items, removeItem} = useItemContext()
 	const {seeds, removeSeed} = useSeedContext()
 	const {category} = useQueryContext()
 	const units = !items.length?seeds:items
+	
+	const creator =(id)=> userData.user && (userData.user._id === id)
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
 
@@ -63,7 +67,8 @@ return <>
                <Image alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'} width={100} height={100} priority={true}/><br/>
                <Link href={`/${urlSingle}/${item._id}`}>{item.title}</Link>
                <p>price: {item.price}</p>
-               <button onClick={(e)=>delUnit(e, item._id)}>Remove</button>
+               {creator(item.creator)&&<button onClick={(e)=>delUnit(e, item._id)}>Remove</button>}
+               
                <button onClick={(e)=>handEdit(e, item)}>Edit</button>
               </S.Cell>
           ))}

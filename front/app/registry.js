@@ -17,7 +17,7 @@ export default function StyledComponentsRegistry({ children }) {
   if (typeof window !== 'undefined') return <>{children}</>;
 
   return (
-    <StyleSheetManager 
+    <StyleSheetManager shouldForwardProp={true}
                        sheet={styledComponentsStyleSheet.instance}>
       {children}
     </StyleSheetManager>
