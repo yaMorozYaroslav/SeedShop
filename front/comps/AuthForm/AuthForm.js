@@ -35,29 +35,31 @@ export function AuthForm(){
 		  if(userData.user)router.push('/')
 		},[userData])
 		
-  return <S.Form onSubmit={handSubmit} id='form'>
+  return  <S.Container>
+    <S.Form onSubmit={handSubmit} id='form'>
 	 <S.Label>Email:</S.Label>
-	 <S.Input name='email'
-	 onChange={handChange} required/><br/>
-	 <S.Label text='green'>Password</S.Label>
-	 <S.Input text='green' name='password'
-	 onChange={handChange} required/><br/>
+	 <S.Input name='email' placeholder='Write Your Email'
+	          onChange={handChange} required/><br/>
+	 <S.Label text='green'>Password:</S.Label>
+	 <S.Input text='black' placeholder='Create Password' name='password'
+	          onChange={handChange} required/><br/>
 	 {!registered && (<>
 	 <S.Label>Name:</S.Label>
-	 <S.Input name='name'
-	 onChange={handChange} required/><br/>
+	 <S.Input name='name' placeholder='Write Your Name'
+	          onChange={handChange} required/><br/>
 	 
-	 <label>Confirm Password:</label>
-	 <S.Input name='confPass'
-	 onChange={handChange} required/>
+	 <label>Password:</label>
+	 <S.Input placeholder='Confirm Password' name='confPass'
+	          onChange={handChange} required/>
 	                   </>)}
 	 <br/>    
-	 <button  type='submit'>Submit</button><br/>          
-	 <button onClick={()=>setRegistered(!registered)}>
-	                        {registered?'To Registration'
-								        :'To Authentication'}</button>
-								        
-	  <Link href={'/'}>ToMenu</Link>
+	 <S.Submit type='submit'>Submit</S.Submit><br/>          
 	 
 	</S.Form>
+	 <S.Toggler onClick={()=>setRegistered(!registered)}>
+	                        {registered?'To Registration'
+								        :'To Authentication'}</S.Toggler>
+								        
+	  <S.StyledLink className='styledLink' href={'/'}>ToMenu</S.StyledLink>
+  </S.Container>
 	}

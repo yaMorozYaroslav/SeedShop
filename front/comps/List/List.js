@@ -65,7 +65,7 @@ return <>
           {someData.map(item => (
              <S.Cell  key={item._id}>
                <Image alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'} width={100} height={100} priority={true}/><br/>
-               <Link href={`/${urlSingle}/${item._id}`}>{item.title}</Link>
+               <Link href={`/units/${item._id}`}>{item.title}</Link>
                <p>price: {item.price}</p>
                {creator(item.creator)&&<button onClick={(e)=>delUnit(e, item._id)}>Remove</button>}
                
