@@ -7,7 +7,7 @@ import { revalidateTag } from 'next/cache'
 
 async function anyName() {
   const allData = 
-     await fetch('http://localhost:5000/seeds?', 
+     await fetch('http://localhost:5000/seeds?search=', 
                             { next: { tags: ['seeds'] }})
                                             .then((res) => res.json())
       revalidateTag('seeds')

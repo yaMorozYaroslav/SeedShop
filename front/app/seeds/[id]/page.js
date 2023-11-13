@@ -1,3 +1,5 @@
+import {Single} from '../../../comps/Single/Single'
+
 export const dynamicParams = false
 
 export async function generateStaticParams(){
@@ -16,7 +18,5 @@ export default async function Seed({params}){
 
 	const seed = await getSeed(params.id)
 	
-	return <><p>{seed._id}, price - {seed.price}</p>
-	         <p>{seed.title}</p>
-	</>
+	return <Single unit={seed} text='seed-list'/>
 	}

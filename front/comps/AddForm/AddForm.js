@@ -3,8 +3,8 @@ import React from 'react'
 import Link from 'next/link'
 import FileBase from 'react-file-base64'
 import { usePathname } from 'next/navigation';
-import {useSeedContext} from '../../../context/seeds/SeedState'
-import {useItemContext} from '../../../context/items/ItemState'
+import {useSeedContext} from '../../context/seeds/SeedState'
+import {useItemContext} from '../../context/items/ItemState'
 import * as S from './add-form.styled'
 
 const initialState = {title: '', description: '', price: '', 
