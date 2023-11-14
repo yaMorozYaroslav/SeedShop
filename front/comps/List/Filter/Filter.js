@@ -1,8 +1,8 @@
 import React from 'react'
 import { usePathname } from 'next/navigation';
-import {useQueryContext} from '../../context/queries/QueryState'
-import {useItemContext} from '../../context/items/ItemState'
-import {useSeedContext} from '../../context/seeds/SeedState'
+import {useQueryContext} from '../../../context/queries/QueryState'
+import {useItemContext} from '../../../context/items/ItemState'
+import {useSeedContext} from '../../../context/seeds/SeedState'
 
 export const Filter =(props)=> {
 	
@@ -15,7 +15,7 @@ const itemTypes = {
 	   subSeed : ['', 'flowers', 'veggies', 'herbs', 'seedlings'],
        subSoil : ['', 'for flowers','for veggies', 'for fruit'],
        subSupplements : ['', 'fertilizers', 'pesticides', 'other'],
-       subEquipment : ['', 'gloves','tools','gear']
+       subEquipment : ['', 'gloves','tools','gear'] }
        
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
@@ -37,7 +37,7 @@ const itemTypes = {
 	
 	  let currType
 	{categories.map((item,i) => {
-		            if(source.category===item&&item.length){
+		            if(item&&item.length){
 						           currType = Object.values(
 		                           !isSeed?seedTypes:itemTypes)[isSeed?i:i-1]}})}
 	
@@ -105,9 +105,9 @@ const itemTypes = {
 				    value={item}>{!item?'all':item}</option>)}
 	 </select><br/>
 	     <label>Sort By Price</label>
-	     <button style={text} disabled={minPrice}
+	     <button style={text} disabled={reverse}
 	             onClick={onSort}>Minimum</button>
-	     <button style={text} disabled={maxPrice}
+	     <button style={text} disabled={!reverse}
 	             onClick={onSort}>Maximum</button>
 	     
 	     <input style={{...text, cursor:'se-resize'}} value={state.itemSearch} 
@@ -115,7 +115,7 @@ const itemTypes = {
 	     <button onClick={resetFilt} onMouseOver={changeBorder}
 	             style={{...text, 'cursor':'pointer'}}>Reset</button>
 	     </div>}
-	     {!show && !single && <button onMouseOver={changeBorder} 
+	     {!show && <button onMouseOver={changeBorder} 
 			        style={{...text, 'cursor':'pointer'}} 
 			           onClick={()=>setShow(true)}>ShowFilters</button>}
 	     </div>

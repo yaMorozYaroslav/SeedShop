@@ -3,7 +3,8 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import * as S from './list.styled'
-import {AddForm} from '../AddForm/AddForm'
+import {AddForm} from './AddForm/AddForm'
+import {Filter} from './Filter/Filter'
 import {useItemContext} from '../../context/items/ItemState'
 import {useSeedContext} from '../../context/seeds/SeedState'
 import {useQueryContext} from '../../context/queries/QueryState'
@@ -31,10 +32,10 @@ export function List({servData}){
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
 
 	function addStaticUnit(source){
-    setStaticData([...staticData, {...source, id: staticData.length} ])               
+     setStaticData([...staticData, {...source, id: staticData.length} ])               
 		}
 	function updStaticUnit(source){
-        setStaticData(staticData.map((item) => 
+     setStaticData(staticData.map((item) => 
                      (item._id === currItem._id ? source : item)))
 		}	
 	function delUnit(e, id){
@@ -47,10 +48,11 @@ export function List({servData}){
 	if(!seeds.data&&!items.data){someData = staticData
    }else{if(seeds.data){someData=seeds.data}else{someData=items.data}}
   
-   console.log(someData)
+ //  console.log(someData)
   
-return <>
-       <Link href={'/'}>ToMain</Link>
+return (<S.Container>
+       <Filter/>
+       <Link className='styledLink' href={'/'}>ToMain</Link>
        
        {open?<AddForm setOpen={setOpen} 
 		              currItem={currItem}
@@ -58,9 +60,9 @@ return <>
 		              addStaticUnit={addStaticUnit}
 		              updStaticUnit={updStaticUnit} />
 		              
-			:<button onClick={()=>setOpen(true)}>
+			:<S.AddBut onClick={()=>setOpen(true)}>
 			                   {!isSeed?'AddItem'
-								       :'AddSeed'}</button>}
+								       :'AddSeed'}</S.AddBut>}
        <S.List>
           {someData.map(item => (
              <S.Cell  key={item._id}>
@@ -76,5 +78,5 @@ return <>
         
         </S.List>
         
-       </>
+       </S.Container>)
 } 

@@ -1,9 +1,13 @@
+'use client'
+import React from 'react'
 import * as S from './single.styled'
-import {AddForm} from '../AddForm/AddForm'
+//import {AddForm} from '../AddForm/AddForm'
 import Image from 'next/image'
 
 export const Single =({unit, text})=>{
-  return (<S.Container>
+	
+	
+  return (<S.Container>		              
              <Image alt='' src={unit.photo&&unit.photo.length?unit.photo:'../next.svg'}
                     width={100} height={100} priority={true}/><br/>
              <S.Paragraph>{unit.title}</S.Paragraph>

@@ -20,15 +20,17 @@ const SeedReducer = (state, action) => {
 		                
 		                
     case UPDATE_SEED: 
-      return{...state, seeds: {...state.seeds, 
-			 data: state.seeds.data.map((item) =>
-         (item._id === action.payload._id ? action.payload : item))}  }
+      if(!state.seeds.data){return {...state, seeds: action.payload}
+    }else{return{...state, seeds: {...state.seeds, 
+			 data: state.seeds.data.map((seed) =>
+         (seed._id === action.payload._id ? action.payload : seed))}  }}
 
     case REMOVE_SEED:
     console.log(action.payload)
-      return {...state, seeds: {...state.seeds,
+      if(!state.seeds.data){return state
+     }else{return {...state, seeds: {...state.seeds,
 		                   data: state.seeds.data.filter((item) =>
-			                       item._id !== action.payload._id)}  }
+			                       item._id !== action.payload._id)}  }}
 
    
     case ERROR:

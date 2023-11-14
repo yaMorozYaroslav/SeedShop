@@ -3,9 +3,10 @@ import React from 'react'
 import Link from 'next/link'
 import FileBase from 'react-file-base64'
 import { usePathname } from 'next/navigation';
-import {useSeedContext} from '../../context/seeds/SeedState'
-import {useItemContext} from '../../context/items/ItemState'
+import {useSeedContext} from '../../../context/seeds/SeedState'
+import {useItemContext} from '../../../context/items/ItemState'
 import * as S from './add-form.styled'
+import { revalidateTag } from 'next/cache'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
@@ -76,8 +77,9 @@ export function AddForm({setOpen, currItem,
 	  }else{updateSeed(source._id, source) && updStaticUnit(source)}
 			 
    }else{
-       if(!source._id){addItem(source) && addStaticUnit(source)		           
-	  }else{updateItem(source._id, source)&& updStaticUnit(source)}
+       if(!source._id){addItem(source) && (addStaticUnit?addStaticUnit(source):null)		           
+	  }else{updateItem(source._id, source)&& (updStaticUnit?updStaticUnit(source):null)}
+        // revalidateTag('item')
         }
         reset()
 	    setOpen(false)

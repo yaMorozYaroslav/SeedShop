@@ -1,6 +1,7 @@
 import {Single} from '../../../comps/Single/Single'
+import { revalidateTag } from 'next/cache'
 
-export const dynamicParams = false
+export const dynamicParams = true
 
 export async function generateStaticParams(){
   const items = await fetch('http://localhost:5000/items?search=')
@@ -10,8 +11,10 @@ export async function generateStaticParams(){
 	}
  async function getItem(source) {
   
-   const item = await fetch(`http://localhost:5000/items/${source}`)
-                                          .then((res) => res.json())
+   const item = fetch(`http://localhost:5000/items/${source}`, 
+                            { next: { tags: ['item'] }})
+                                            .then((res) => res.json())
+      revalidateTag('item')
    return item
 
        }

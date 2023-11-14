@@ -14,8 +14,7 @@ export const QueryState = ({ children }) => {
     category: '',
     type: '',
     search: '',
-    reverse: false,
-    error: null
+    reverse: false
   };
 
   const [state, dispatch] = useReducer(QueryReducer, initialState)
@@ -26,7 +25,7 @@ export const QueryState = ({ children }) => {
 		if(!source)dispatch({type: SET_TYPE, payload: source})
 	 }
 	catch(err){	
-		dispatch({type: ERROR, payload: err})
+		console.log(err)
 	  }
    }
    const setType = (source) => {
@@ -34,7 +33,7 @@ export const QueryState = ({ children }) => {
 		   dispatch({type: SET_TYPE, payload: source})
 		   }
 	   catch(err){	
-		dispatch({type: ERROR, payload: err})
+		console.log(err)
 	  }
 	   }
   
@@ -43,7 +42,7 @@ export const QueryState = ({ children }) => {
 		dispatch({type: SET_SEARCH, payload: source})
 	 }
     catch(err){
-    	dispatch({type: ERROR, payload: err})
+    	
     	console.log(err)
     }
   }
@@ -53,7 +52,6 @@ export const QueryState = ({ children }) => {
 	     dispatch({type: SET_REVERSE, payload: source})
 	   }
 	    catch(err){
-    	dispatch({type: ERROR, payload: err})
     	console.log(err)
 	 }
    }

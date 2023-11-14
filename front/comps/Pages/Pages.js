@@ -13,7 +13,7 @@ export function Pages(total) {
 	
 	const {seeds, fetchSeeds} = useSeedContext()
 	const {items, fetchItems} = useItemContext()
-	const activer = (s) => seeds.currPage === s||items.currPage === s
+	const activer = (s) => isSeed && seeds.currPage === s||items.currPage === s
 	const idler   = (s) => !seeds.currPage&&!items.currPage&&s===1	
 			                               
     function fetchUnits(e){
@@ -21,7 +21,7 @@ export function Pages(total) {
 		if(isSeed){fetchSeeds('','',e.target.value,'','')
 	    }else{fetchItems('','',e.target.value,'','')}
 		} 
-	
+	console.log(total)
   return (<>
           <S.Container >
              Pages:
