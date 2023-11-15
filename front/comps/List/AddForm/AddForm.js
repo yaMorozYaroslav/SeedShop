@@ -7,22 +7,10 @@ import {useSeedContext} from '../../../context/seeds/SeedState'
 import {useItemContext} from '../../../context/items/ItemState'
 import * as S from './add-form.styled'
 import { revalidateTag } from 'next/cache'
+import {seedTypes, itemTypes} from '../select-types'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
-
-const seedTypes = {                  
-       subVegies : ['', 'early', 'late'],
-       subFlowers : ['', 'annual', 'multi-year'],
-       subSeedlings : ['', 'fruit', 'vegies', 'flowers']
-	   }
-	   
-const itemTypes = {
-	  subSeed : ['', 'flowers', 'veggies', 'herbs', 'seedlings'],
-      subSoil : ['', 'for flowers','for veggies', 'for fruit'],
-      subSupplements : ['', 'fertilizers', 'pesticides', 'other'],
-      subEquipment : ['', 'gloves','tools','gear']
-			  }
 
 export function AddForm({setOpen, currItem,
 	                     setCurrItem, updStaticUnit, addStaticUnit}){
@@ -41,10 +29,8 @@ export function AddForm({setOpen, currItem,
     if(isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
 	}else{categories = ['', 'soils', 'supplements', 'equipment']}
     
-    React.useEffect(()=>{
-		
-	       	   if(currItem._id)setSource(currItem)
-	       
+    React.useEffect(()=>{		
+	       	   if(currItem._id)setSource(currItem)       
 	       },[currItem])
 
     const reset =()=> {	
@@ -55,8 +41,8 @@ export function AddForm({setOpen, currItem,
 		
 		       
      let currType
-	{categories.map((item,i) => {
-		            if(source.category===item&&item.length){
+	{categories.map((category,i) => {
+		            if(source.category===category&&category.length){
 						           currType = Object.values(
 		                           !isSeed?itemTypes:seedTypes)[isSeed?i:i-1]}})}
    

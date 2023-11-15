@@ -1,5 +1,5 @@
 import {SET_CATEGORY,SET_TYPE, SET_SEARCH, 
-	                   RESET, SET_REVERSE} from "./QueryTypes"
+	                   SET_PAGE, RESET, SET_REVERSE} from "./QueryTypes"
 
 const QueryReducer = (state, action) => {
   switch (action.type) {
@@ -8,10 +8,12 @@ const QueryReducer = (state, action) => {
 	  return {...state, category: action.payload}
 	case SET_TYPE:
 	  return {...state, type: action.payload}
+	case SET_PAGE:
+	  return {...state, page: action.payload}
     case SET_SEARCH:
       return {...state, search: action.payload}
     case SET_REVERSE:
-      return {...state, price: action.payload}
+      return {...state, reverse: action.payload}
     case RESET:
       return action.payload
    
