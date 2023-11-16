@@ -20,11 +20,10 @@ export const Filter =(props)=> {
     //console.log(state)
 	const {items, fetchItems} = useItemContext()
 	const {seeds, fetchSeeds} = useSeedContext()
-	const fetchUnits = () => isSeed?fetchSeeds:fetchItems
 	
 	
 	let categories
-    if(!isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
+    if(isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
 	}else{categories = ['', 'soils', 'supplements', 'equipment']}
 	
 	  let currType
@@ -32,32 +31,36 @@ export const Filter =(props)=> {
 		            if(category === item&&item.length){
 						           currType = Object.values(
 		                           !isSeed?seedTypes:itemTypes)[isSeed?i:i-1]}})}
-	
+		                           
+    function fetchUnits(source){if(isSeed){fetchSeeds(source)
+		                       }else{fetchItems(source)     }}
 	const onSort =()=> {
 		               setReverse(!reverse)
-		               fetchItems(category, type, page, search, !reverse)
+		               fetchUnits({...state, reverse: !reverse})
 		               }
 	
 	const resetFilt =()=> {
 		reset()
-		fetchItems('', '', 1, '', false)
+		//fetchItems('', '', 1, '', false)
+		fetchItems({category:'',type:'',page:1, search:'', reverse:false})
 		}
 	function onCategory(event){
 		event.preventDefault()
 		if(search)setSearch('')
 		setCategory(event.target.value)	
-		fetchItems(event.target.value, '', 1, '', reverse)
+		fetchUnits({...state, category: event.target.value, type: '', page: 1})
 		}
 	function onType(event){
 		event.preventDefault()
 		setType(event.target.value)
-		fetchItems(category, event.target.value, 1, '', reverse)
+		fetchUnits({...state, type: event.target.value, page:1})
 		}
+	 
 	function onSearch(event){
 		event.preventDefault()
 		setSearch(event.target.value)
 		if(category)setCategory('')
-		fetchItems(category, type, 1, event.target.value, reverse)
+		fetchUnits({...state, page:1, search: event.target.value})
 		}
 		
     const changeBorder =(e)=> {
@@ -66,7 +69,8 @@ export const Filter =(props)=> {
 			}
 		
 	return <S.Container>
-	   {show && <div>
+	
+	   {show && <S.Panel>
 		 <S.ShowBut onMouseOver={changeBorder}  
 		         onClick={()=>setShow(false)}>HideFilters</S.ShowBut><br/>
 		         
@@ -94,10 +98,11 @@ export const Filter =(props)=> {
 	             onClick={onSort}>Maximum</S.ShowBut>
 	     
 	     <S.Input value={state.itemSearch} 
-	            onChange={onSearch} placeholder='Search By Text'/>
-	     <S.ShowBut onClick={resetFilt} onMouseOver={changeBorder}>
-	                                                   Reset</S.ShowBut>
-	     </div>}
+	              onChange={onSearch} 
+	              placeholder='Search By Text'/>
+	     <S.ShowBut onClick={resetFilt} 
+	                onMouseOver={changeBorder}>Reset</S.ShowBut>
+	     </S.Panel>}
 	     {!show && <S.ShowBut onMouseOver={changeBorder} 
 			                  onClick={()=>setShow(true)}>
 			                                    ShowFilters</S.ShowBut>}

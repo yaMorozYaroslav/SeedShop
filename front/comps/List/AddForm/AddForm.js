@@ -44,7 +44,7 @@ export function AddForm({setOpen, currItem,
 	{categories.map((category,i) => {
 		            if(source.category===category&&category.length){
 						           currType = Object.values(
-		                           !isSeed?itemTypes:seedTypes)[isSeed?i:i-1]}})}
+		                           !isSeed?itemTypes:seedTypes)[isSeed?i-1:i-1]}})}
    
 	
 		

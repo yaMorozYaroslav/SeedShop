@@ -19,11 +19,12 @@ export const SeedState = ({ children }) => {
  
   const [state, dispatch] = useReducer(SeedReducer, initialState)
 
-  const fetchSeeds = async(category, type, page, search, sort) => {
+  const fetchSeeds = async(sos) => {
 	try{
 		dispatch({type: START_LOADING})
 		
-		const {data} = await getSeeds(category, type, page, search, sort)
+		const {data} = await getSeeds(sos.category, sos.type, sos.page,
+		                              sos.search, sos.reverse)
 		dispatch({type: GET_SEEDS, payload: data})
 		
 		dispatch({type: END_LOADING})

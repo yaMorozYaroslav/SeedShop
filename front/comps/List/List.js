@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import * as S from './list.styled'
 import {AddForm} from './AddForm/AddForm'
 import {Filter} from './Filter/Filter'
@@ -43,16 +42,17 @@ export function List({servData}){
 		if(isSeed){removeSeed(id)}else{removeItem(id)}
 		if(!seeds.data&&!items.data)setStaticData(staticData.filter((item) =>item._id !== id))
 		}	
-		
+	console.log(items.data)	
 	let someData
-	if(!seeds.data&&!items.data){someData = staticData
-   }else{if(seeds.data){someData=seeds.data}else{someData=items.data}}
+	if(!seeds.data&&!items.data){someData = staticData}
+    if(seeds.data && isSeed){someData=seeds.data}
+    if(items.data && !isSeed){someData=items.data}
   
  //  console.log(someData)
   
 return (<S.Container>
        <Filter/>
-       <Link className='styledLink' href={'/'}>ToMain</Link>
+       <S.StyledLink className='styledLink' href={'/'}>To Menu</S.StyledLink>
        
        {open?<AddForm setOpen={setOpen} 
 		              currItem={currItem}
@@ -66,11 +66,16 @@ return (<S.Container>
        <S.List>
           {someData.map(item => (
              <S.Cell  key={item._id}>
-               <Image alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'}
-                      width={100} height={100} priority={true}/><br/>
-               <Link href={`/${urlSingle}/${item._id}`}>{item.title}</Link>
+               <S.StyledImage alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'}
+                              width={100} height={100} priority={true}/><br/>
+               <S.TitleLink href={`/${urlSingle}/${item._id}`}
+				             className='styledLink'>{item.title}</S.TitleLink>
+               <p>category: {item.category||'undefined'}</p>
+               <p>type: {item.type||'undefined'}</p>
                <p>price: {item.price}</p>
-               {creator(item.creator)&&<button onClick={(e)=>delUnit(e, item._id)}>Remove</button>}
+               {creator(item.creator)
+				&&<button onClick={(e)=>
+					      delUnit(e, item._id)}>Remove</button>}
                
                <button onClick={(e)=>handEdit(e, item)}>Edit</button>
               </S.Cell>

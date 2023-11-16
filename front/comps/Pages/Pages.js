@@ -12,21 +12,20 @@ export function Pages(total) {
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
 	
-	const {page, setPage} = useQueryContext()
+	const {state, setPage} = useQueryContext()
 	const {seeds, fetchSeeds} = useSeedContext()
 	const {items, fetchItems} = useItemContext()
-	const activer = (s) => isSeed && seeds.currPage === s||items.currPage === s
+	const activer = (s) => isSeed && seeds.currPage === s||!isSeed && items.currPage === s
 	const idler   = (s) => !seeds.currPage&&!items.currPage&&s===1
 	const newTotal = !seeds.totalPages && !items.totalPages?total.total
 	                                  :seeds.totalPages||items.totalPages
-    //console.log(total)                       
+    console.log(state)                       
     function fetchUnits(e){
 		e.preventDefault()
-		if(isSeed){fetchSeeds('','',e.target.value,'','')
-	    }else{fetchItems('','',e.target.value,'','')}
+		if(isSeed){fetchSeeds({...state, page: e.target.value})
+	    }else{fetchItems({...state, page: e.target.value})}
 	    setPage(e.target.value)
-	    console.log(page)
-		
+	    //console.log(state)
 		} 
   return (<>
           <S.Container >
