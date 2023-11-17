@@ -19,13 +19,12 @@ export function Pages(total) {
 	const idler   = (s) => !seeds.currPage&&!items.currPage&&s===1
 	const newTotal = !seeds.totalPages && !items.totalPages?total.total
 	                                  :seeds.totalPages||items.totalPages
-    console.log(state)                       
+    //console.log(state)                       
     function fetchUnits(e){
 		e.preventDefault()
 		if(isSeed){fetchSeeds({...state, page: e.target.value})
 	    }else{fetchItems({...state, page: e.target.value})}
 	    setPage(e.target.value)
-	    //console.log(state)
 		} 
   return (<>
           <S.Container >

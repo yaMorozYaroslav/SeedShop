@@ -25,7 +25,7 @@ export function List({servData}){
 	const {seeds, removeSeed} = useSeedContext()
 	const {category} = useQueryContext()
 	const units = !items.length?seeds:items
-	
+	console.log(userData)
 	const creator =(id)=> userData.user && (userData.user._id === id)
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
@@ -42,7 +42,7 @@ export function List({servData}){
 		if(isSeed){removeSeed(id)}else{removeItem(id)}
 		if(!seeds.data&&!items.data)setStaticData(staticData.filter((item) =>item._id !== id))
 		}	
-	console.log(items.data)	
+	//console.log(items.data)	
 	let someData
 	if(!seeds.data&&!items.data){someData = staticData}
     if(seeds.data && isSeed){someData=seeds.data}
@@ -54,7 +54,8 @@ return (<S.Container>
        <Filter/>
        <S.StyledLink className='styledLink' href={'/'}>To Menu</S.StyledLink>
        
-       {open?<AddForm setOpen={setOpen} 
+       {open?userData.user.role === 'admin'?
+		     <AddForm setOpen={setOpen} 
 		              currItem={currItem}
 		              setCurrItem={setCurrItem}
 		              addStaticUnit={addStaticUnit}
@@ -62,7 +63,8 @@ return (<S.Container>
 		              
 			:<S.AddBut onClick={()=>setOpen(true)}>
 			                   {!isSeed?'AddItem'
-								       :'AddSeed'}</S.AddBut>}
+								       :'AddSeed'}</S.AddBut>
+            : null}
        <S.List>
           {someData.map(item => (
              <S.Cell  key={item._id}>

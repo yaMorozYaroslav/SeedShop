@@ -1,16 +1,8 @@
-//import Image from 'next/image'
-import Link from 'next/link'
-
-
+import {First} from '../comps/First/First'
+import { Acme } from 'next/font/google'
+const lora = Acme({ subsets: ['latin'], weight:['400'] })
 
 export default async function Main() {
 	
-  return (<>
-  
-        <p>Welcome to our seed store.
-           More than 15 years of impeccable service. Now online</p>
-          <Link className='styledLink' href={'/seed-list'}>View all seeds</Link>..
-          <Link className='styledLink' href={'/item-list'}>View all products</Link>
-       
-  </>)
+  return <div className={lora.className}><First/></div>
 }

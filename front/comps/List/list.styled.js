@@ -3,14 +3,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const Container = styled.div``
-export const AddBut = styled.button``
-export const StyledLink = styled(Link)`margin: 0.5%; font-size: 22px;
+export const StyledLink = styled(Link)`margin: 0.5%; font-size: 24px;
                                        padding: 5px; border:1px solid olive;
-                                       margin-left: 70%;`
-                                       
+                                       margin-left: 70%; color:black`
+export const AddBut = styled.button`font-size:26px;border-style: dashed; background: white;`                                    
 export const List = styled.ul`
          display: grid;
-         grid-template-columns: 1fr 1fr;
+         grid-template-columns: repeat(4,1fr);
          list-style: none;
          text-align:center;
          `

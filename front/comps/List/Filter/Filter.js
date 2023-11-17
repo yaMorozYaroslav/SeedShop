@@ -13,9 +13,7 @@ export const Filter =(props)=> {
 	
 	const [show, setShow] = React.useState(false)
 	
-	const {state, category, type, 
-		   page, search, reverse, 
-		   setCategory, setType,
+	const {state, setCategory, setType,
 		   setSearch,setReverse, reset} = useQueryContext()
     //console.log(state)
 	const {items, fetchItems} = useItemContext()
@@ -28,15 +26,15 @@ export const Filter =(props)=> {
 	
 	  let currType
 	{categories.map((item,i) => {
-		            if(category === item&&item.length){
+		            if(state.category === item&&item.length){
 						           currType = Object.values(
-		                           !isSeed?seedTypes:itemTypes)[isSeed?i:i-1]}})}
+		                           isSeed?seedTypes:itemTypes)[isSeed?i:i-1]}})}
 		                           
     function fetchUnits(source){if(isSeed){fetchSeeds(source)
 		                       }else{fetchItems(source)     }}
 	const onSort =()=> {
-		               setReverse(!reverse)
-		               fetchUnits({...state, reverse: !reverse})
+		               setReverse(!state.reverse)
+		               fetchUnits({...state, reverse: !state.reverse})
 		               }
 	
 	const resetFilt =()=> {
@@ -46,7 +44,7 @@ export const Filter =(props)=> {
 		}
 	function onCategory(event){
 		event.preventDefault()
-		if(search)setSearch('')
+		if(state.search)setSearch('')
 		setCategory(event.target.value)	
 		fetchUnits({...state, category: event.target.value, type: '', page: 1})
 		}
@@ -59,7 +57,7 @@ export const Filter =(props)=> {
 	function onSearch(event){
 		event.preventDefault()
 		setSearch(event.target.value)
-		if(category)setCategory('')
+		if(state.category)setCategory('')
 		fetchUnits({...state, page:1, search: event.target.value})
 		}
 		
@@ -72,18 +70,18 @@ export const Filter =(props)=> {
 	
 	   {show && <S.Panel>
 		 <S.ShowBut onMouseOver={changeBorder}  
-		         onClick={()=>setShow(false)}>HideFilters</S.ShowBut><br/>
+		            onClick={()=>setShow(false)}>HideFilters</S.ShowBut><br/>
 		         
 		  <S.Label>Category</S.Label>
 		 <S.Select name='category'
-	             onChange={onCategory}>
+	               onChange={onCategory}>
 	{categories.map((item, i) => <option key={i} 
 		                                 value={item}>{item}</option>)}
 	 </S.Select>
 	     
 	       <S.Label>Type</S.Label>
 	     <S.Select name='type'
-	         value={state.itemType}
+	         value={state.type}
 	         onChange={onType}
 	         
 	         required >
@@ -92,12 +90,12 @@ export const Filter =(props)=> {
 				    value={item}>{!item?'all':item}</option>)}
 	 </S.Select><br/>
 	     <S.Label>Sort By Price</S.Label>
-	     <S.ShowBut disabled={reverse}
+	     <S.ShowBut disabled={state.reverse}
 	             onClick={onSort}>Minimum</S.ShowBut>
-	     <S.ShowBut disabled={!reverse}
+	     <S.ShowBut disabled={!state.reverse}
 	             onClick={onSort}>Maximum</S.ShowBut>
 	     
-	     <S.Input value={state.itemSearch} 
+	     <S.Input value={state.search} 
 	              onChange={onSearch} 
 	              placeholder='Search By Text'/>
 	     <S.ShowBut onClick={resetFilt} 
