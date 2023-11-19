@@ -4,6 +4,7 @@ import React from 'react'
 import decode from 'jwt-decode'
 import Link from 'next/link'
 
+
 import {useUserContext} from '../../../context/user/UserState'
  
 export function AuthPanel(){
@@ -21,7 +22,7 @@ export function AuthPanel(){
 	currentUser = (source) => Object.keys(source).length > 0
 	
 	}else{profile = undefined, currentUser = undefined}
-   
+   console.log(!profile)
    React.useEffect(()=>{
 		
 		const shouldUpdateStorage = currentUser(userData) && 
@@ -57,7 +58,7 @@ export function AuthPanel(){
 	        },[userData, profile, logout])
 	       // console.log(userData)
 	    return <>
-	    <p>{userData.user?userData.user.name:'user'}</p>
+	    <p>{userData.user?userData.user.name:'Incognito'}</p>
 	    {userData.user
 			?<button onClick={()=>{logout();removeProfile();}}>Logout</button>
 			:<button> <Link href={'/auth'}>Login</Link></button>}

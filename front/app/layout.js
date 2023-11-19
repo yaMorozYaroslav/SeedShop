@@ -1,8 +1,10 @@
-import { Lora } from 'next/font/google'
 import {UserState} from '../context/user/UserState'
 import {SeedState} from '../context/seeds/SeedState'
 import {QueryState} from '../context/queries/QueryState'
 import {ItemState} from '../context/items/ItemState'
+import {CartState} from '../context/cart/CartState'
+
+import { Lora } from 'next/font/google'
 import {Header} from '../comps/Header/Header'
 import {GlobalStyle} from './extra.styled'
 import StyledComponentsRegistry from './registry';
@@ -23,10 +25,12 @@ export default function RootLayout({ children }) {
        <SeedState>
        <ItemState>
        <UserState>
+       <CartState>
        <QueryState>
         <Header/>
         {children}
       </QueryState>
+      </CartState>
       </UserState>
       </ItemState>
       </SeedState>
