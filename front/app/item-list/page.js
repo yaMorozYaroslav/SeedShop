@@ -1,5 +1,3 @@
-//import Image from 'next/image'
-//import Link from 'next/link'
 import {List} from '../../comps/List/List'
 import {Pages} from '../../comps/Pages/Pages'
 import { revalidateTag } from 'next/cache'

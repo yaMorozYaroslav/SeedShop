@@ -1,25 +1,33 @@
 'use client'
-import Badge from "@material-ui/core/Badge"
+
+import React from 'react'
 import {useCartContext} from '../../../context/cart/CartState'
 import * as S from './cart-badge.styled'
-//import CartIcon from "@material-ui/icons/ShoppingCart"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import Badge from '@mui/material/Badge'
+import CartIcon from '@mui/icons-material/ShoppingCart'
+import Link from 'next/link'
+
 
 export const CartBadge = () => {
-const {cartItems} = useCartContext()
+const {cartItems, setFromLocale} = useCartContext()
+
 const setCartToStorage = e => {
-	e.preventDefault()
-	console.log(cartItems)
+	
 	localStorage.setItem('cart', JSON.stringify(cartItems))
 	}
+const localCart = JSON.parse(localStorage.getItem('cart'))
+console.log(cartItems)
+React.useEffect(()=>{if(cartItems.length)setCartToStorage()},[cartItems])
+React.useEffect(()=>{if(localCart)setFromLocale(localCart)},[])
 return (<S.Container>
-
-     <S.CartBadge color='secondary'
-                  overlap="rectangular"
-                  badgeContent={cartItems.length||null}> 
-        <label>Cart</label>
-       <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />             
-     </S.CartBadge>
+        <Link className='styledLink' href='/shop-cart'>
+        <S.Label>Cart</S.Label>
+     <Badge color='error'
+            overlap="rectangular"
+            badgeContent={cartItems.length||null}
+            anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}> 
+        <CartIcon style={{fontSize:'32px'}}/>             
+     </Badge>
+        </Link>
         </S.Container>)
 }
