@@ -16,11 +16,12 @@ const setCartToStorage = e => {
 	localStorage.setItem('cart', JSON.stringify(cartItems))
 	}
 const localCart = JSON.parse(localStorage.getItem('cart'))
-console.log(cartItems)
+//console.log(cartItems)
 React.useEffect(()=>{if(cartItems.length)setCartToStorage()},[cartItems])
 React.useEffect(()=>{if(localCart)setFromLocale(localCart)},[])
+console.log(!cartItems.length)
 return (<S.Container>
-        <Link className='styledLink' href='/shop-cart'>
+        <Link className='styledLink' href={!cartItems.length?'':'/shop-cart'}>
         <S.Label>Cart</S.Label>
      <Badge color='error'
             overlap="rectangular"

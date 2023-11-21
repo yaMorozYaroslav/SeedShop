@@ -61,6 +61,7 @@ export function AuthPanel(){
 	    <p>{userData.user?userData.user.name:'Incognito'}</p>
 	    {userData.user
 			?<button onClick={()=>{logout();removeProfile();}}>Logout</button>
-			:<button> <Link href={'/auth'}>Login</Link></button>}
+			:<button> <Link href={'/auth'} 
+			                className='styledLink'>Login</Link></button>}
 		 </>
 		}
