@@ -18,7 +18,7 @@ const localCart = JSON.parse(localStorage.getItem('cart'))
 //console.log(cartItems)
 React.useEffect(()=>{if(cartItems.length)setCartToStorage()},[cartItems])
 React.useEffect(()=>{if(localCart)setFromLocale(localCart)},[])
-console.log(!cartItems.length)
+//console.log(!cartItems.length)
 return (<S.Container>
         <Link className='styledLink' href={!cartItems.length?'':'/shop-cart'}>
         <S.Label>Cart</S.Label>

@@ -30,6 +30,8 @@ export function List({servData}){
 	
 	const creator =(id)=> userData.user && (userData.user._id === id)
 	
+	const handAdd =(e, s)=> {e.preventDefault();addToCart(s);}
+	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
 
 	function addStaticUnit(source){
@@ -82,7 +84,7 @@ return (<S.Container>
                {creator(item.creator)
 				&&<button onClick={(e)=>
 					      delUnit(e, item._id)}>Remove</button>}
-               <button onClick={()=>addToCart(item)}>AddToCart</button>
+               <button onClick={(e)=>handAdd(e,item)}>AddToCart</button>
                <button onClick={(e)=>handEdit(e, item)}>Edit</button>
               </S.Cell>
           ))}
