@@ -1,5 +1,4 @@
 'use client'
-
 import React from 'react'
 import {useCartContext} from '../../../context/cart/CartState'
 import * as S from './cart-badge.styled'

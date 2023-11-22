@@ -15,7 +15,6 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
-    "@mui/material-next": "^6.0.0-alpha.110",
     "axios": "^1.5.0",
     "babel-plugin-styled-components": "^2.1.4",
     "debug": "^4.3.4",

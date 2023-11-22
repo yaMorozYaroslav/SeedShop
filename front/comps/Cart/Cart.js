@@ -4,6 +4,7 @@ import {useCartContext} from '../../context/cart/CartState'
 import emailjs from '@emailjs/browser'
 import * as S from './cart.styled'
 import Link from 'next/link'
+import {useRouter} from 'next/navigation'
 
 export const Cart =()=> {
 	const {cartItems, clearCart} = useCartContext()
@@ -12,8 +13,13 @@ export const Cart =()=> {
 	const [source, setSource] = React.useState({user_name:'', user_email:'',
 		                                        user_phone:'', items:[]})
 	const form = React.useRef()
+	const {push} = useRouter()
 	
 	const handChange = (e) => setSource({...source, [e.target.name]: e.target.value}) 
+	
+	const cleaner = () => {clearCart();
+		                   localStorage.removeItem('cart');
+		                   setOpen(false);push('/')}
 	
 	const sendEmail = e => {
 		e.preventDefault()
@@ -25,7 +31,6 @@ export const Cart =()=> {
 			}, (error) => {
 				console.log(error.text)
 				})
-	    //setResponse(source)
 				e.target.reset()
 		clearCart()
 		localStorage.removeItem('cart')
@@ -42,8 +47,7 @@ export const Cart =()=> {
 		cartItems.map(item=>total =+ item.price * item.quantity)
 		return total
 		}
-		
-	//console.log(counter())
+
 	return <S.Container>	
 	        <S.CartList>{cartItems.map((item,index)=>
 		              <S.Thing key={item._id}> 
@@ -51,6 +55,8 @@ export const Cart =()=> {
 		                <p>price: {item.price}</p>
 		                <p>quantity: {item.quantity}</p></S.Thing>)}
 		               <p>total: {counter()}</p>
+		               <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
+		               <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
 		               <Link className='styledLink' href='/'>
 		                                       To Menu</Link>
 		    </S.CartList>
@@ -63,11 +69,9 @@ export const Cart =()=> {
 	                        name='user_email' required/><br/>
 	           <S.Input onChange={handChange} placeholder='PhoneNumber' 
 	                       name='user_phone' required /><br/>
-	
-	           <textarea readOnly value={JSON.stringify(source.items)} name='items'/>
 	       <br />
-	             <button type='submit'>SendMail</button>
-	             <button onClick={()=>setOpen(false)}>CloseForm</button>
+	             <S.Button type='submit'>Place The Order</S.Button>
+	             <S.Button onClick={()=>setOpen(false)}>CloseForm</S.Button>
 	         </S.MailForm>}
 	       </S.Container>
 	}

@@ -8,15 +8,12 @@ const CartReducer = (state, action) => {
     
     case ADD_TO_CART:
       
-      const itemInCart = state.cartItems.find((item) => 
-                                       item._id === action.payload._id)
+      const itemInCart = state.cartItems.find((item) => item._id === action.payload._id)
       if (itemInCart) {
         itemInCart.quantity++;    
       } else {state.cartItems.push({ ...action.payload, quantity: 1 })}
 
-      return {
-        ...state,
-        cartItems: [...state.cartItems],
+      return {...state, cartItems: [...state.cartItems],
       }
 
     case REMOVE_ITEM:
