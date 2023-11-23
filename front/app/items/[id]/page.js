@@ -14,7 +14,7 @@ export async function generateStaticParams(){
    const item = fetch(`http://localhost:5000/items/${source}`, 
                             { next: { tags: ['item'] }})
                                             .then((res) => res.json())
-      revalidateTag('item')
+      //revalidateTag('item')
    return item
 
        }
