@@ -12,10 +12,10 @@ export async function generateStaticParams(){
 	}
        async function getSeed(source) {
   
-   const seed = fetch(`http://localhost:5000/seeds/${source}`, 
-                            { next: { tags: ['seed'] }})
+   const seed = fetch(`http://localhost:5000/seeds/${source}`)
+                         //   { next: { tags: ['seed'] }})
                                             .then((res) => res.json())
-      revalidateTag('seed')
+      //revalidateTag('seed')
    return seed
 
        }
