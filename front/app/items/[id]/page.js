@@ -12,10 +12,10 @@ export const dynamicParams = true
 	//~ }
  async function getItem(source) {
   
-   const item = fetch(`https://seed-shop-back-78049b8c30bb.herokuapp.com/items/${source}`, 
-                            { next: { tags: ['item'] }})
+   const item = fetch(`https://seed-shop-back-78049b8c30bb.herokuapp.com/items/${source}`) 
+                           // { next: { tags: ['item'] }})
                                             .then((res) => res.json())
-      revalidateTag('item')
+      //revalidateTag('item')
    return item
 
        }
