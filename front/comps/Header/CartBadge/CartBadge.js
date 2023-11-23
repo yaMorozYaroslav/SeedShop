@@ -14,7 +14,9 @@ const setCartToStorage = e => {
 	
 	localStorage.setItem('cart', JSON.stringify(cartItems))
 	}
-const localCart = JSON.parse(localStorage.getItem('cart'))
+ if (typeof window !== 'undefined') {
+	     const localCart = JSON.parse(
+	                            localStorage.getItem('cart'))}
 //console.log(cartItems)
 React.useEffect(()=>{if(cartItems.length)setCartToStorage()},[cartItems])
 React.useEffect(()=>{if(localCart)setFromLocale(localCart)},[])

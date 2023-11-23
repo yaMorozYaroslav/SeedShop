@@ -24,8 +24,8 @@ export default async function SeedList() {
 	
   return (<>
      
-      <Pages total={totalPages}/>
       <List servData={someData}/>
+      <Pages total={totalPages}/>
         </>
   )
 }

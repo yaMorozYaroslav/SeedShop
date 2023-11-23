@@ -16,6 +16,6 @@ async function anyName() {
 export default async function ItemList() {
 	const {someData, totalPages} = await anyName()
   return (<>
-    <Pages total={totalPages}/>
     <List servData={someData}/>
+    <Pages total={totalPages}/>
   </>)}
