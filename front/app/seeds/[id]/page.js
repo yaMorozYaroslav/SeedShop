@@ -3,19 +3,18 @@ import { revalidateTag } from 'next/cache'
 
 export const dynamicParams = true
 
-
-//~ export async function generateStaticParams(){
-  //~ const seeds = await fetch('http://localhost:5000/seeds?search=')
-                                        //~ .then((res) => res.json())
-  //~ const arrSeeds = seeds.data.map((seed) => ({id: seed._id}))
-    //~ return  arrSeeds
-	//~ }
-       async function getSeed(source) {
+export async function generateStaticParams(){
+  const seeds = await fetch('https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds?search=')
+                                        .then((res) => res.json())
+  const arrSeeds = seeds.data.map((seed) => ({id: seed._id}))
+    return  arrSeeds
+	}
+ async function getSeed(source) {
   
-   const seed = fetch(`http://localhost:5000/seeds/${source}`)
-                         //   { next: { tags: ['seed'] }})
+   const seed = fetch(`https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds/${source}`, 
+                            { next: { tags: ['seed'] }})
                                             .then((res) => res.json())
-      //revalidateTag('seed')
+      revalidateTag('seed')
    return seed
 
        }

@@ -1,17 +1,15 @@
-import Image from 'next/image'
 import {Pages} from '../../comps/Pages/Pages'
 import {List} from '../../comps/List/List'
-import {useSeedContext} from '../../context/seeds/SeedState'
 import { revalidateTag } from 'next/cache'
 
 
 async function anyName() {
   const allData = 
-     await fetch('http://localhost:5000/seeds?search=') 
-                            //{ next: { tags: ['seeds'] }})
+     await fetch('https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds?search=', 
+                            { next: { tags: ['seeds'] }})
                                             .then((res) => res.json())
-      //revalidateTag('seeds')
- // const someData = newData.data.map(({photo, ...rest}) => rest)
+      revalidateTag('seeds')
+      
    const someData = allData.data
    const totalPages = allData.totalPages
   return  {someData, totalPages}
