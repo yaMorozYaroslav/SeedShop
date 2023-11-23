@@ -4,10 +4,10 @@ import { revalidateTag } from 'next/cache'
 
 async function anyName() {
   const allData = 
-        await fetch('http://localhost:5000/items?search=', 
-                                 { next: { tags: ['items'] }})
+        await fetch('http://localhost:5000/items?search=') 
+  //                               { next: { tags: ['items'] }})
                                          .then((res) => res.json())
-    revalidateTag('items')
+   // revalidateTag('items')
    const someData = allData.data
    const totalPages = allData.totalPages
   return  {someData, totalPages}

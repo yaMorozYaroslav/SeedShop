@@ -7,10 +7,10 @@ import { revalidateTag } from 'next/cache'
 
 async function anyName() {
   const allData = 
-     await fetch('http://localhost:5000/seeds?search=', 
-                            { next: { tags: ['seeds'] }})
+     await fetch('http://localhost:5000/seeds?search=') 
+                            //{ next: { tags: ['seeds'] }})
                                             .then((res) => res.json())
-      revalidateTag('seeds')
+      //revalidateTag('seeds')
  // const someData = newData.data.map(({photo, ...rest}) => rest)
    const someData = allData.data
    const totalPages = allData.totalPages
