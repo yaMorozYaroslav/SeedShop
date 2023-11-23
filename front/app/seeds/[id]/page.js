@@ -4,12 +4,12 @@ import { revalidateTag } from 'next/cache'
 export const dynamicParams = true
 
 
-export async function generateStaticParams(){
-  const seeds = await fetch('http://localhost:5000/seeds?search=')
-                                        .then((res) => res.json())
-  const arrSeeds = seeds.data.map((seed) => ({id: seed._id}))
-    return  arrSeeds
-	}
+//~ export async function generateStaticParams(){
+  //~ const seeds = await fetch('http://localhost:5000/seeds?search=')
+                                        //~ .then((res) => res.json())
+  //~ const arrSeeds = seeds.data.map((seed) => ({id: seed._id}))
+    //~ return  arrSeeds
+	//~ }
        async function getSeed(source) {
   
    const seed = fetch(`http://localhost:5000/seeds/${source}`)
