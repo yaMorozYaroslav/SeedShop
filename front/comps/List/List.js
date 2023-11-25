@@ -18,6 +18,7 @@ export function List({servData}){
 	const urlSingle = isSeed?'seeds':'items'
 	
 	const [open, setOpen] = React.useState(false)
+	const [shown, setShown] = React.useState(servData)
 	const [currItem, setCurrItem] = React.useState({})
 	const [staticData, setStaticData] = React.useState(servData)
 	
@@ -29,7 +30,8 @@ export function List({servData}){
 	const units = !items.length?seeds:items
 	
 	const creator =(id)=> userData.user && (userData.user._id === id)
-	
+	const admin = userData.user && userData.user.role === 'admin'
+	//~ console.log(admin)
 	const handAdd =(e, s)=> {e.preventDefault();addToCart(s);}
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
@@ -46,33 +48,29 @@ export function List({servData}){
 		if(isSeed){removeSeed(id)}else{removeItem(id)}
 		if(!seeds.data&&!items.data)setStaticData(staticData.filter((item) =>item._id !== id))
 		}	
-		
-	let someData
-	if(!seeds.data&&!items.data){someData = staticData}
-    if(seeds.data && isSeed){someData=seeds.data}
-    if(items.data && !isSeed){someData=items.data}
-  
-   if(userData.user)console.log(userData.user.role)
-     //console.log(someData)
+
+   React.useEffect(()=>{ if(seeds.data && isSeed){setShown(seeds.data)}
+	                    if(items.data && !isSeed){setShown(items.data)}
+	                   },[items, seeds])
   
 return (<S.Container>
        <Filter/>
-       <S.StyledLink className='styledLink' href={'/'}>To Menu</S.StyledLink>
-       
-       {open?
+        <S.StyledLink className='styledLink' href={'/'}>To Menu</S.StyledLink>
+        {admin &&       
+			<S.AddBut onClick={()=>setOpen(true)}>
+			                   {!isSeed?'AddItem'
+								       :'AddSeed'}</S.AddBut>}
+             
+       {open &&
 		     <AddForm setOpen={setOpen} 
 		              currItem={currItem}
 		              setCurrItem={setCurrItem}
 		              addStaticUnit={addStaticUnit}
-		              updStaticUnit={updStaticUnit} />
-		    :userData.user && userData.user.role === 'admin'?          
-			<S.AddBut onClick={()=>setOpen(true)}>
-			                   {!isSeed?'AddItem'
-								       :'AddSeed'}</S.AddBut>
-            : null}
+		              updStaticUnit={updStaticUnit} />}
           
        <S.List>
-          {someData && someData.map(item => (
+          {shown && !shown.length&&<p>NoData</p>}
+          {shown && shown.map(item => (
              <S.Cell  key={item._id}>
                <S.StyledImage alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'}
                               width={100} height={100} priority={true}/><br/>
@@ -81,11 +79,13 @@ return (<S.Container>
                <p>category: {item.category||'undefined'}</p>
                <p>type: {item.type||'undefined'}</p>
                <p>price: {item.price}</p>
-               {creator(item.creator)
-				&&<button onClick={(e)=>
-					      delUnit(e, item._id)}>Remove</button>}
-               <button onClick={(e)=>handAdd(e,item)}>AddToCart</button>
-               <button onClick={(e)=>handEdit(e, item)}>Edit</button>
+               
+               <button onClick={(e)=>handAdd(e,item)}>AddToCart</button><br/>
+               {(creator(item.creator)||admin)
+				&&<><button onClick={(e)=>
+					      delUnit(e, item._id)}>Remove</button>
+				  <button onClick={(e)=>handEdit(e, item)}>Edit</button></>}
+               
               </S.Cell>
           ))}
         

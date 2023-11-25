@@ -5,8 +5,9 @@ import FileBase from 'react-file-base64'
 import { usePathname } from 'next/navigation';
 import {useSeedContext} from '../../../context/seeds/SeedState'
 import {useItemContext} from '../../../context/items/ItemState'
+import {useQueryContext} from '../../../context/queries/QueryState'
 import * as S from './add-form.styled'
-import { revalidateTag } from 'next/cache'
+import {revalidator} from '../revalidator'
 import {seedTypes, itemTypes} from '../select-types'
 
 const initialState = {title: '', description: '', price: '', 
@@ -19,11 +20,14 @@ export function AddForm({setOpen, currItem,
 	const isSeed = pathname === '/seed-list'
 	//const urlSingle = isSeed?'seeds':'items'
 	
-	const {addSeed, updateSeed} = useSeedContext()
-	const {addItem, updateItem} = useItemContext()
+	const {addSeed, updateSeed, fetchSeeds} = useSeedContext()
+	const {addItem, updateItem, fetchItems} = useItemContext()
+	const {state} = useQueryContext()
 	
 	const ref = React.useRef()
 	const [source, setSource] = React.useState(initialState)
+   
+   const fetcher =()=> isSeed?fetchSeeds(state):fetchItems(state)
    
     let categories
     if(isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
@@ -56,6 +60,7 @@ export function AddForm({setOpen, currItem,
 			}
 	
 	const handClose =(e)=> {e.preventDefault();setOpen(false);}
+	
 	const handSubmit =(e)=> {
 		e.preventDefault()
 	if(isSeed){
@@ -63,9 +68,10 @@ export function AddForm({setOpen, currItem,
 	  }else{updateSeed(source._id, source) && updStaticUnit(source)}
 			 
    }else{
-       if(!source._id){addItem(source) && (addStaticUnit?addStaticUnit(source):null)		           
+       if(!source._id){addItem(source) && addStaticUnit(source)		           
 	  }else{updateItem(source._id, source)&& (updStaticUnit?updStaticUnit(source):null)}
-        // revalidateTag('item')
+         fetcher()
+         
         }
         reset()
 	    setOpen(false)

@@ -5,6 +5,7 @@ import {useItemContext} from '../../../context/items/ItemState'
 import {useSeedContext} from '../../../context/seeds/SeedState'
 import * as S from './filter.styled'
 import {seedTypes, itemTypes} from '../select-types'
+import Fade from '@mui/material/Fade';
 
 export const Filter =(props)=> {
        
@@ -68,7 +69,8 @@ export const Filter =(props)=> {
 		
 	return <S.Container>
 	
-	   {show && <S.Panel>
+	   <Fade style={{ transitionDuration: '5000ms' }} 
+	                                  in={show}><S.Panel $show={show} >
 		 <S.ShowBut onMouseOver={changeBorder}  
 		            onClick={()=>setShow(false)}>HideFilters</S.ShowBut><br/>
 		         
@@ -100,7 +102,7 @@ export const Filter =(props)=> {
 	              placeholder='Search By Text'/>
 	     <S.ShowBut onClick={resetFilt} 
 	                onMouseOver={changeBorder}>Reset</S.ShowBut>
-	     </S.Panel>}
+	     </S.Panel></Fade>
 	     {!show && <S.ShowBut onMouseOver={changeBorder} 
 			                  onClick={()=>setShow(true)}>
 			                                    ShowFilters</S.ShowBut>}

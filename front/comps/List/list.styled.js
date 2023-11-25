@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const Container = styled.div``
-export const StyledLink = styled(Link)`position:absolute; top: 100px; right: 15%;
+export const StyledLink = styled(Link)`margin-left:60%; margin-right:10px;
                                        font-size: 24px;padding: 5px;
                                        border:1px solid olive;
                                        color:black`

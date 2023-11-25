@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`margin-left: 20px`
-export const Panel = styled.div``
+export const Panel = styled.div`display:${p=>!p.$show?'none':'inline'}
+                                `
+
 export const Label = styled.label`margin:0.5%;font-size:28px;color:purple`
 export const ShowBut = styled.button`font-size:23px; 
                                      margin: 10px;
