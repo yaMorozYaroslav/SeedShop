@@ -16,7 +16,7 @@ export const Filter =(props)=> {
 	
 	const {state, setCategory, setType,
 		   setSearch,setReverse, reset} = useQueryContext()
-    //console.log(state)
+    console.log(state.category)
 	const {items, fetchItems} = useItemContext()
 	const {seeds, fetchSeeds} = useSeedContext()
 	
@@ -29,7 +29,7 @@ export const Filter =(props)=> {
 	{categories.map((item,i) => {
 		            if(state.category === item&&item.length){
 						           currType = Object.values(
-		                           isSeed?seedTypes:itemTypes)[isSeed?i:i-1]}})}
+		                           isSeed?seedTypes:itemTypes)[isSeed?i-1:i-1]}})}
 		                           
     function fetchUnits(source){if(isSeed){fetchSeeds(source)
 		                       }else{fetchItems(source)     }}
@@ -69,14 +69,16 @@ export const Filter =(props)=> {
 		
 	return <S.Container>
 	
-	   <Fade style={{ transitionDuration: '5000ms' }} 
-	                                  in={show}><S.Panel $show={show} >
-		 <S.ShowBut onMouseOver={changeBorder}  
-		            onClick={()=>setShow(false)}>HideFilters</S.ShowBut><br/>
+	   <Fade style={{ transitionDuration: '1000ms' }} in={show}>
+	   
+	      <S.Panel $show={show} >
+		    <S.ShowBut onMouseOver={changeBorder}  
+		            onClick={()=>setShow(false)}>HideFilters</S.ShowBut>
 		         
 		  <S.Label>Category</S.Label>
 		 <S.Select name='category'
 	               onChange={onCategory}>
+	               value={state.category}
 	{categories.map((item, i) => <option key={i} 
 		                                 value={item}>{item}</option>)}
 	 </S.Select>
@@ -90,7 +92,7 @@ export const Filter =(props)=> {
 	     {currType && currType.map((item,i) => 
 			   <option key={i}
 				    value={item}>{!item?'all':item}</option>)}
-	 </S.Select><br/>
+	 </S.Select>
 	     <S.Label>Sort By Price</S.Label>
 	     <S.ShowBut disabled={state.reverse}
 	             onClick={onSort}>Minimum</S.ShowBut>
