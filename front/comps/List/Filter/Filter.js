@@ -41,7 +41,7 @@ export const Filter =(props)=> {
 	const resetFilt =()=> {
 		reset()
 		//fetchItems('', '', 1, '', false)
-		fetchItems({category:'',type:'',page:1, search:'', reverse:false})
+		fetchUnits({category:'',type:'',page:1, search:'', reverse:false})
 		}
 	function onCategory(event){
 		event.preventDefault()
@@ -66,38 +66,33 @@ export const Filter =(props)=> {
 			e.target.style.border = '2px solid green'
 			setTimeout(() => e.target.style.border = null, 1000)
 			}
-		
+	//console.log(state)
 	return <S.Container>
-	
+	        
 	   <Fade style={{ transitionDuration: '1000ms' }} in={show}>
 	   
 	      <S.Panel $show={show} >
-		    <S.ShowBut onMouseOver={changeBorder}  
-		            onClick={()=>setShow(false)}>HideFilters</S.ShowBut>
 		         
 		  <S.Label>Category</S.Label>
 		 <S.Select name='category'
+		           value={state.category}
 	               onChange={onCategory}>
-	               value={state.category}
 	{categories.map((item, i) => <option key={i} 
 		                                 value={item}>{item}</option>)}
 	 </S.Select>
 	     
 	       <S.Label>Type</S.Label>
 	     <S.Select name='type'
-	         value={state.type}
-	         onChange={onType}
-	         
-	         required >
+	               onChange={onType}>
 	     {currType && currType.map((item,i) => 
 			   <option key={i}
-				    value={item}>{!item?'all':item}</option>)}
-	 </S.Select>
+				    value={item} selected>{!item?'all':item}</option>)}
+	 </S.Select><br/>
 	     <S.Label>Sort By Price</S.Label>
 	     <S.ShowBut disabled={state.reverse}
 	             onClick={onSort}>Minimum</S.ShowBut>
 	     <S.ShowBut disabled={!state.reverse}
-	             onClick={onSort}>Maximum</S.ShowBut>
+	             onClick={onSort}>Maximum</S.ShowBut><br/>
 	     
 	     <S.Input value={state.search} 
 	              onChange={onSearch} 
@@ -108,5 +103,7 @@ export const Filter =(props)=> {
 	     {!show && <S.ShowBut onMouseOver={changeBorder} 
 			                  onClick={()=>setShow(true)}>
 			                                    ShowFilters</S.ShowBut>}
+	     {show && <S.ShowBut onMouseOver={changeBorder}  
+		                onClick={()=>setShow(false)}>HideFilters</S.ShowBut>}
 	     </S.Container>
 	}
