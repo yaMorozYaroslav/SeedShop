@@ -60,7 +60,7 @@ return (<S.Container>
 			<S.AddAdmin onClick={()=>setOpen(true)}>
 			                   {!isSeed?'AddItem'
 								       :'AddSeed'}</S.AddAdmin>}
-        <S.StyledLink className='styledLink' href={'/'}>To Menu</S.StyledLink>
+        <S.StyledLink className='styledLink' href={'/'}>Menu</S.StyledLink>
       < /S.ListButts>    
        {open &&
 		     <AddForm setOpen={setOpen} 
@@ -70,7 +70,7 @@ return (<S.Container>
 		              updStaticUnit={updStaticUnit} />}
           
        <S.List>
-          {shown && !shown.length&&<p>No Data</p>}
+          {shown && !shown.length&&<S.NoData>No products found for this request</S.NoData>}
           {shown && shown.map(item => (
              <S.Cell  key={item._id}>
                <S.StyledImage alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'}

@@ -68,7 +68,7 @@ export const QueryState = ({ children }) => {
   
   const reset = () => {
 	  dispatch({type: RESET, payload: initialState})
-	  console.log(state)
+	  //~ console.log(state)
 	  }
 
  

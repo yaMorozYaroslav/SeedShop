@@ -6,7 +6,7 @@ import * as S from './cart.styled'
 import {useRouter} from 'next/navigation'
 
 export const Cart =()=> {
-	const {cartItems, clearCart} = useCartContext()
+	const {cartItems, increase, decrease, removeFromCart, clearCart} = useCartContext()
 	const [open, setOpen] = React.useState(false)
 	
 	const [source, setSource] = React.useState({user_name:'', user_email:'',
@@ -48,17 +48,19 @@ export const Cart =()=> {
 		}
 
 	return <S.Container>	
-	        <S.CartList>{cartItems.map((item,index)=>
+	         <S.CartList>{cartItems.map((item,index)=>
 		              <S.Thing key={item._id}> 
 		                <p>{index+1}. {item.title}</p>
 		                <p>price: {item.price}</p>
-		                <p>quantity: {item.quantity}</p></S.Thing>)}
-		               <p>total: {counter()}</p>
-		               <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
-		               <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
-		               <S.StyledLink className='styledLink' href='/'>
+		                <p>quantity: {item.quantity}</p>
+		                <button onClick={()=>increase(item._id)}>increase</button>                              
+		                                                </S.Thing>)}
+		           <p>total: {counter()}</p>
+		         <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
+		         <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
+		           <S.StyledLink className='styledLink' href='/'>
 		                                       To Menu</S.StyledLink>
-		    </S.CartList>
+		      </S.CartList>
 		    {open && <S.MailForm ref={form}
 	                    onSubmit={sendEmail}>
 	  
