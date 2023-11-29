@@ -3,7 +3,6 @@ import React from 'react'
 import {useCartContext} from '../../context/cart/CartState'
 import emailjs from '@emailjs/browser'
 import * as S from './cart.styled'
-import Link from 'next/link'
 import {useRouter} from 'next/navigation'
 
 export const Cart =()=> {
@@ -57,8 +56,8 @@ export const Cart =()=> {
 		               <p>total: {counter()}</p>
 		               <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
 		               <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
-		               <Link className='styledLink' href='/'>
-		                                       To Menu</Link>
+		               <S.StyledLink className='styledLink' href='/'>
+		                                       To Menu</S.StyledLink>
 		    </S.CartList>
 		    {open && <S.MailForm ref={form}
 	                    onSubmit={sendEmail}>

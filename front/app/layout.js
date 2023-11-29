@@ -9,6 +9,7 @@ import {Header} from '../comps/Header/Header'
 import {GlobalStyle} from './extra.styled'
 import StyledComponentsRegistry from './registry';
 
+
 const lora = Lora({ subsets: ['latin'] })
 
 export const metadata = {

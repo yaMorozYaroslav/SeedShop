@@ -2,7 +2,8 @@
 
 import React from 'react'
 import decode from 'jwt-decode'
-import Link from 'next/link'
+import * as S from './auth-panel.styled'
+
 
 
 import {useUserContext} from '../../../context/user/UserState'
@@ -22,7 +23,7 @@ export function AuthPanel(){
 	currentUser = (source) => Object.keys(source).length > 0
 	
 	}else{profile = undefined, currentUser = undefined}
-   console.log(!profile)
+   
    React.useEffect(()=>{
 		
 		const shouldUpdateStorage = currentUser(userData) && 
@@ -61,7 +62,7 @@ export function AuthPanel(){
 	    <p>{userData.user?userData.user.name:'Incognito'}</p>
 	    {userData.user
 			?<button onClick={()=>{logout();removeProfile();}}>Logout</button>
-			:<button> <Link href={'/auth'} 
-			                className='styledLink'>Login</Link></button>}
+			:<S.StyledLink className='styledLink' href={'/auth'} 
+			                className='styledLink'>Login</S.StyledLink>}
 		 </>
 		}

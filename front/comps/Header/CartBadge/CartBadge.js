@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation'
 export const CartBadge = () => {
 const {cartItems, setFromLocale} = useCartContext()
 const pathname = usePathname()
-console.log(pathname)
+
 const setCartToStorage = e => {
 	
 	localStorage.setItem('cart', JSON.stringify(cartItems))
