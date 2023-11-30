@@ -1,6 +1,6 @@
 import {Pages} from '../../comps/Pages/Pages'
 import {List} from '../../comps/List/List'
-import { revalidateTag } from 'next/cache'
+//~ import { revalidateTag } from 'next/cache'
 
 
 async function anyName() {
