@@ -8,7 +8,7 @@ async function anyName() {
      await fetch('https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds?search=', 
                             { next: { tags: ['seeds'] }})
                                             .then((res) => res.json())
-      revalidateTag('seeds')
+      //~ revalidateTag('seeds')
       
    const someData = allData.data
    const totalPages = allData.totalPages

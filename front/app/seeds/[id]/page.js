@@ -16,7 +16,7 @@ export async function generateStaticParams(){
     `https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds/${source}`, 
                             { next: { tags: ['seed'] }})
                                             .then((res) => res.json())
-      revalidateTag('seed')
+      //~ revalidateTag('seed')
    return seed
 
        }
