@@ -4,8 +4,8 @@ import { revalidateTag } from 'next/cache'
 
 async function anyName() {
   const allData = 
-        await fetch('https://seed-shop-back-78049b8c30bb.herokuapp.com/items?search=', 
-                                 { next: { tags: ['items'] }})
+        await fetch('https://seed-shop-back-78049b8c30bb.herokuapp.com/items?search=') 
+                                 //~ { next: { tags: ['items'] }})
                                          .then((res) => res.json())
     //~ revalidateTag('items')
    const someData = allData.data

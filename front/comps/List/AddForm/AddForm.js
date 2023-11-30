@@ -7,7 +7,7 @@ import {useSeedContext} from '../../../context/seeds/SeedState'
 import {useItemContext} from '../../../context/items/ItemState'
 import {useQueryContext} from '../../../context/queries/QueryState'
 import * as S from './add-form.styled'
-import {revalidator} from '../revalidator'
+//import {revalidator} from '../revalidator'
 import {seedTypes, itemTypes} from '../select-types'
 
 const initialState = {title: '', description: '', price: '', 

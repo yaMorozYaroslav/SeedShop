@@ -13,8 +13,8 @@ export async function generateStaticParams(){
  async function getSeed(source) {
   
    const seed = await fetch(
-    `https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds/${source}`, 
-                            { next: { tags: ['seed'] }})
+    `https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds/${source}`) 
+                            //~ { next: { tags: ['seed'] }})
                                             .then((res) => res.json())
       //~ revalidateTag('seed')
    return seed
