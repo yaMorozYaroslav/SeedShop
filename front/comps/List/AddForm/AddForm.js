@@ -7,14 +7,13 @@ import {useSeedContext} from '../../../context/seeds/SeedState'
 import {useItemContext} from '../../../context/items/ItemState'
 import {useQueryContext} from '../../../context/queries/QueryState'
 import * as S from './add-form.styled'
-//import {revalidator} from '../revalidator'
+import revalidator from '../revalidator'
 import {seedTypes, itemTypes} from '../select-types'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
 
-export function AddForm({setOpen, currItem,
-	                     setCurrItem, updStaticUnit, addStaticUnit}){
+export function AddForm({setOpen, currItem, setCurrItem}){
 	
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
@@ -63,21 +62,18 @@ export function AddForm({setOpen, currItem,
 	
 	const handSubmit =(e)=> {
 		e.preventDefault()
-	if(isSeed){
-	   if(!source._id){addSeed(source) && addStaticUnit(source)		           
-	  }else{updateSeed(source._id, source) && updStaticUnit(source)}
+	if(isSeed){if(!source._id){addSeed(source)		           
+	          }else{updateSeed(source._id, source)}
 			 
-   }else{
-       if(!source._id){addItem(source) && addStaticUnit(source)		           
-	  }else{updateItem(source._id, source)&& (updStaticUnit?updStaticUnit(source):null)}
-         fetcher()
-         
-        }
+   }else{if(!source._id){addItem(source)		           
+	          }else{updateItem(source._id, source)}  }
         reset()
 	    setOpen(false)
 		     setTimeout(() => {
 					alert('Element has been '+
 	                      (!source._id?'added.':'updated.'))},1000)
+	    fetcher()
+	    revalidator()
 		        }
 	 return(
 	 <S.Container>

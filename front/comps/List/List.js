@@ -10,6 +10,7 @@ import {useQueryContext} from '../../context/queries/QueryState'
 import {useUserContext} from '../../context/user/UserState'
 import {useCartContext} from '../../context/cart/CartState'
 import { usePathname } from 'next/navigation'
+import revalidator from './revalidator'
 
 export function List({servData}){
 	
@@ -24,9 +25,9 @@ export function List({servData}){
 	
 	const {userData} = useUserContext()
 	const {cartItems, addToCart} = useCartContext()
-	const {items, removeItem} = useItemContext()
-	const {seeds, removeSeed} = useSeedContext()
-	const {category} = useQueryContext()
+	const {fetchItems, items, removeItem} = useItemContext()
+	const {fetchSeeds, seeds, removeSeed} = useSeedContext()
+	const {state, category} = useQueryContext()
 	const units = !items.length?seeds:items
 	
 	const creator =(id)=> userData.user && (userData.user._id === id)
@@ -36,17 +37,21 @@ export function List({servData}){
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
 
-	function addStaticUnit(source){
+	/*function addStaticUnit(source){
      setStaticData([...staticData, {...source, id: staticData.length} ])               
 		}
 	function updStaticUnit(source){
      setStaticData(staticData.map((item) => 
                      (item._id === currItem._id ? source : item)))
-		}	
+		}*/	
+		 function fetchUnits(){if(isSeed){fetchSeeds(state)}
+		                       else{fetchItems(state)} } 
 	function delUnit(e, id){
 		e.preventDefault();
 		if(isSeed){removeSeed(id)}else{removeItem(id)}
-		if(!seeds.data&&!items.data)setStaticData(staticData.filter((item) =>item._id !== id))
+		//if(!seeds.data&&!items.data)setStaticData(staticData.filter((item) =>item._id !== id))
+		revalidator()
+		fetchUnits()
 		}	
 
    React.useEffect(()=>{ if(seeds.data && isSeed){setShown(seeds.data)}
@@ -66,8 +71,7 @@ return (<S.Container>
 		     <AddForm setOpen={setOpen} 
 		              currItem={currItem}
 		              setCurrItem={setCurrItem}
-		              addStaticUnit={addStaticUnit}
-		              updStaticUnit={updStaticUnit} />}
+		               />}
           
        <S.List>
           {shown && !shown.length&&<S.NoData>No products found for this request</S.NoData>}

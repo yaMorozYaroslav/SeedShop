@@ -27,8 +27,8 @@ export const List = styled.ul` display: grid;
                     @media (max-width: 600px) {grid-template-columns: repeat(2,1fr);
                                     margin-left:-6%;}
                     @media (max-width: 400px) {display:block;}`
-export const Cell = styled.li`font-size: 20px; border: 2px solid black;height: 380px;
-                              width:80%;padding:10px;margin:10px;
+export const Cell = styled.li`font-size: 20px; border: 2px solid black;height: 365px;
+                              width:85%;padding:10px;margin:10px;
                     @media (max-width: 600px) {font-size: 18px;padding:3px;
                                                width:86%;height:390px;}
                     @media (max-width: 400px) {font-size: 20px;width:85%;height:360px;}`
@@ -36,5 +36,5 @@ export const StyledImage = styled(Image)`margin:10px;width:100px;`
 export const TitleLink = styled(Link)`font-size: 22px;
                                       padding: 5px; border:1px solid black;
                          @media (max-width: 600px) {font-size: 18px;}`
-export const Parag = styled.p`margin: 15px;`
+export const Parag = styled.p`margin: 12px;`
 export const AddButt = styled.button`border-style:groove;margin:2px;font-size:21px;`

@@ -5,7 +5,7 @@ export const dynamicParams = true
 
 //~ export async function generateStaticParams(){
   //~ const seeds = await fetch(
-    //~ 'https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds?search=')
+    //~ 'https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds?category=')
                                         //~ .then((res) => res.json())
   //~ const arrSeeds = seeds.data.map((seed) => ({id: seed._id}))
     //~ return  arrSeeds
