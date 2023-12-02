@@ -8,7 +8,7 @@ import {useRouter} from 'next/navigation'
 export const Cart =()=> {
 	const {cartItems, increase, decrease, removeFromCart, clearCart} = useCartContext()
 	const [open, setOpen] = React.useState(false)
-	
+	console.log(cartItems)
 	const [source, setSource] = React.useState({user_name:'', user_email:'',
 		                                        user_phone:'', items:[]})
 	const form = React.useRef()
@@ -53,7 +53,8 @@ export const Cart =()=> {
 		                <p>{index+1}. {item.title}</p>
 		                <p>price: {item.price}</p>
 		                <p>quantity: {item.quantity}</p>
-		                <button onClick={()=>increase(item._id)}>increase</button>                              
+		                <button onClick={()=>increase(item._id)}>increase</button> 
+		                <button onClick={()=>decrease(item._id)}>decrease</button>                             
 		                                                </S.Thing>)}
 		           <p>total: {counter()}</p>
 		         <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>

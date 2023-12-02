@@ -30,22 +30,20 @@ const CartReducer = (state, action) => {
       }
 
       case INCREASE:
-      state.cartItems[
-        state.cartItems.findIndex((item) => item._id === action.payload)
-      ].quantity++;
-      return {
-        ...state,
-        cartItems: [...state.cartItems],
-      };
+      
+      return {...state, cartItems: state.cartItems.map((item) =>
+                       (item._id === action.payload)
+                            ?{...item, quantity: item.quantity++}
+                            :item)}
+      
 
-    // If the action type is DECREASE, we want to decrease the quantity of the particular item in the cartItems array
-    case DECREASE:
+   case DECREASE:
       state.cartItems[
         state.cartItems.findIndex((item) => item._id === action.payload)
-      ].quantity--
+      ].quantity - 1
       return {
         ...state,
-        cartItems: [...state.cartItems],
+        cartItems: state.cartItems,
       };
 
    case FROM_LOCALE:
