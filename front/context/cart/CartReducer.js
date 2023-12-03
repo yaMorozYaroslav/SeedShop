@@ -38,13 +38,11 @@ const CartReducer = (state, action) => {
       
 
    case DECREASE:
-      state.cartItems[
-        state.cartItems.findIndex((item) => item._id === action.payload)
-      ].quantity - 1
-      return {
-        ...state,
-        cartItems: state.cartItems,
-      };
+      
+      return {...state, cartItems: state.cartItems.map((item) =>
+                       (item._id === action.payload)
+                            ?{...item, quantity: item.quantity?item.quantity--:1}
+                            :item)}
 
    case FROM_LOCALE:
       return {

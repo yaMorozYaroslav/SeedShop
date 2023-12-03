@@ -6,7 +6,8 @@ import * as S from './cart.styled'
 import {useRouter} from 'next/navigation'
 
 export const Cart =()=> {
-	const {cartItems, increase, decrease, removeFromCart, clearCart} = useCartContext()
+	const {cartItems, increase, decrease, 
+		              removeFromCart, clearCart} = useCartContext()
 	const [open, setOpen] = React.useState(false)
 	console.log(cartItems)
 	const [source, setSource] = React.useState({user_name:'', user_email:'',
@@ -19,7 +20,8 @@ export const Cart =()=> {
 	const cleaner = () => {clearCart();
 		                   localStorage.removeItem('cart');
 		                   setOpen(false);push('/')}
-	
+	const remover = (id) => {removeFromCart(id)
+		                     if(cartItems.length === 1)push('/')}
 	const sendEmail = e => {
 		e.preventDefault()
 		
@@ -50,17 +52,18 @@ export const Cart =()=> {
 	return <S.Container>	
 	         <S.CartList>{cartItems.map((item,index)=>
 		              <S.Thing key={item._id}> 
-		                <p>{index+1}. {item.title}</p>
-		                <p>price: {item.price}</p>
-		                <p>quantity: {item.quantity}</p>
-		                <button onClick={()=>increase(item._id)}>increase</button> 
-		                <button onClick={()=>decrease(item._id)}>decrease</button>                             
+		    <S.Number>{index+1}.</S.Number>
+            <S.StyledImage alt='' src={item.photo&&item.photo.length
+				                      ?item.photo:'./next.svg'}
+                              width={100} height={100} priority={true}/>
+		                <S.Title>{item.title} </S.Title>
+		               
+		                <S.Quantity>price: {item.price}/
+		                       quantity: {item.quantity}</S.Quantity>
+		      <S.Butts> <S.ThingButt onClick={()=>increase(item._id)}>increase</S.ThingButt> 
+		                <S.ThingButt onClick={()=>decrease(item._id)}>decrease</S.ThingButt>
+		                <S.ThingButt onClick={()=>remover(item._id)}>remove</S.ThingButt> </S.Butts>                         
 		                                                </S.Thing>)}
-		           <p>total: {counter()}</p>
-		         <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
-		         <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
-		           <S.StyledLink className='styledLink' href='/'>
-		                                       To Menu</S.StyledLink>
 		      </S.CartList>
 		    {open && <S.MailForm ref={form}
 	                    onSubmit={sendEmail}>
@@ -75,5 +78,10 @@ export const Cart =()=> {
 	             <S.Button type='submit'>Place The Order</S.Button>
 	             <S.Button onClick={()=>setOpen(false)}>CloseForm</S.Button>
 	         </S.MailForm>}
+	           <p>total: {counter()}</p>
+		         <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
+		         <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
+		           <S.StyledLink className='styledLink' href='/'>
+		                                       To Menu</S.StyledLink>
 	       </S.Container>
 	}
