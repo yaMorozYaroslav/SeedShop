@@ -4,7 +4,7 @@ import ItemReducer from "./ItemReducer";
 import {getItems, createItem, editItem, deleteItem} from '../../api'
 
 import {GET_ITEMS, START_LOADING, END_LOADING, ADD_ITEM, 
-	               UPDATE_ITEM, REMOVE_ITEM, ERROR} from "./ItemTypes"
+	    UPDATE_ITEM, REMOVE_ITEM, ERROR, RESET} from "./ItemTypes"
 
 const ItemContext = createContext()
 
@@ -65,6 +65,7 @@ export const ItemState = ({ children }) => {
 		dispatch({type: ERROR, payload: err})
 	}
    }
+   const resetItems = () => {dispatch({type: RESET, payload: initialState})}
 
   return (
 
@@ -77,6 +78,7 @@ export const ItemState = ({ children }) => {
         addItem,
         updateItem,
         removeItem,
+        resetItems,
         ...state,
       }}
     >

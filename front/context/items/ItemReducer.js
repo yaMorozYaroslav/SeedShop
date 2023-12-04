@@ -1,5 +1,5 @@
 import {GET_ITEMS, START_LOADING, END_LOADING, ADD_ITEM,
-	               UPDATE_ITEM, REMOVE_ITEM, ERROR} from "./ItemTypes"
+	               UPDATE_ITEM, REMOVE_ITEM, ERROR, RESET} from "./ItemTypes"
 
 const ItemReducer = (state, action) => {
   switch (action.type) {
@@ -31,6 +31,9 @@ const ItemReducer = (state, action) => {
 			                       item._id !== action.payload._id)}  }}
     case ERROR:
 	return{...state, error: action.payload, loading: false}
+	
+	case RESET: 
+	return action.payload
 	
     default:
       return state;

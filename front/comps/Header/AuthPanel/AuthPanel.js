@@ -10,8 +10,8 @@ import {useUserContext} from '../../../context/user/UserState'
  
 export function AuthPanel(){
 	
- const {userData, setFromStorage, signIn, signUp, logout,
-		                         error, clearError} =  useUserContext()
+ const {userData, setFromStorage, signIn,
+	    signUp, logout, error, clearError} =  useUserContext()
     	
     	const removeProfile = () => localStorage.removeItem('profile')
     

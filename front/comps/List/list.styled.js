@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const Container = styled.div`background: lightgreen;padding:1px;
-                                    margin-bottom:10px;margin-top:2px;`
+                                    margin-bottom:6px;margin-top:4px;`
 export const ListButts = styled.section`display:flex;margin-top:5px;
                          @media (max-width:400px) {margin-left:-15px;`
 export const AddAdmin = styled.button`font-size:23px;border-style: dashed;padding:10px;

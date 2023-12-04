@@ -1,5 +1,5 @@
 import {GET_SEEDS, START_LOADING, END_LOADING, ADD_SEED,
-	    UPDATE_SEED, REMOVE_SEED, ERROR} from "./SeedTypes"
+	    UPDATE_SEED, REMOVE_SEED, ERROR, RESET} from "./SeedTypes"
 
 const SeedReducer = (state, action) => {
   switch (action.type) {
@@ -31,10 +31,11 @@ const SeedReducer = (state, action) => {
      }else{return {...state, seeds: {...state.seeds,
 		                   data: state.seeds.data.filter((item) =>
 			                       item._id !== action.payload._id)}  }}
-
-   
     case ERROR:
 	return{...state, error: action.payload, loading: false}
+	
+	case RESET: 
+	return action.payload
 	
     default:
       return state;

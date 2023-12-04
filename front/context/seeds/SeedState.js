@@ -5,7 +5,7 @@ import SeedReducer from "./SeedReducer";
 import {getSeeds, createSeed, editSeed, deleteSeed} from '../../api'
 
 import {GET_SEEDS, START_LOADING, END_LOADING,
-	    ADD_SEED, UPDATE_SEED, REMOVE_SEED, ERROR} from "./SeedTypes"
+	    ADD_SEED, UPDATE_SEED, REMOVE_SEED, ERROR, RESET} from "./SeedTypes"
 
 const SeedContext = React.createContext()
 
@@ -68,7 +68,7 @@ export const SeedState = ({ children }) => {
 		dispatch({type: ERROR, payload: err})
 	}
    }
-
+   const resetSeeds = () => {dispatch({type: RESET, payload: initialState})}
   
   return (
 
@@ -81,7 +81,8 @@ export const SeedState = ({ children }) => {
         addSeed,
         updateSeed,
         removeSeed,  
-        ...state,
+        resetSeeds,
+        ...state
       }}>
       {children}
     </SeedContext.Provider>
