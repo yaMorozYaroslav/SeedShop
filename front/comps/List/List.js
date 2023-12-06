@@ -11,6 +11,8 @@ import {useUserContext} from '../../context/user/UserState'
 import {useCartContext} from '../../context/cart/CartState'
 import { usePathname } from 'next/navigation'
 import revalidator from './revalidator'
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 export function List({servData}){
 	
@@ -25,10 +27,12 @@ export function List({servData}){
 	
 	const {userData} = useUserContext()
 	const {cartItems, addToCart} = useCartContext()
-	const {fetchItems, items, removeItem} = useItemContext()
-	const {fetchSeeds, seeds, removeSeed} = useSeedContext()
+	const {fetchItems, loadingItems, items, removeItem} = useItemContext()
+	const {fetchSeeds, loadingSeeds, seeds, removeSeed} = useSeedContext()
 	const {state, category} = useQueryContext()
 	const units = !items.length?seeds:items
+	const loading = loadingItems||loadingSeeds
+	console.log(loading)
 	
 	const creator =(id)=> userData.user && (userData.user._id === id)
 	const admin = userData.user && userData.user.role === 'admin'
@@ -44,8 +48,9 @@ export function List({servData}){
      setStaticData(staticData.map((item) => 
                      (item._id === currItem._id ? source : item)))
 		}*/	
-		 function fetchUnits(){if(isSeed){fetchSeeds(state)}
+	function fetchUnits(){if(isSeed){fetchSeeds(state)}
 		                       else{fetchItems(state)} } 
+		                       
 	function delUnit(e, id){
 		e.preventDefault();
 		if(isSeed){removeSeed(id)}else{removeItem(id)}
@@ -71,11 +76,11 @@ return (<S.Container>
 		     <AddForm setOpen={setOpen} 
 		              currItem={currItem}
 		              setCurrItem={setCurrItem}
-		               />}
+		               />}  
+       {shown && shown.length>0 && !loading && <S.List>
           
-       <S.List>
-          {shown && !shown.length&&<S.NoData>No products found for this request</S.NoData>}
-          {shown && shown.map(item => (
+          
+          {shown.map(item => (
              <S.Cell  key={item._id}>
                <S.StyledImage alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'}
                               width={100} height={100} priority={true}/><br/>
@@ -92,9 +97,10 @@ return (<S.Container>
 				  <S.AddButt onClick={(e)=>handEdit(e, item)}>Edit</S.AddButt></>}
                
               </S.Cell>
-          ))}
-        
-        </S.List>
-        
+          ))}       
+        </S.List>}
+        {!shown.length&&<S.NoData>No products found for this request</S.NoData>}
+         {loading &&  <S.SpinCont><S.Spinner/></S.SpinCont>}
+         
        </S.Container>)
 } 

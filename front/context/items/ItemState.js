@@ -72,7 +72,7 @@ export const ItemState = ({ children }) => {
     <ItemContext.Provider
       value={{
         items: state.items,
-        loading: state.loading,
+        loadingItems: state.loading,
         error: state.error,
         fetchItems,
         addItem,

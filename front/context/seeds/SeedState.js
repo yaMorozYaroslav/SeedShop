@@ -75,7 +75,7 @@ export const SeedState = ({ children }) => {
     <SeedContext.Provider
       value={{
         seeds: state.seeds,
-        loading: state.loading,
+        loadingSeeds: state.loading,
         error: state.error,
         fetchSeeds,
         addSeed,

@@ -11,7 +11,7 @@ import {Button} from './pages.styled.js'
 export function Pages(total) {
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
-	console.log(total)
+	//console.log(total)
 	const {state, setPage} = useQueryContext()
 	const {seeds, fetchSeeds} = useSeedContext()
 	const {items, fetchItems} = useItemContext()

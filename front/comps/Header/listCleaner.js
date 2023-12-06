@@ -11,11 +11,11 @@ export const ListCleaner =()=> {
 	
 	const isSeed = pathname === '/seed-list'
 	const isItem = pathname === '/item-list'
-	console.log(seeds.data && seeds.data.length)
-	//if(seeds!isSeed)resetSeeds()
+	//console.log(seeds.data && seeds.data.length)
+	
 	React.useEffect(()=>{
-		            if(!isSeed&&seeds.data&&seeds.data.length){resetSeeds()}
-		            if(!isItem&&items.data&&items.data.length){resetItems()}},[isSeed])
+		            if(!isSeed&&seeds.data)resetSeeds()
+		            if(!isItem&&items.data)resetItems()},[isSeed])
 	
 	return null
 	}
