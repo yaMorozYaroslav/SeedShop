@@ -59,10 +59,12 @@ export function AuthPanel(){
 	        },[userData, profile, logout])
 	       // console.log(userData)
 	    return <>
-	    <p>{userData.user?userData.user.name:'Incognito'}</p>
+	    <S.Name>{userData.user?userData.user.name:'Incognito'}</S.Name>
 	    {userData.user
-			?<button onClick={()=>{logout();removeProfile();}}>Logout</button>
-			:<S.StyledLink className='styledLink' href={'/auth'} 
-			                className='styledLink'>Login</S.StyledLink>}
+			?<S.LogBut className='styledLink'
+			           onClick={()=>{logout();removeProfile();}}>Logout</S.LogBut>
+			:<S.StyledLink className='styledLink'
+			                         href={'/auth'} className='styledLink'>
+			                                      <S.LogBut>Login</S.LogBut></S.StyledLink>}
 		 </>
 		}

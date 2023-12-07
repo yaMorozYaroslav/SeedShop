@@ -14,9 +14,10 @@ export const Form = styled.form`grid-column: 3/5;
                                 border: 2px solid brown;
                     @media (max-width: 1000px) {grid-column:2/6;}
                     @media (max-width: 600px) {grid-column:1/7;
-                                               padding-left: 80px;padding-right: 80px;}`
-export const Title = styled.h2`margin:0px;margin-bottom:10px;
-                     @media (max-width: 600px) {font-size:26px;}`
+                                               padding-left: 8%;padding-right: 8%;}
+                    @media (max-width: 400px) {padding:0px;}`
+export const Title = styled.h2`margin:10px 0px 10px 0px;
+                     @media (max-width: 600px) {font-size:28px;}`
 export const Label = styled('label').withConfig({shouldForwardProp: () => true})`
 	                       //~ ${({text})=>text&&`color: white;`}
 	                       background: none;
@@ -33,9 +34,9 @@ export const Input = styled('input').withConfig({shouldForwardProp:() => true})`
                      @media (max-width: 600px) {width:80%;}`
 export const Submit = styled.button`border-style:outset;border-radius:10px;
                                     margin:10px;font-size:26px;padding:6px;`
-export const Toggler = styled.section`grid-column: 3/3;margin-top:-2px; font-size:22px;
-                                     border:2px solid brown;border-right:none;
-                                     text-align:center;padding:10px;
+export const Toggler = styled.section`grid-column: 3/3;margin-top:-2px; font-size:23px;
+                                      border:2px solid brown;border-right:none;
+                                      text-align:center;padding:10px; color:blue;
                               &:hover {cursor: grab;}
                        @media (max-width: 1000px) {grid-column:2/4}
                        @media (max-width: 600px) {grid-column:1/4}`
@@ -47,4 +48,5 @@ export const StyledLink = styled(Link)`grid-column:4/4;
                                        text-align: center;
                                        border:2px solid brown;
                                        padding: 10px;
-                          @media (max-width: 1000px) {grid-column:4/6}`
+                          @media (max-width: 1000px) {grid-column:4/6}
+                          @media (max-width: 600px) {grid-column:4/7}`

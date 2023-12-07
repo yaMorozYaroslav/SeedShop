@@ -7,5 +7,6 @@ import {ListCleaner} from './listCleaner'
 
 export function Header(){
 	
-	return <S.HeadCont><ListCleaner/><p>Flora</p> <CartBadge/> <AuthPanel/></S.HeadCont>
+	return <S.HeadCont><ListCleaner/>
+	                   <p>Flora</p> <CartBadge/> <AuthPanel/></S.HeadCont>
 	}

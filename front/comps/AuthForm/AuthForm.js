@@ -56,9 +56,10 @@ export function AuthForm(){
 	 <S.Submit type='submit'>Submit</S.Submit><br/>          
 	 
 	</S.Form>
-	 <S.Toggler onClick={()=>setRegistered(!registered)}>
-	                        {registered?'Registration'
-								        :'Authentication'}</S.Toggler>
+	 <S.Toggler className='styledLink'
+	            onClick={()=>setRegistered(!registered)}>
+	                        {!registered?'Sign In'
+								        :'Sign Up'}</S.Toggler>
 								        
 	  <S.StyledLink className='styledLink' href={'/'}>Menu</S.StyledLink>
   </S.Container>
