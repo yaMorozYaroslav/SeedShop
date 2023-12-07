@@ -6,5 +6,5 @@ export const HeadCont = styled.section`display: flex;
                                        justify-content: space-around;
                                        border:solid; 
                         @media (max-width: 600px) {display:grid;
-                                                   grid-template-columns: repeat(2, 1fr)}
-                                                   margin-top:-5px;`
+                                                   grid-template-columns: repeat(2, 1fr);
+                                                   height:132px;}`
