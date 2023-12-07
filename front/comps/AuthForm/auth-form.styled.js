@@ -3,27 +3,48 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 
-export const Container = styled.div`display: grid; justify-content: center;
-                                    grid-template-columns: repeat(6, 1fr);`
-export const Form = styled.form`
-                 grid-column: 3/5;
-                 padding: 1%;
-                 margin-top: 5%;
-                 text-align: right;
-                 border: 1px solid black;`
-export const Label = styled('label').withConfig({shouldForwardProp: () => true})(
-	           ({text})=>text&&`color: red;`);
+export const Container = styled.div`display: grid; justify-content: center; padding:10px;
+                                    grid-template-columns: repeat(6, 1fr);
+                         @media (max-width: 1000px) {}`
+export const Form = styled.form`grid-column: 3/5;
+                                padding: 10px;
+                                padding-bottom:2%;
+                                margin-top: 5%;
+                                text-align: center;
+                                border: 2px solid brown;
+                    @media (max-width: 1000px) {grid-column:2/6;}
+                    @media (max-width: 600px) {grid-column:1/7;
+                                               padding-left: 80px;padding-right: 80px;}`
+export const Title = styled.h2`margin:0px;margin-bottom:10px;
+                     @media (max-width: 600px) {font-size:26px;}`
+export const Label = styled('label').withConfig({shouldForwardProp: () => true})`
+	                       //~ ${({text})=>text&&`color: white;`}
+	                       background: none;
+	                       font-size:24px;
+	                 @media (max-width: 1000px) {font-size:26px;}`
 export const Input = styled('input').withConfig({shouldForwardProp:() => true})`
-                 background: ${p=>p.text};
-                 font-size: 24px;
-                 margin: 5px;
-                 width: 50%`
-export const Submit = styled.button`position:relative;right:35%;margin:10px;font-size:24px;`
-export const Toggler = styled.button`grid-column: 3/3`
+                           //~ background: ${p=>p.text};
+                               background:lightblue;
+                               font-size: 24px;
+                               margin: 5px;
+                               padding-left:5px;
+                               width: 55%;
+                     @media (max-width: 1000px) {width:59%;}
+                     @media (max-width: 600px) {width:80%;}`
+export const Submit = styled.button`border-style:outset;border-radius:10px;
+                                    margin:10px;font-size:26px;padding:6px;`
+export const Toggler = styled.section`grid-column: 3/3;margin-top:-2px; font-size:22px;
+                                     border:2px solid brown;border-right:none;
+                                     text-align:center;padding:10px;
+                              &:hover {cursor: grab;}
+                       @media (max-width: 1000px) {grid-column:2/4}
+                       @media (max-width: 600px) {grid-column:1/4}`
 
-export const StyledLink = styled(Link)`
-                             grid-column:4/4;
-                             color: green;
-                             text-align: center;
-                             border:1px solid black;
-                             padding: 10px;`
+export const StyledLink = styled(Link)`grid-column:4/4;
+                                       margin-top:-2px;
+                                       font-size:23px;
+                                       color: blue;
+                                       text-align: center;
+                                       border:2px solid brown;
+                                       padding: 10px;
+                          @media (max-width: 1000px) {grid-column:4/6}`

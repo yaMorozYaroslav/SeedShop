@@ -37,6 +37,7 @@ export function AuthForm(){
 		
   return  <S.Container>
     <S.Form onSubmit={handSubmit} id='form'>
+     <S.Title>{!registered?'Registration':'Authentication'}</S.Title>
 	 <S.Label>Email:</S.Label>
 	 <S.Input name='email' placeholder='Write Your Email'
 	          onChange={handChange} required/><br/>
@@ -48,18 +49,17 @@ export function AuthForm(){
 	 <S.Input name='name' placeholder='Write Your Name'
 	          onChange={handChange} required/><br/>
 	 
-	 <label>Password:</label>
+	 <S.Label>Password:</S.Label>
 	 <S.Input placeholder='Confirm Password' name='confPass'
 	          onChange={handChange} required/>
-	                   </>)}
-	 <br/>    
+	                   </>)}   
 	 <S.Submit type='submit'>Submit</S.Submit><br/>          
 	 
 	</S.Form>
 	 <S.Toggler onClick={()=>setRegistered(!registered)}>
-	                        {registered?'To Registration'
-								        :'To Authentication'}</S.Toggler>
+	                        {registered?'Registration'
+								        :'Authentication'}</S.Toggler>
 								        
-	  <S.StyledLink className='styledLink' href={'/'}>ToMenu</S.StyledLink>
+	  <S.StyledLink className='styledLink' href={'/'}>Menu</S.StyledLink>
   </S.Container>
 	}

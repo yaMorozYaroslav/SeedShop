@@ -3,7 +3,7 @@ import styled from 'styled-components'
 //~ display:${p=>!p.$show?'none':'block'};
 export const Container = styled.div`margin-left: 20px`
 export const Panel = styled.div`
-                                position: absolute;
+                                position: fixed;
                                 top: 35%;
                                 right:45%;
                                 border-style:dotted;

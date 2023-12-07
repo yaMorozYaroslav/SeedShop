@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
+export const ExtraCont = styled.div`width:100%;height:100%;
+                                    display:flex;justify-content:center;`
 export const Container = styled.div`
                       position: fixed;
-                      top:10%;
-                      left:30%;
+                      top:120px;
                       background: lightgrey;
                       display: block;
 		              text-align:center

@@ -76,6 +76,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	    revalidator()
 		        }
 	 return(
+	<S.ExtraCont>
 	 <S.Container>
 	 
 	 <S.Title>{!isSeed?'Item':'Seed'}</S.Title>
@@ -131,5 +132,6 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	
 	   </S.Form>
 	 </S.Container>
+	</S.ExtraCont>
 	 )
 	}
