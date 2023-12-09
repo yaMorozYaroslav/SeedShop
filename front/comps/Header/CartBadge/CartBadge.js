@@ -29,7 +29,7 @@ return (<S.Container>
             overlap="rectangular"
             badgeContent={cartItems.length||null}
             anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}> 
-        <CartIcon style={{fontSize:'32px'}}/>             
+        <CartIcon style={{fontSize:'40px'}}/>             
      </Badge>
         </Link>
         </S.Container>)
