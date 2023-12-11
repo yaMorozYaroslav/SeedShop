@@ -50,21 +50,27 @@ export const Cart =()=> {
 		}
 
 	return <S.Container>	
-	         <S.CartList>{cartItems.map((item,index)=>
-		              <S.Thing key={item._id}> 
-		    <S.Number>{index+1}.</S.Number>
-            <S.StyledImage alt='' src={item.photo&&item.photo.length
+	
+	    <S.CartList>{cartItems.map((item,index)=>
+				 
+		   <S.Thing key={item._id}> 
+		      <S.Number>{index+1}.</S.Number>
+              <S.StyledImage alt='' src={item.photo&&item.photo.length
 				                      ?item.photo:'./next.svg'}
-                              width={100} height={100} priority={true}/>
-		                <S.Title>{item.title} </S.Title>
+                              width={0} height={0} priority={true}/>
+		        <S.Title>{item.title} </S.Title><br/>
 		               
-		                <S.Quantity>price: {item.price}/
+		        <S.Quantity>price: {item.price}/<br/>
 		                       quantity: {item.quantity}</S.Quantity>
-		      <S.Butts> <S.ThingButt onClick={()=>increase(item._id)}>increase</S.ThingButt> 
+		                       
+		              <S.Butts> 
+		                <S.ThingButt onClick={()=>increase(item._id)}>increase</S.ThingButt> 
 		                <S.ThingButt onClick={()=>decrease(item._id)}>decrease</S.ThingButt>
-		                <S.ThingButt onClick={()=>remover(item._id)}>remove</S.ThingButt> </S.Butts>                         
-		                                                </S.Thing>)}
-		      </S.CartList>
+		                <S.ThingButt onClick={()=>remover(item._id)}>remove</S.ThingButt>
+		              </S.Butts>                         
+		   </S.Thing>)}
+	    </S.CartList>
+		      
 		    {open && <S.MailForm ref={form}
 	                    onSubmit={sendEmail}>
 	  
@@ -77,11 +83,14 @@ export const Cart =()=> {
 	       <br />
 	             <S.Button type='submit'>Place The Order</S.Button>
 	             <S.Button onClick={()=>setOpen(false)}>CloseForm</S.Button>
-	         </S.MailForm>}
-	           <p>total: {counter()}</p>
-		         <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
-		         <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
+	                 </S.MailForm>}
+	                 
+	         <S.CartButts>
+	            <p>total: {counter()}</p>
+		          <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
+		          <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
 		           <S.StyledLink className='styledLink' href='/'>
 		                                       To Menu</S.StyledLink>
+		     </S.CartButts>
 	       </S.Container>
 	}
