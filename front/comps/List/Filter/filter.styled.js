@@ -5,21 +5,19 @@ export const Container = styled.div`margin-left: 20px`
 export const Panel = styled.div`
                                 position: fixed;
                                 top: 35%;
-                                right:45%;
+                                left:30%;
                                 border-style:dotted;
                                 text-align:center;
                                 background: steelblue;
-                                width:30%;
+                                width:35%;
                                 height: 225px;
-                                padding:10px;
                                 padding-top:25px;
                              @media (max-width: 800px) {height:250px;
-                                                        width:45%;
-                                                        display: block;}
-                             @media (max-width: 600px) {right:35%;}
-                             @media (max-width: 400px) {height:270px;
-                                                        width:54%;
-                                                        right: 20%;}`
+                                                        display: block;
+                                                        width:40%;}
+                             @media (max-width: 600px) {left:25%;width:50%;height:270px;}
+                             @media (max-width: 400px) {width:60%;
+                                                        right: -10%;}`
 
 export const Label = styled.label`margin:0.5%;font-size:24px;color:black;`
 export const ShowBut = styled.button`font-size:22px; 

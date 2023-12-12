@@ -86,10 +86,10 @@ export const Cart =()=> {
 	                 </S.MailForm>}
 	                 
 	         <S.CartButts>
-	            <p>total: {counter()}</p>
+	            <S.Total>total: {counter()}</S.Total>
 		          <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
 		          <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
-		           <S.StyledLink className='styledLink' href='/'>
+		            <S.StyledLink className='styledLink' href='/'>
 		                                       To Menu</S.StyledLink>
 		     </S.CartButts>
 	       </S.Container>

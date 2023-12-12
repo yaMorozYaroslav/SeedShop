@@ -19,5 +19,5 @@ export const MainCont = styled.div`background-image:url('/grass.jpg');
                         @media (max-width: 400px) {width:75%;margin-left:15px;}`
 export const MainTitle = styled.h6`color:white;font-size:75px;margin:-30px 0px 0px 0px;
                                   width:30%;
-                          @media (max-width: 800px) {font-size:65px;margin-top:-23px;}
-                          @media (max-width: 400px) {font-size:57px;margin-top:-13px;} `
+                          @media (max-width: 800px) {font-size:65px;margin-top:-24px;}
+                          @media (max-width: 400px) {font-size:57px;margin-top:-18px;} `

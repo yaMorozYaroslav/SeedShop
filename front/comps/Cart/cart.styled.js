@@ -30,14 +30,15 @@ export const StyledImage = styled(Image)`grid-row:1;width:120px;height:120px;
                            @media (max-width:400px) {grid-column:3/8;
                                                      width:150px;height:150px;}`
 export const Title = styled.h1`grid-column:2/5;grid-row:1;
-                              width:90%;font-size:25px;margin-top:20px;
+                               width:90%;font-size:25px;
+                               margin-left:10px;margin-top:20px;
                      @media (max-width: 600px) {grid-column:3/8;}
                      @media (max-width: 400px) {grid-column:2/8;grid-row:3;
                                                 margin-top:-25px;}`
 export const Quantity = styled.p`grid-column:2/5;grid-row:2;
                                  margin-top:-10px;
                                  background: lightgreen;padding:15px;
-                                 width:80%;padding-top:-20px;
+                                 width:80%;padding-top:-15px;
                         @media (max-width: 600px) {grid-column:2/7;
                                                    margin-top:20px;padding-top:-5px;
                                                    height:70px;width:83%}
@@ -53,11 +54,11 @@ export const Butts = styled.section`grid-column:5/7;grid-row:1/3;
                      @media (max-width: 600px) {grid-column:1/8;grid-row:3;
                                                 height:58px;margin-top:50px;}
                      @media (max-width: 400px) {grid-row:4;height:70px;
-                                                margin-top:30px;margin-left:-5px;
+                                                margin-top:25px;margin-left:1px;
                                                 text-align:center;border:none;}`
 export const ThingButt= styled.button`font-size:22px;width:100%;height:58px;
                         @media (max-width: 600px) {width:33.3%;font-size:23px;}
-                        @media (max-width: 400px) {width:50%;height:35px;}`
+                        @media (max-width: 400px) {width:45%;height:35px;margin:2px;}`
 export const MailForm = styled.form`position:fixed;
                                     top:100px;left:30%;
                                     width:40%;
@@ -65,11 +66,14 @@ export const MailForm = styled.form`position:fixed;
                                     text-align:center;
                                     background: green;`
 export const Input = styled.input`font-size:25px`
+export const CartButts = styled.section`text-align:center;`
+export const Total = styled.p`font-size:28px;margin:0px 25% 20px 25%;
+                              background:black;color:white;
+                     @media (max-width:`
 export const Button = styled.button`font-size:25px;margin:5px;margin-bottom:20px;
                                     padding:5px;`
 export const StyledLink = styled(Link)`font-size: 24px;padding: 10px;
                                        margin-bottom:10px; border:1px solid olive; 
                                        color:black;`
-export const CartButts = styled.section`text-align:center;`
 
 
