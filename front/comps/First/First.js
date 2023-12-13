@@ -13,13 +13,13 @@ export const First = () => {
           
             
             <S.StyledImage alt='seeds' src='./next.svg' 
-                           width={100} height={100}/>
+                           width={0} height={0}/>
           </S.SeedLink>
           
          
             <S.ItemLink className='styledLink' href={'/item-list'}>
                                                  Products <br/>
             <S.StyledImage alt='items' src='./next.svg' 
-                           width={100} height={100}/></S.ItemLink>
+                           width={0} height={0}/></S.ItemLink>
         
   </S.Container>)}

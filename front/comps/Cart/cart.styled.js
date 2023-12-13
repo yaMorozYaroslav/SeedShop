@@ -46,8 +46,8 @@ export const Quantity = styled.p`grid-column:2/5;grid-row:2;
                                                    height:55px;padding:10px;
                                                    margin-top:40px;margin-left:10px;}`
 export const Butts = styled.section`grid-column:5/7;grid-row:1/3;
-                                    border-style:dotted;
-                                    width:100%;height:175px;
+                                    border-style:dashed;
+                                    width:100%;height:174px;
                                     text-align:right;
                                     margin-top:0px;
                      @media (max-width: 1000px) {display:block;}
@@ -58,18 +58,13 @@ export const Butts = styled.section`grid-column:5/7;grid-row:1/3;
                                                 text-align:center;border:none;}`
 export const ThingButt= styled.button`font-size:22px;width:100%;height:58px;
                         @media (max-width: 600px) {width:33.3%;font-size:23px;}
-                        @media (max-width: 400px) {width:45%;height:35px;margin:2px;}`
-export const MailForm = styled.form`position:fixed;
-                                    top:100px;left:30%;
-                                    width:40%;
-                                    padding:20px;
-                                    text-align:center;
-                                    background: green;`
-export const Input = styled.input`font-size:25px`
-export const CartButts = styled.section`text-align:center;`
+                        @media (max-width: 400px) {width:48%;height:35px;margin:2px;}`
+
+export const CartButts = styled.section`text-align:center;
+                         @media (max-width: 400px) {width:110%;margin-left:-5%;}`
 export const Total = styled.p`font-size:28px;margin:0px 25% 20px 25%;
                               background:black;color:white;
-                     @media (max-width:`
+                     @media (max-width:600px) {margin:0px 15% 20px 15%;}`
 export const Button = styled.button`font-size:25px;margin:5px;margin-bottom:20px;
                                     padding:5px;`
 export const StyledLink = styled(Link)`font-size: 24px;padding: 10px;

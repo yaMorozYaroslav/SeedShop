@@ -7,8 +7,9 @@ export const HeadCont = styled.section`display: flex;
                                        justify-content: space-around;
                                                                            
                         @media (max-width: 600px) {display:grid;
-                                                   grid-template-columns: repeat(2, 1fr);
-                                                   height:132px;}`
+                                                   grid-template-columns: repeat(2, 50%);
+                                                   height:132px;}
+                        @media (max-width: 400px) {margin-left:-15px;}`
 export const MainCont = styled.div`background-image:url('/grass.jpg');
                                    background-size: cover;
                                    width:30%;height:30px;padding:20px;
@@ -16,8 +17,10 @@ export const MainCont = styled.div`background-image:url('/grass.jpg');
                                    margin:3px -40px 0px 0px;
                         @media (max-width: 800px) {margin-right:0px;}
                         @media (max-width: 600px) {width:90%;}
-                        @media (max-width: 400px) {width:75%;margin-left:15px;}`
-export const MainTitle = styled.h6`color:white;font-size:75px;margin:-30px 0px 0px 0px;
+                        @media (max-width: 400px) {width:85%;margin-left:15px;}`
+export const MainTitle = styled.h6`color:white;font-size:75px;margin:-32px 0px 0px 0px;
                                   width:30%;
-                          @media (max-width: 800px) {font-size:65px;margin-top:-24px;}
-                          @media (max-width: 400px) {font-size:57px;margin-top:-18px;} `
+                          @media (max-width: 800px) {font-size:65px;
+                                                     margin-left:-5px;margin-top:-24px;}
+                          @media (max-width: 400px) {font-size:57px;
+                                                     margin-left:-10px;margin-top:-18px;} `
