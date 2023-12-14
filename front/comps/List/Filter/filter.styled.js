@@ -1,25 +1,25 @@
 import styled from 'styled-components'
 //const mediaQuery = window.matchMedia("(min-width: 800px)").matches
 //~ display:${p=>!p.$show?'none':'block'};
-export const Container = styled.div`margin-left: 20px`
+export const Container = styled.div`margin-left: 20px;`
 export const Panel = styled.div`
                                 position: fixed;
                                 top: 35%;
                                 left:33%;
                                 border-style:dotted;
                                 text-align:center;
-                                background: lightgreen;
+                                background: green;
                                 width:35%;
-                                height: 225px;
+                                padding:10px;
                                 padding-top:25px;
-                             @media (max-width: 800px) {height:250px;
-                                                        display: block;
+                             @media (max-width: 800px) {display: block;
                                                         width:40%;}
-                             @media (max-width: 600px) {left:25%;width:50%;height:270px;}
-                             @media (max-width: 400px) {width:81%;
-                                                        left:8%;top:250px;}`
+                             @media (max-width: 600px) {left:25%;top:300px;
+                                                        width:50%;}
+                             @media (max-width: 400px) {width:70%;
+                                                        left:11%;top:260px;}`
 
-export const Label = styled.label`margin:0.5%;font-size:24px;color:black;`
+export const Label = styled.label`margin:0.5%;font-size:24px;color:white;`
 export const ShowBut = styled.button`font-size:22px; 
                                      margin-top: -5px;
                                      margin:5px;
@@ -35,5 +35,5 @@ export const FiltBut = styled.button`font-size:22px;
                                      width:150px;
 			                         border: 2px solid white;`
 export const Select = styled.select`font-size:21px;background:white;`
-export const Input = styled.input`margin:0.5%;font-size:22px;width:60%;
+export const Input = styled.input`margin:0.5%;font-size:22px;width:60%;background:yellow;
                              @media (max-width: 600px) {}`
