@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export const Container = styled.div`margin-top:20px;
+export const Container = styled.div`margin-top:20px;padding-bottom:50px;
                          @media (max-width:600px) {margin-top:45px;}`
 export const CartList = styled.div`width: 60%;
                                    margin-left:20%;margin-bottom:30px;
@@ -41,8 +41,9 @@ export const Quantity = styled.p`grid-column:2/5;grid-row:2;
                                  width:80%;padding-top:-15px;
                         @media (max-width: 600px) {grid-column:2/7;
                                                    margin-top:20px;padding-top:-5px;
-                                                   height:70px;width:83%}
+                                                   height:60px;width:83%}
                         @media (max-width: 400px) {grid-column:1/8;grid-row:3;
+                                                   font-size:22px;
                                                    height:55px;padding:10px;
                                                    margin-top:40px;margin-left:10px;}`
 export const Butts = styled.section`grid-column:5/7;grid-row:1/3;
