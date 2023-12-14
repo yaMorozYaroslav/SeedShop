@@ -3,16 +3,14 @@ import React from 'react'
 import {useCartContext} from '../../context/cart/CartState'
 import * as S from './cart.styled'
 import {useRouter} from 'next/navigation'
-import MailForm from './MailForm/MailForm'
+import {MailForm} from './MailForm/MailForm'
 
 export const Cart =()=> {
 	const {cartItems, increase, decrease, 
 		              removeFromCart, clearCart} = useCartContext()
 	const [open, setOpen] = React.useState(false)
 	
-	const {push} = useRouter()
-	
-	const handChange = (e) => setSource({...source, [e.target.name]: e.target.value}) 
+	const {push} = useRouter() 
 	
 	const cleaner = () => {clearCart();
 		                   localStorage.removeItem('cart');
@@ -48,7 +46,7 @@ export const Cart =()=> {
 		   </S.Thing>)}
 	    </S.CartList>
 		      
-		    {open && <S.MailForm setOpen={setOpen}/>}
+		    {open && <MailForm setOpen={setOpen} cartItems={cartItems}/>}
 	                 
 	         <S.CartButts>
 	            <S.Total>total: {counter()}</S.Total>

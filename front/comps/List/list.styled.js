@@ -22,13 +22,13 @@ export const List = styled.ul` display: grid;
                                grid-template-columns: repeat(4,1fr);
                                grid-template-rows: 400px;
                                width: 90%;
-                               margin: 0% 0% 15px -0.4%;
+                               margin: 0% 2% 0% 2%;
                                list-style: none;
                                text-align:center;
                     @media (max-width: 1000px) {grid-template-columns: repeat(2, 1fr)} 
                     @media (max-width: 600px) {margin-left:-4%;}
                     @media (max-width: 400px) {display:block;
-                                               margin-left:-6%;}`
+                                               margin-left:-5%;}`
 export const Cell = styled.li`font-size: 20px; border: 2px solid black;height: 365px;
                               width:85%;padding:10px;margin:10px;background:white;
                     @media (max-width: 600px) {font-size: 18px;padding:3px;

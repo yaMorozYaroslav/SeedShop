@@ -1,11 +1,13 @@
 import React from 'react'
 import emailjs from '@emailjs/browser'
+import * as S from './mail-form.styled'
 
-export const MailForm =(setOpen)=> {
+export const MailForm =({setOpen, cartItems})=> {
     const [source, setSource] = React.useState({user_name:'', user_email:'',
 		                                        user_phone:'', delivery_method:'',
 		                                        items:[]})
 	const form = React.useRef()
+	const handChange = (e) => setSource({...source, [e.target.name]: e.target.value})
 	
 	const sendEmail = e => {
 		e.preventDefault()
@@ -42,6 +44,6 @@ export const MailForm =(setOpen)=> {
 	           </select>
 	       <br />
 	             <S.Button type='submit'>Place The Order</S.Button>
-	             <S.Button onClick={()=>setOpen(false)}>CloseForm</S.Button>
+	             <S.Button type="button" onClick={()=>setOpen(false)}>CloseForm</S.Button>
 	                 </S.Mailer></>                   
 		                    }

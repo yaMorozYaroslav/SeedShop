@@ -5,10 +5,10 @@ export const Container = styled.div`margin-left: 20px`
 export const Panel = styled.div`
                                 position: fixed;
                                 top: 35%;
-                                left:30%;
+                                left:33%;
                                 border-style:dotted;
                                 text-align:center;
-                                background: steelblue;
+                                background: lightgreen;
                                 width:35%;
                                 height: 225px;
                                 padding-top:25px;
@@ -16,8 +16,8 @@ export const Panel = styled.div`
                                                         display: block;
                                                         width:40%;}
                              @media (max-width: 600px) {left:25%;width:50%;height:270px;}
-                             @media (max-width: 400px) {width:60%;
-                                                        right: -10%;}`
+                             @media (max-width: 400px) {width:81%;
+                                                        left:8%;top:250px;}`
 
 export const Label = styled.label`margin:0.5%;font-size:24px;color:black;`
 export const ShowBut = styled.button`font-size:22px; 
@@ -34,6 +34,6 @@ export const FiltBut = styled.button`font-size:22px;
                                      margin:10px;
                                      width:150px;
 			                         border: 2px solid white;`
-export const Select = styled.select`font-size:21px;`
+export const Select = styled.select`font-size:21px;background:white;`
 export const Input = styled.input`margin:0.5%;font-size:22px;width:60%;
                              @media (max-width: 600px) {}`
