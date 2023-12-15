@@ -8,6 +8,9 @@ export const MailForm =({setOpen, cartItems})=> {
 		                                        items:[]})
 	const form = React.useRef()
 	const handChange = (e) => setSource({...source, [e.target.name]: e.target.value})
+	const pickUp = source.delivery_method === 'pick up'
+	const postOffice = source.delivery_method === 'post office'
+	console.log(pickUp)
 	
 	const sendEmail = e => {
 		e.preventDefault()
@@ -37,11 +40,15 @@ export const MailForm =({setOpen, cartItems})=> {
 	                        name='user_email' required/><br/>
 	           <S.Input onChange={handChange} placeholder='PhoneNumber' 
 	                       name='user_phone' required /><br/>
-	           <select onChange={handChange} name='delivery_method' required>
-	               <option value=''/>
-	               <option value='pick up'>Pick Up</option>
-	               <option value='postal office'>Postal Office</option>
-	           </select>
+	           <S.Select onChange={handChange} name='delivery_method' required>
+	               <S.Option value='' hidden={source.delivery_method}>
+	                                          Choose Delivery Method</S.Option>
+	               <S.Option value='pick up'>Pick Up</S.Option>
+	               <S.Option value='post office'>Post Office</S.Option>
+	           </S.Select>
+	           
+	           {pickUp&&<S.Input placeholder='when will you come?'/>}
+	           
 	       <br />
 	             <S.Button type='submit'>Place The Order</S.Button>
 	             <S.Button type="button" onClick={()=>setOpen(false)}>CloseForm</S.Button>

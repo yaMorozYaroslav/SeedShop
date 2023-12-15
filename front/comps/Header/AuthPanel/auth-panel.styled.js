@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export const Name = styled.p`background:black;color:white;
                              border-radius:10px;font-size:23px;
-                             height:28.5px;width:80px;
+                             height:28.5px;
                              padding:17px;padding-bottom:19px;
                              margin:9px;margin-right:-2px;
                     @media (max-width: 600px) {width:85%;

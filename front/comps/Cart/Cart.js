@@ -10,12 +10,15 @@ export const Cart =()=> {
 		              removeFromCart, clearCart} = useCartContext()
 	const [open, setOpen] = React.useState(false)
 	
-	const {push} = useRouter() 
+	const {push} = useRouter()
+	const increaser =(e, id)=>{e.preventDefault();increase(id)} 
+	const decreaser =(e, id)=>{e.preventDefault();decrease(id)} 
 	
 	const cleaner = () => {clearCart();
 		                   localStorage.removeItem('cart');
 		                   setOpen(false);push('/')}
-	const remover = (id) => {removeFromCart(id)
+	const remover = (e, id) => {e.preventDefault()
+		                        removeFromCart(id)
 		                     if(cartItems.length === 1)push('/')}
 		
 	function counter(){
@@ -39,9 +42,9 @@ export const Cart =()=> {
 		                       quantity: {item.quantity}</S.Quantity>
 		                       
 		              <S.Butts> 
-		                <S.ThingButt onClick={()=>increase(item._id)}>increase</S.ThingButt> 
-		                <S.ThingButt onClick={()=>decrease(item._id)}>decrease</S.ThingButt>
-		                <S.ThingButt onClick={()=>remover(item._id)}>remove</S.ThingButt>
+		                <S.ThingButt onClick={(e)=>increaser(e,item._id)}>increase</S.ThingButt> 
+		                <S.ThingButt onClick={(e)=>decreaser(e,item._id)}>decrease</S.ThingButt>
+		                <S.ThingButt onClick={(e)=>remover(e,item._id)}>remove</S.ThingButt>
 		              </S.Butts>                         
 		   </S.Thing>)}
 	    </S.CartList>
