@@ -11,8 +11,8 @@ export const Cart =()=> {
 	const [open, setOpen] = React.useState(false)
 	
 	const {push} = useRouter()
-	const increaser =(e, id)=>{e.preventDefault();increase(id)} 
-	const decreaser =(e, id)=>{e.preventDefault();decrease(id)} 
+	
+	const increaser =(e, id)=>{e.preventDefault();increase(id)}  
 	
 	const cleaner = () => {clearCart();
 		                   localStorage.removeItem('cart');
@@ -43,18 +43,19 @@ export const Cart =()=> {
 		                       
 		              <S.Butts> 
 		                <S.ThingButt onClick={(e)=>increaser(e,item._id)}>increase</S.ThingButt> 
-		                <S.ThingButt onClick={(e)=>decreaser(e,item._id)}>decrease</S.ThingButt>
+		                <S.ThingButt onClick={()=>decrease(item._id)}>decrease</S.ThingButt>
 		                <S.ThingButt onClick={(e)=>remover(e,item._id)}>remove</S.ThingButt>
 		              </S.Butts>                         
 		   </S.Thing>)}
 	    </S.CartList>
 		      
-		    {open && <MailForm setOpen={setOpen} cartItems={cartItems}/>}
+		    {open && <MailForm setOpen={setOpen} cartItems={cartItems}
+				               clearCart={clearCart} push={push}/>}
 	                 
 	         <S.CartButts>
 	            <S.Total>total: {counter()}</S.Total>
-		          <S.Button onClick={()=>setOpen(true)}>Order Items</S.Button>
-		          <S.Button onClick={cleaner}>ClearCart</S.Button><br/>
+		          <S.Button onClick={()=>setOpen(true)}>Buy Items</S.Button>
+		          <S.Button onClick={cleaner}>Clear Cart</S.Button><br/>
 		            <S.StyledLink className='styledLink' href='/'>
 		                                       To Menu</S.StyledLink>
 		     </S.CartButts>
