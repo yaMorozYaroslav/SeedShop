@@ -54,7 +54,6 @@ export function List({servData}){
 	function delUnit(e, id){
 		e.preventDefault();
 		if(isSeed){removeSeed(id)}else{removeItem(id)}
-		//if(!seeds.data&&!items.data)setStaticData(staticData.filter((item) =>item._id !== id))
 		revalidator()
 		fetchUnits()
 		}	

@@ -14,7 +14,7 @@ export const MailForm =({setOpen, cartItems, clearCart, push})=> {
 	const postOffice = source.delivery_method === 'post office'
 	const template = pickUp?'template_gf9ayyc':'template_43tp6mb'
 	console.log(pickUp)
-	
+	//~ const remover = 
 	const sendEmail = e => {
 		e.preventDefault()
 		
