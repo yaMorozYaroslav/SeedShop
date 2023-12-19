@@ -13,11 +13,14 @@ import { usePathname } from 'next/navigation'
 import revalidator from './revalidator'
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import {useLocale} from 'next-intl'
 
 export function List({servData}){
-	
+	const locale = useLocale()
 	const pathname = usePathname()
-	const isSeed = pathname === '/seed-list'
+	
+	const isSeed = pathname === `/${locale}/seed-list`
+	console.log(isSeed)
 	const urlSingle = isSeed?'seeds':'items'
 	
 	const [open, setOpen] = React.useState(false)
@@ -81,7 +84,7 @@ return (<S.Container>
           
           {shown.map(item => (
              <S.Cell  key={item._id}>
-               <S.StyledImage alt='' src={item.photo&&item.photo.length?item.photo:'./next.svg'}
+               <S.StyledImage alt='' src={item.photo&&item.photo.length?item.photo:'/next.svg'}
                               width={100} height={100} priority={true}/><br/>
                <S.TitleLink href={`/${urlSingle}/${item._id}`}
 				             className='styledLink'>{item.title.slice(0, 12)}</S.TitleLink>

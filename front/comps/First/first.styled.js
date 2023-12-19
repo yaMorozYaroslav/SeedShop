@@ -17,6 +17,7 @@ export const SecondLine = styled.p`grid-column:2/7;grid-row:2;
                           @media (max-width: 600px) {grid-column:3/6;font-size:32px;
                                                      margin-top:-10px;}
                           @media (max-width: 400px) {margin-top:5px;font-size:28px;}`
+export const TheLink = styled(Link)`position:absolute;`
 export const ItemLink = styled(Link)`grid-column:5/6;grid-row:3;
                                      font-size:26px;padding:5px;
                         @media (max-width: 400px) {margin-top:-35px;}`

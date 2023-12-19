@@ -1,4 +1,4 @@
-import {First} from '../comps/First/First'
+import {First} from '../../comps/First/First'
 import { Acme } from 'next/font/google'
 const lora = Acme({ subsets: ['latin'], weight:['400'] })
 
