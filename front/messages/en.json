@@ -1,5 +1,13 @@
 {
+ "Header": {
+	    "title":"Flora",
+	    "badge":"Cart"
+	 },
  "First": {
-        "title":"Welcome to our seed store.",
-        "second":"More than 15 years of impeccable service. Now online"}
+        "title":"Welcome to seed store.",
+        "second":"More than 15 years on the market. Now online",
+        "seeds": "Seeds",
+        "goods": "Goods"
+	},
+ "Cart": {}
         }

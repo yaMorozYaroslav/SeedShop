@@ -1,6 +1,7 @@
 import {First} from '../../comps/First/First'
 import { Acme } from 'next/font/google'
-const lora = Acme({ subsets: ['latin'], weight:['400'] })
+import {Russo_One} from 'next/font/google'
+const lora = Russo_One({ subsets: ['cyrillic'], weight:['400'] })
 
 export default async function Main() {
 	

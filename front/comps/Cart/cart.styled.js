@@ -1,6 +1,6 @@
 'use client'
 import styled from 'styled-components'
-import Link from 'next/link'
+import {Link} from '../../navigation'
 import Image from 'next/image'
 
 export const Container = styled.div`margin-top:20px;padding-bottom:50px;

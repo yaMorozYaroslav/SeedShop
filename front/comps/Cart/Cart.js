@@ -4,8 +4,10 @@ import {useCartContext} from '../../context/cart/CartState'
 import * as S from './cart.styled'
 import {useRouter} from 'next/navigation'
 import {MailForm} from './MailForm/MailForm'
+import {useTranslations} from 'next-intl'
 
 export const Cart =()=> {
+	const t = useTranslations('First')
 	const {cartItems, increase, decrease, 
 		              removeFromCart, clearCart} = useCartContext()
 	const [open, setOpen] = React.useState(false)
@@ -34,7 +36,7 @@ export const Cart =()=> {
 		   <S.Thing key={item._id}> 
 		      <S.Number>{index+1}.</S.Number>
               <S.StyledImage alt='' src={item.photo&&item.photo.length
-				                      ?item.photo:'./next.svg'}
+				                      ?item.photo:'/next.svg'}
                               width={0} height={0} priority={true}/>
 		        <S.Title>{item.title} </S.Title><br/>
 		               
