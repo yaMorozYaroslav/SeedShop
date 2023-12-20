@@ -1,4 +1,4 @@
-import {Single} from '../../../comps/Single/Single'
+import {Single} from '../../../../comps/Single/Single'
 
 export const dynamicParams = true
 

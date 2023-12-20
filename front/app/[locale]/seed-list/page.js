@@ -1,14 +1,14 @@
 import {Pages} from '../../../comps/Pages/Pages'
 import {List} from '../../../comps/List/List'
-//~ import { revalidateTag } from 'next/cache'
+import { revalidateTag } from 'next/cache'
 
 
 async function anyName() {
   const allData = 
-     await fetch('https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds?category=', 
+     await fetch('https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds?category=&type=', 
                             { next: { tags: ['seeds'] }})
                                             .then((res) => res.json())
-      //~ revalidateTag('seeds')
+      revalidateTag('seeds')
       
    const someData = allData.data
    const totalPages = allData.totalPages

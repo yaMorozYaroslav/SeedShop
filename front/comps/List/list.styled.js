@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Link from 'next/link'
+import {Link} from '../../navigation'
 import Image from 'next/image'
 
 export const Container = styled.div`background: lightgreen;padding:1px;

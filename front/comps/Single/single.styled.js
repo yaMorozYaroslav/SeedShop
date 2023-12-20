@@ -1,7 +1,7 @@
 'use client'
 
 import styled from 'styled-components'
-import Link from 'next/link'
+import {Link} from '../../navigation'
 
 export const Container = styled.div`text-align:center;margin-top:5%;`
 export const Paragraph = styled.p``

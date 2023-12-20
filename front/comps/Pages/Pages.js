@@ -6,11 +6,15 @@ import {useItemContext} from '../../context/items/ItemState'
 import {useQueryContext} from '../../context/queries/QueryState'
 import * as S from './pages.styled.js'
 import {Button} from './pages.styled.js'
+import {useLocale} from 'next-intl'
 
 
 export function Pages(total) {
+	const locale = useLocale()
 	const pathname = usePathname()
-	const isSeed = pathname === '/seed-list'
+	const isSeed = pathname === `/${locale}/seed-list`
+	
+	console.log(isSeed)
 	//console.log(total)
 	const {state, setPage} = useQueryContext()
 	const {seeds, fetchSeeds} = useSeedContext()

@@ -8,7 +8,7 @@ export const Single =({unit, text})=>{
 	
 	
   return (<S.Container>		              
-             <Image alt='' src={unit.photo&&unit.photo.length?unit.photo:'../next.svg'}
+             <Image alt='' src={unit.photo&&unit.photo.length?unit.photo:'/next.svg'}
                     width={100} height={100} priority={true}/><br/>
              <S.Paragraph>{unit.title}</S.Paragraph>
              <S.Paragraph>{unit._id}</S.Paragraph>

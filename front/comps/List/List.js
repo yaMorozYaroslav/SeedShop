@@ -20,7 +20,7 @@ export function List({servData}){
 	const pathname = usePathname()
 	
 	const isSeed = pathname === `/${locale}/seed-list`
-	console.log(isSeed)
+	//console.log(isSeed)
 	const urlSingle = isSeed?'seeds':'items'
 	
 	const [open, setOpen] = React.useState(false)

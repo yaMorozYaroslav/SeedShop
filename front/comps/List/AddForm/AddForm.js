@@ -9,15 +9,16 @@ import {useQueryContext} from '../../../context/queries/QueryState'
 import * as S from './add-form.styled'
 import revalidator from '../revalidator'
 import {seedTypes, itemTypes} from '../select-types'
+import {useLocale} from 'next-intl'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
 
 export function AddForm({setOpen, currItem, setCurrItem}){
 	
+	const locale = useLocale()
 	const pathname = usePathname()
-	const isSeed = pathname === '/seed-list'
-	//const urlSingle = isSeed?'seeds':'items'
+	const isSeed = pathname === `/${locale}/seed-list`
 	
 	const {addSeed, updateSeed, fetchSeeds} = useSeedContext()
 	const {addItem, updateItem, fetchItems} = useItemContext()
@@ -119,7 +120,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	 </S.Category><br/>
 	
 	  <div className='file-base'>
-	   <label>Photo: </label>
+	   <label>Photo: </label><br/>
       <FileBase          
                          type="file"
                          multiple={false}
