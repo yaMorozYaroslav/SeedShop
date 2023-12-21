@@ -10,7 +10,6 @@ export const dynamicParams = true
     //~ return  arrSeeds
 	//~ }
  async function getSeed(source) {
-  
    const seed = await fetch(
     `https://seed-shop-back-78049b8c30bb.herokuapp.com/seeds/${source}`, 
                             { next: { tags: ['seed'] }})

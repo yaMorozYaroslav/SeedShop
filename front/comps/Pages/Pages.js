@@ -14,7 +14,7 @@ export function Pages(total) {
 	const pathname = usePathname()
 	const isSeed = pathname === `/${locale}/seed-list`
 	
-	console.log(isSeed)
+	//~ console.log(isSeed)
 	//console.log(total)
 	const {state, setPage} = useQueryContext()
 	const {seeds, fetchSeeds} = useSeedContext()

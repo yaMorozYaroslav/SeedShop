@@ -35,7 +35,7 @@ export function List({servData}){
 	const {state, category} = useQueryContext()
 	const units = !items.length?seeds:items
 	const loading = loadingItems||loadingSeeds
-	//console.log(loading)
+	console.log(items)
 	
 	const creator =(id)=> userData.user && (userData.user._id === id)
 	const admin = userData.user && userData.user.role === 'admin'
