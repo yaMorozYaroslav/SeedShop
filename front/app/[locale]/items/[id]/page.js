@@ -1,6 +1,6 @@
 import {Single} from '../../../../comps/Single/Single'
 
-export const dynamicParams = true
+export const dynamicParams = false
 
 export async function generateStaticParams(){
   const items = await fetch(
@@ -12,7 +12,7 @@ export async function generateStaticParams(){
  async function getItem(source) {
   
    const item = await fetch(
-    `https://seed-shop-back-78049b8c30bb.herokuapp.com/items/${source}`, 
+    `https://seed-shop-back-78049b8c30bb.herokuapp.com/items/${source.id}`, 
                             { next: { tags: ['item'] }})
                                             .then((res) => res.json())
       //~ revalidateTag('item')
@@ -20,8 +20,7 @@ export async function generateStaticParams(){
 
        }
 export default async function Item({params}){
-	console.log(params)
-	const item = await getItem(params.id)
+	const item = await getItem(params)
 	
 	return <Single unit={item} text='item-list'/>
 	}
