@@ -4,15 +4,15 @@ export const dynamicParams = false
 
 export async function generateStaticParams(){
   const items = await fetch(
-    'https://seed-shop-back-78049b8c30bb.herokuapp.com/items?category=')
+    'https://seed-shop-back-78049b8c30bb.herokuapp.com/items')
                                         .then((res) => res.json())
                                         
     return items.data.map((item) => ({id: item._id}))
 	}
- async function getItem(source) {
+ async function getItem(params) {
   
    const item = await fetch(
-    `https://seed-shop-back-78049b8c30bb.herokuapp.com/items/${source.id}`, 
+    `https://seed-shop-back-78049b8c30bb.herokuapp.com/items/${params.id}`, 
                             { next: { tags: ['item'] }})
                                             .then((res) => res.json())
       //~ revalidateTag('item')
