@@ -14,10 +14,12 @@ import revalidator from './revalidator'
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import {useLocale} from 'next-intl'
+import { useRouter } from 'next/navigation'
 
 export function List({servData}){
 	const locale = useLocale()
 	const pathname = usePathname()
+	const router = useRouter()
 	
 	const isSeed = pathname === `/${locale}/seed-list`
 	//console.log(isSeed)
@@ -30,8 +32,8 @@ export function List({servData}){
 	
 	const {userData} = useUserContext()
 	const {cartItems, addToCart} = useCartContext()
-	const {fetchItems, loadingItems, items, removeItem} = useItemContext()
-	const {fetchSeeds, loadingSeeds, seeds, removeSeed} = useSeedContext()
+	const {fetchItems, loadingItems, items, removeItem, resetItems} = useItemContext()
+	const {fetchSeeds, loadingSeeds, seeds, removeSeed, resetSeeds} = useSeedContext()
 	const {state, category} = useQueryContext()
 	const units = !items.length?seeds:items
 	const loading = loadingItems||loadingSeeds
@@ -43,7 +45,7 @@ export function List({servData}){
 	const handAdd =(e, s)=> {e.preventDefault();addToCart(s);}
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
-
+    const onMenu = () => router.push('/')
 	/*function addStaticUnit(source){
      setStaticData([...staticData, {...source, id: staticData.length} ])               
 		}
@@ -63,7 +65,7 @@ export function List({servData}){
 
    React.useEffect(()=>{ if(seeds.data && isSeed){setShown(seeds.data)}
 	                    if(items.data && !isSeed){setShown(items.data)}
-	                   },[items, seeds])
+	                  },[items, seeds])
   
 return (<S.Container>
       <S.ListButts>
@@ -72,6 +74,7 @@ return (<S.Container>
 			<S.AddAdmin onClick={()=>setOpen(true)}>
 			                   {!isSeed?'AddItem'
 								       :'AddSeed'}</S.AddAdmin>}
+		<button onClick={()=>onMenu()}>MenuNew</button>
         <S.StyledLink className='styledLink' href={'/'}>Menu</S.StyledLink>
       < /S.ListButts>    
        {open &&

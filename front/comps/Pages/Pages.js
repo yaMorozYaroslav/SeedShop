@@ -21,7 +21,7 @@ export function Pages(total) {
 	const {items, fetchItems} = useItemContext()
 	const activer = (s) => isSeed && seeds.currPage === s||!isSeed && items.currPage === s
 	const idler   = (s) => !seeds.currPage&&!items.currPage&&s===1
-	const newTotal = !seeds.totalPages && !items.totalPages?total.total
+	const dynamicTotal = !seeds.totalPages && !items.totalPages?total.total
 	                                  :(seeds.totalPages||items.totalPages)
     //console.log(state)                       
     function fetchUnits(e){
@@ -33,7 +33,7 @@ export function Pages(total) {
   return (<>
           <S.Container >
              Pages:
-               {[...Array(newTotal)].map((e, i) => 
+               {[...Array(dynamicTotal)].map((e, i) => 
                   <Button $stata={activer(i+1)||idler(i+1)}
                            key={i} value={i+1} onClick={fetchUnits}>
 				                                        {i+1}</Button>)}
