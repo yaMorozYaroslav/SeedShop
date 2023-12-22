@@ -1,15 +1,13 @@
 'use client'
 import * as S from './first.styled'
 import {useTranslations} from 'next-intl'
-//~ import {useLocale} from 'next-intl'
+import {Link} from '../../navigation'
 
         
-export const First = () => {
-	//~ const locale = useLocale()
-        //~ <Link href="/" locale="ua">English</Link>
+export const First = () => { 
 	const t = useTranslations('First')
+	
   return (<S.Container>
-        
         <S.FirstLine>{t('title')}</S.FirstLine>
         <S.SecondLine>{t('second')}</S.SecondLine><br/>
           

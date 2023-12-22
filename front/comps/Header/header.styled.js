@@ -1,6 +1,7 @@
 'use client'
 import styled from 'styled-components'
 import Image from 'next/image'
+import {Link} from '../../navigation'
 
 export const HeadCont = styled.section`display: flex;
                                        text-align:center;
@@ -24,3 +25,5 @@ export const MainTitle = styled.h6`color:white;font-size:55px;margin:-15px 10px 
                                                      margin-left:-5px;margin-top:-10px;}
                           @media (max-width: 400px) {font-size:44px;
                                                      margin-left:-10px;margin-top:-5px;} `
+export const Switch = styled(Link)`position:relative;background:green;
+                                   top: 10px;left: 20%;`

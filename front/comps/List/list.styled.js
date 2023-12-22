@@ -12,10 +12,10 @@ export const AddAdmin = styled.button`font-size:23px;border-style: dashed;paddin
                                       background: white;height:63px;margin-top:5px;
                         @media (max-width: 600px) {font-size:20px;}
                         @media (max-width: 400px) {font-size:18px;padding:5px;}`
-export const StyledLink = styled(Link)`margin:5px;
-                                       font-size: 24px;padding: 15px;
-                                       border:1px solid olive;
-                                       color:black; background:white;
+export const NotLink = styled.p`margin:5px; cursor:pointer;
+                                font-size: 24px;padding: 15px;
+                                border:1px solid olive;
+                                color:black; background:white;
                         @media (max-width: 400px){font-size:20px; padding: 18px;
                                                   padding-left:5px;padding-right:5px}`                                    
 export const List = styled.ul` display: grid;

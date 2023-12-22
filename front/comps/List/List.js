@@ -1,19 +1,20 @@
 'use client'
 import React from 'react'
-import Link from 'next/link'
 import * as S from './list.styled'
 import {AddForm} from './AddForm/AddForm'
 import {Filter} from './Filter/Filter'
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+
 import {useItemContext} from '../../context/items/ItemState'
 import {useSeedContext} from '../../context/seeds/SeedState'
 import {useQueryContext} from '../../context/queries/QueryState'
 import {useUserContext} from '../../context/user/UserState'
 import {useCartContext} from '../../context/cart/CartState'
-import { usePathname } from 'next/navigation'
+
 import revalidator from './revalidator'
-import Box from '@mui/material/Box';
-import LinearProgress from '@mui/material/LinearProgress';
-import {useLocale} from 'next-intl'
+import { useLocale } from 'next-intl'
+import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 
 export function List({servData}){
@@ -45,7 +46,7 @@ export function List({servData}){
 	const handAdd =(e, s)=> {e.preventDefault();addToCart(s);}
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
-    const onMenu = () => router.push('/')
+    const onMenu = () => {router.push('/');if(isSeed){resetSeeds()}else{resetItems()}}
 	/*function addStaticUnit(source){
      setStaticData([...staticData, {...source, id: staticData.length} ])               
 		}
@@ -74,8 +75,7 @@ return (<S.Container>
 			<S.AddAdmin onClick={()=>setOpen(true)}>
 			                   {!isSeed?'AddItem'
 								       :'AddSeed'}</S.AddAdmin>}
-		<button onClick={()=>onMenu()}>MenuNew</button>
-        <S.StyledLink className='styledLink' href={'/'}>Menu</S.StyledLink>
+        <S.NotLink onClick={()=>onMenu()}>Menu</S.NotLink>
       < /S.ListButts>    
        {open &&
 		     <AddForm setOpen={setOpen} 
@@ -87,10 +87,11 @@ return (<S.Container>
           
           {shown.map(item => (
              <S.Cell  key={item._id}>
-               <S.StyledImage alt='' src={item.photo&&item.photo.length?item.photo:'/next.svg'}
+               <S.StyledImage alt='' src={item.photo&&item.photo.length
+				                         ?item.photo:'/next.svg'}
                               width={100} height={100} priority={true}/><br/>
                <S.TitleLink href={`/${urlSingle}/${item._id}`}
-				             className='styledLink'>{item.title.slice(0, 12)}</S.TitleLink>
+				            className='styledLink'>{item.title.slice(0, 12)}</S.TitleLink>
                <S.Parag>category: {item.category||'undefined'}</S.Parag>
                <S.Parag>type: {item.type||'undefined'}</S.Parag>
                <S.Parag>price: {item.price}</S.Parag>
