@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-//const mediaQuery = window.matchMedia("(min-width: 800px)").matches
-//~ display:${p=>!p.$show?'none':'block'};
+
 export const Container = styled.div`margin-left: 20px;`
 export const Panel = styled.div`
                                 position: fixed;

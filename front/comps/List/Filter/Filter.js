@@ -6,11 +6,13 @@ import {useSeedContext} from '../../../context/seeds/SeedState'
 import * as S from './filter.styled'
 import {seedTypes, itemTypes} from '../select-types'
 import Fade from '@mui/material/Fade';
+import { useLocale } from 'next-intl'
 
 export const Filter =(props)=> {
-       
+    
+	const locale = useLocale()   
 	const pathname = usePathname()
-	const isSeed = pathname === '/seed-list'
+	const isSeed = pathname === `/${locale}/seed-list`
 	
 	const [show, setShow] = React.useState(false)
 	
