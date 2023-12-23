@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import {Link} from '../../navigation'
 import Image from 'next/image'
 
-export const Container = styled.div`background: lightgreen;padding:1px;
-                                    margin-bottom:10px;margin-top:6px;
+export const Container = styled.div`padding:1px;
+                                    margin-bottom:10px;margin-top:-15px;
                          @media (max-width:600px) {margin-top:30px;}
                          @media (max-width:400px) {}`
 export const ListButts = styled.section`display:flex;margin-top:5px;

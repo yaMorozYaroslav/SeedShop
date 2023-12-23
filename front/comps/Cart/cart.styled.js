@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Link} from '../../navigation'
 import Image from 'next/image'
 
-export const Container = styled.div`margin-top:20px;padding-bottom:50px;
+export const Container = styled.div`margin-top:30px;padding-bottom:50px;
                          @media (max-width:600px) {margin-top:45px;}`
 export const CartList = styled.div`width: 60%;
                                    margin-left:20%;margin-bottom:30px;
@@ -63,7 +63,7 @@ export const ThingButt= styled.button`font-size:22px;width:100%;height:58px;
 
 export const CartButts = styled.section`text-align:center;
                          @media (max-width: 400px) {width:110%;margin-left:-5%;}`
-export const Total = styled.p`font-size:28px;margin:0px 25% 20px 25%;
+export const Total = styled.p`font-size:28px;margin:-5px 25% 20px 25%;
                               background:black;color:white;
                      @media (max-width:600px) {margin:0px 15% 20px 15%;}`
 export const Button = styled.button`font-size:25px;margin:5px;margin-bottom:20px;
