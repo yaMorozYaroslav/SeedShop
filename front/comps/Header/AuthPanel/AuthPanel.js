@@ -5,8 +5,6 @@ import decode from 'jwt-decode'
 import * as S from './auth-panel.styled'
 import {useTranslations} from 'next-intl'
 
-
-
 import {useUserContext} from '../../../context/user/UserState'
  
 export function AuthPanel(){
@@ -63,7 +61,7 @@ export function AuthPanel(){
 	    <S.Name>{userData.user?userData.user.name:'Incognito'}</S.Name>
 	    {userData.user
 			?<S.LogBut className='styledLink'
-			           onClick={()=>{logout();removeProfile();}}>Logout</S.LogBut>
+			           onClick={()=>{logout();removeProfile();}}>{t('logout')}</S.LogBut>
 			:<S.StyledLink className='styledLink'
 			                         href={'/auth'} className='styledLink'>
 			                                      <S.LogBut>{t('login')}</S.LogBut></S.StyledLink>}
