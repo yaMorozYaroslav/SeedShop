@@ -1,7 +1,8 @@
 {
  "Header": {
 	    "title":"Флора",
-	    "badge":"Карт"
+	    "badge":"Карт",
+	    "login":"Логін"
 	 },
  "First": {
         "title":"Ласкаво просимо.",
@@ -10,8 +11,8 @@
         "goods": "Товари"
         },
  "List": {
-	    "show_filters": "Показати фільтри",
-	    "hide_filters": "Приховати фільтри"
+	    "show_filters": "Фільтри",
+	    "add_butt": "Додати"
 	 },
  "Cart": {}
         }

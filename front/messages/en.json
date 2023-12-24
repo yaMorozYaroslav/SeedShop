@@ -1,7 +1,8 @@
 {
  "Header": {
 	    "title":"Flora",
-	    "badge":"Cart"
+	    "badge":"Cart",
+	    "login":"Login"
 	 },
  "First": {
         "title":"Welcome to seed store.",
@@ -10,8 +11,7 @@
         "goods": "Goods"
 	},
  "List": {
-	    "show_filters": "Show filters",
-	    "hide_filters": "Hide filters"
+	    "show_filters": "Filters"
 	 },
  "Cart": {}
         }

@@ -16,7 +16,8 @@ export const LogBut = styled.div`padding:15px;padding-bottom:13px;
                                  border:2px solid olive;border-radius:10px;
                                  cursor:pointer;
                                  font-size:24px;
-                      @media (max-width: 600px) {margin:5px 2% 0% 15%;}`
+                      @media (max-width: 600px) {margin:5px 5% 0% 15%;}
+                      @media (max-width: 400px) {margin-left:10%;margin-right:10%;}`
 export const StyledLink = styled(Link)`
                           @media (max-width:600px){margin-left:10px;width:95%;}
                           @media (max-width:400px){margin-left:10px;width:100%;}`

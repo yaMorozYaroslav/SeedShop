@@ -3,13 +3,14 @@
 import React from 'react'
 import decode from 'jwt-decode'
 import * as S from './auth-panel.styled'
+import {useTranslations} from 'next-intl'
 
 
 
 import {useUserContext} from '../../../context/user/UserState'
  
 export function AuthPanel(){
-	
+ const t = useTranslations('Header')
  const {userData, setFromStorage, signIn,
 	    signUp, logout, error, clearError} =  useUserContext()
     	
@@ -65,6 +66,6 @@ export function AuthPanel(){
 			           onClick={()=>{logout();removeProfile();}}>Logout</S.LogBut>
 			:<S.StyledLink className='styledLink'
 			                         href={'/auth'} className='styledLink'>
-			                                      <S.LogBut>Login</S.LogBut></S.StyledLink>}
+			                                      <S.LogBut>{t('login')}</S.LogBut></S.StyledLink>}
 		 </>
 		}

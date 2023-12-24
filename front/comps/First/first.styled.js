@@ -8,7 +8,7 @@ export const Container = styled.div`text-align: center;margin-top:15px; display:
                                     column-gap: 10px;
                          @media (max-width: 400px) {column-gap:0px;}`
 export const FirstLine = styled.p`grid-column: 2/7;grid-row:1;font-size: 40px;
-                         @media (max-width: 800px) {grid-column:2/6;}
+                         @media (max-width: 800px) {grid-column:3/6;}
                          @media (max-width: 600px) {font-size:35px;margin-top:40px;}
                          @media (max-width: 400px) {grid-column:3/6; font-size:35px;}`
 export const SecondLine = styled.p`grid-column:2/7;grid-row:2;

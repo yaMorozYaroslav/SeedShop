@@ -107,6 +107,6 @@ export const Filter =(props)=> {
 	     
 	    <S.ShowBut onMouseOver={changeBorder}  
 		           onClick={()=>setShow(!show)}>
-		                 {show?t("show_filters"):'ShowFilters'}</S.ShowBut>
+		                 {!show?t("show_filters"):'X'}</S.ShowBut>
 	     </S.Container>
 	}

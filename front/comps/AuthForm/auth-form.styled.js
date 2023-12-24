@@ -8,8 +8,8 @@ export const Container = styled.div`display: grid; justify-content: center; padd
                          @media (max-width: 1000px) {}`
 export const Form = styled.form`grid-column: 3/5;
                                 padding: 10px;
-                                padding-bottom:2%;
-                                margin-top: 5%;
+                                padding-bottom:10px;
+                                margin-top: 25px;
                                 text-align: center;
                                 border: 2px solid brown;
                     @media (max-width: 1000px) {grid-column:2/6;}
