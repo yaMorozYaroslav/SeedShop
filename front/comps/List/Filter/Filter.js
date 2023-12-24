@@ -7,9 +7,11 @@ import * as S from './filter.styled'
 import {seedTypes, itemTypes} from '../select-types'
 import Fade from '@mui/material/Fade';
 import { useLocale } from 'next-intl'
+import {useTranslations} from 'next-intl'
 
 export const Filter =(props)=> {
     
+	const t = useTranslations('List')
 	const locale = useLocale()   
 	const pathname = usePathname()
 	const isSeed = pathname === `/${locale}/seed-list`
@@ -105,6 +107,6 @@ export const Filter =(props)=> {
 	     
 	    <S.ShowBut onMouseOver={changeBorder}  
 		           onClick={()=>setShow(!show)}>
-		                 {show?'HideFilters':'ShowFilters'}</S.ShowBut>
+		                 {show?t("show_filters"):'ShowFilters'}</S.ShowBut>
 	     </S.Container>
 	}

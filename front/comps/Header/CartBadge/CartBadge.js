@@ -6,26 +6,29 @@ import Badge from '@mui/material/Badge'
 import CartIcon from '@mui/icons-material/ShoppingCart'
 import {Link} from '../../../navigation'
 import { usePathname } from 'next/navigation'
+import { useLocale } from 'next-intl'
 import {useTranslations} from 'next-intl'
 
 
 export const CartBadge = () => {
 const t = useTranslations('Header')
+const locale = useLocale()
 const {cartItems, setFromLocale} = useCartContext()
 const pathname = usePathname()
 
-const setCartToStorage = e => {
+
+const setCartToStorage = e => {	localStorage.setItem(
+	                            'cart', JSON.stringify(cartItems))	}
 	
-	localStorage.setItem('cart', JSON.stringify(cartItems))
-	}
 React.useEffect(()=>{if(cartItems.length)setCartToStorage()},[cartItems])
+
 React.useEffect(()=>{
 	 const localCart = JSON.parse(localStorage.getItem('cart'))
 	 if(localCart){setFromLocale(localCart)}
 	                },[])
-
 return (<S.Container>
-        <Link className='styledLink' href={!cartItems.length?pathname:'/shop-cart'}>
+        <Link className='styledLink' href={!cartItems.length
+			                         ?pathname.substr(4,20)||'/':'/shop-cart'}>
         <S.Label>{t('badge')}</S.Label>
      <Badge color='error'
             overlap="rectangular"

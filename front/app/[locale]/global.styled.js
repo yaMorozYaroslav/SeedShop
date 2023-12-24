@@ -8,5 +8,5 @@ button,select{cursor: pointer}
 .styledLink:hover{color:green;}
 .file-base label{},
           input[type="file" i]::-webkit-file-upload-button{border-radius:20px;
-                                                         margin-left:10%;}
+                                                         margin-left:5%;}
 `

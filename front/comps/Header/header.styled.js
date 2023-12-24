@@ -25,7 +25,3 @@ export const MainTitle = styled.h6`color:white;font-size:55px;margin:-15px 10px 
                                                      margin-left:-5px;margin-top:-10px;}
                           @media (max-width: 400px) {font-size:44px;
                                                      margin-left:-10px;margin-top:-5px;} `
-export const Switch = styled(Link)`position:relative;color:black;
-                                   top: 20px;right:-60%;
-                                   padding-left:10px;padding-right:10px;border:solid;
-                      @media (max-width: 600px) {top:30px;}`

@@ -14,6 +14,7 @@ import {useCartContext} from '../../context/cart/CartState'
 
 import revalidator from './revalidator'
 import { useLocale } from 'next-intl'
+
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 
@@ -38,7 +39,7 @@ export function List({servData}){
 	const {state, category} = useQueryContext()
 	const units = !items.length?seeds:items
 	const loading = loadingItems||loadingSeeds
-	console.log(items)
+	//~ console.log(items)
 	
 	const creator =(id)=> userData.user && (userData.user._id === id)
 	const admin = userData.user && userData.user.role === 'admin'
