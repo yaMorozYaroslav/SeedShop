@@ -14,8 +14,9 @@ export function Header(){
 	return <><S.HeadCont>
 	                <S.MainCont><S.MainTitle>{t("title")}</S.MainTitle></S.MainCont>              
 	                   <CartBadge/> 
+	                   <LangSwitch/>
 	                   <AuthPanel/>
 	                           </S.HeadCont>
-	          <LangSwitch/>
+	          
 	       </>
 	}

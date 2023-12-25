@@ -2,8 +2,8 @@
 import styled from 'styled-components'
 import {Link} from '../../../navigation'
 
-export const Switch = styled(Link)`position:relative;color:black;
-                                   top: 5px;right:-70%;
-                                   padding-left:10px;padding-right:10px;border:solid;
-                      @media (max-width: 600px) {top:25px;right:-65%;}
-                      @media (max-width: 400px) {top:25px;right:-25%;}`
+export const Switch = styled(Link)`color:black;margin-left:20px;margin-top:8px;
+                                   height:35px;
+                                   padding-top:13px;border:solid;
+                      @media (max-width: 600px) {width:40%;}
+                      @media (max-width: 400px) {}`

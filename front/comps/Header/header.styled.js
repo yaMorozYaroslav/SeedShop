@@ -8,7 +8,7 @@ export const HeadCont = styled.section`display: flex;
                                        justify-content: space-around;
                                                                            
                         @media (max-width: 600px) {display:grid;
-                                                   grid-template-columns: repeat(2, 50%);
+                                                   grid-template-columns: repeat(3, 33.3%);
                                                    height:132px;}
                         @media (max-width: 400px) {margin-left:-15px;}`
 export const MainCont = styled.div`background-image:url('/grass.jpg');
@@ -17,7 +17,7 @@ export const MainCont = styled.div`background-image:url('/grass.jpg');
                                    border:solid;border-radius:10px;
                                    margin:3px -40px 0px 0px;
                         @media (max-width: 1000px) {margin-right:0px;}
-                        @media (max-width: 600px) {width:90%;}
+                        @media (max-width: 600px) {grid-column: 1/3;width:90%;}
                         @media (max-width: 400px) {width:85%;margin-left:15px;}`
 export const MainTitle = styled.h6`color:white;font-size:55px;margin:-15px 10px 0px 0px;
                                   width:30%;

@@ -58,7 +58,7 @@ export function AuthPanel(){
 	        },[userData, profile, logout])
 	       // console.log(userData)
 	    return <>
-	    <S.Name>{userData.user?userData.user.name:'Incognito'}</S.Name>
+	    <S.Name>{userData.user?userData.user.name.slice(0,4):'NoName'}</S.Name>
 	    {userData.user
 			?<S.LogBut className='styledLink'
 			           onClick={()=>{logout();removeProfile();}}>{t('logout')}</S.LogBut>

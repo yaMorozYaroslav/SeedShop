@@ -10,7 +10,7 @@ export const LangSwitch =()=> {
   const locale = useLocale()
   return <S.Switch href={p.substr(3,20)||'/'} 
                    locale={'en'} className='styledLink'>
-	                                              English</S.Switch>
+	                                              EN</S.Switch>
 	}
 
 
