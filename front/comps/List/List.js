@@ -15,8 +15,8 @@ import {useCartContext} from '../../context/cart/CartState'
 import revalidator from './revalidator'
 import { useLocale } from 'next-intl'
 
-import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/navigation'
+import { usePathname } from '../../navigation'
+import { useRouter } from '../../navigation'
 import {useTranslations} from 'next-intl'
 
 export function List({servData}){
@@ -26,7 +26,7 @@ export function List({servData}){
 	const router = useRouter()
 	console.log(pathname)
 	const isSeed = pathname === `/${locale}/seed-list`
-	//console.log(isSeed)
+	console.log(pathname.slice(0,3))
 	const urlSingle = isSeed?'seeds':'items'
 	
 	const [open, setOpen] = React.useState(false)
@@ -48,7 +48,7 @@ export function List({servData}){
 	const handAdd =(e, s)=> {e.preventDefault();addToCart(s);}
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
-    const onMenu = () => {router.replace('/', {locale: locale });if(isSeed){
+    const onMenu = () => {router.push(pathname.slice(0,3));if(isSeed){
 							            resetSeeds()}else{resetItems()}}
 	
 	function fetchUnits(){if(isSeed){fetchSeeds(state)}
