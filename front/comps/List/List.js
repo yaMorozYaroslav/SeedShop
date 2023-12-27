@@ -48,7 +48,7 @@ export function List({servData}){
 	const handAdd =(e, s)=> {e.preventDefault();addToCart(s);}
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
-    const onMenu = () => {router.push(pathname.slice(0,3));if(isSeed){
+    const onMenu = () => {router.push('/');if(isSeed){
 							            resetSeeds()}else{resetItems()}}
 	
 	function fetchUnits(){if(isSeed){fetchSeeds(state)}

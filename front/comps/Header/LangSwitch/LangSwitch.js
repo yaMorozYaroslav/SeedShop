@@ -10,20 +10,21 @@ export const LangSwitch =()=> {
   
   const [open, setOpen] = React.useState(false)
   
-  const langStrings = ["en","ua","ru"]
-  const listChanger = (ind) => langStrings.find(elem=>elem === p.slice(1,3))
-  console.log(locale)
+  let langStrings = ["en","ua","ru"]
+  let filteredStrings = langStrings.filter(elem=>elem !== locale)
+ 
+   console.log(filteredStrings)
   
-  const handSwitch =(thing)=> {router.replace(p, {locale: thing });
-	                           console.log(thing);console.log(listChanger(thing)) }
-
-  const shouldShow = (str) =>  !open? str!==locale: false
+  const handSwitch =(thing)=> {router.push(p, {locale: thing });
+	                            filteredStrings.unshift(thing)
+	                           }
                                  
   return <S.Ul onClick={()=>setOpen(!open)}>
-            {langStrings.map((string, i)=>
+                     {!open && locale}
+                     {filteredStrings.map((string, i)=>
 				           <S.Li key={i} onClick={()=>handSwitch(string)}
-				               value={string} hidden={shouldShow(string)}
-			                                                       >{string}</S.Li>)}
+				                 value={string} hidden={!open}
+			                                                  >{string}</S.Li>)}
         </S.Ul>
          
 	     
