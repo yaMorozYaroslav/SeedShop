@@ -12,7 +12,13 @@
         "goods": "Goods"
 	},
  "List": {
-	    "show_filters": "Filters"
+	    "show_filters": "Filters",
+	    "add_butt": "Add",
+	    "menu": "Menu",
+	    "category": "category",
+	    "type": "type",
+	    "price": "price"		    
 	 },
+ "Pages":{"pages":"Pages"},
  "Cart": {}
         }

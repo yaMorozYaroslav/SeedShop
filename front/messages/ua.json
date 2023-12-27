@@ -13,7 +13,12 @@
         },
  "List": {
 	    "show_filters": "Фільтри",
-	    "add_butt": "Додати"
+	    "add_butt": "Додати",
+	    "menu": "Меню",
+	    "category": "категорія",
+	    "type": "тип",
+	    "price": "ціна"	    
 	 },
+ "Pages":{"pages": "Сторінки"},
  "Cart": {}
         }

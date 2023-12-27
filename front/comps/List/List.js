@@ -17,12 +17,14 @@ import { useLocale } from 'next-intl'
 
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
+import {useTranslations} from 'next-intl'
 
 export function List({servData}){
+	const t = useTranslations('List')
 	const locale = useLocale()
 	const pathname = usePathname()
 	const router = useRouter()
-	
+	console.log(pathname)
 	const isSeed = pathname === `/${locale}/seed-list`
 	//console.log(isSeed)
 	const urlSingle = isSeed?'seeds':'items'
@@ -39,22 +41,16 @@ export function List({servData}){
 	const {state, category} = useQueryContext()
 	const units = !items.length?seeds:items
 	const loading = loadingItems||loadingSeeds
-	//~ console.log(items)
 	
 	const creator =(id)=> userData.user && (userData.user._id === id)
 	const admin = userData.user && userData.user.role === 'admin'
-	//~ console.log(admin)
+	
 	const handAdd =(e, s)=> {e.preventDefault();addToCart(s);}
 	
 	const handEdit =(e, s)=> {e.preventDefault(); setCurrItem(s);setOpen(true)}
-    const onMenu = () => {router.push('/');if(isSeed){resetSeeds()}else{resetItems()}}
-	/*function addStaticUnit(source){
-     setStaticData([...staticData, {...source, id: staticData.length} ])               
-		}
-	function updStaticUnit(source){
-     setStaticData(staticData.map((item) => 
-                     (item._id === currItem._id ? source : item)))
-		}*/	
+    const onMenu = () => {router.replace('/', {locale: locale });if(isSeed){
+							            resetSeeds()}else{resetItems()}}
+	
 	function fetchUnits(){if(isSeed){fetchSeeds(state)}
 		                       else{fetchItems(state)} } 
 		                       
@@ -74,9 +70,8 @@ return (<S.Container>
         <Filter/>
         {admin &&       
 			<S.AddAdmin onClick={()=>setOpen(true)}>
-			                   {!isSeed?'AddItem'
-								       :'AddSeed'}</S.AddAdmin>}
-        <S.NotLink onClick={()=>onMenu()}>Menu</S.NotLink>
+			                   {t('add_butt')}</S.AddAdmin>}
+        <S.NotLink onClick={()=>onMenu()}>{t('menu')}</S.NotLink>
       < /S.ListButts>    
        {open &&
 		     <AddForm setOpen={setOpen} 
@@ -93,9 +88,9 @@ return (<S.Container>
                               width={100} height={100} priority={true}/><br/>
                <S.TitleLink href={`/${urlSingle}/${item._id}`}
 				            className='styledLink'>{item.title.slice(0, 12)}</S.TitleLink>
-               <S.Parag>category: {item.category||'undefined'}</S.Parag>
-               <S.Parag>type: {item.type||'undefined'}</S.Parag>
-               <S.Parag>price: {item.price}</S.Parag>
+               <S.Parag>{t('category')}: {item.category||'undefined'}</S.Parag>
+               <S.Parag>{t('type')}: {item.type||'undefined'}</S.Parag>
+               <S.Parag>{t('price')}: {item.price}</S.Parag>
                
                <S.AddButt onClick={(e)=>handAdd(e,item)}>AddToCart</S.AddButt><br/>
                {(creator(item.creator)||admin)

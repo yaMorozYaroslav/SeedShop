@@ -7,9 +7,11 @@ import {useQueryContext} from '../../context/queries/QueryState'
 import * as S from './pages.styled.js'
 import {Button} from './pages.styled.js'
 import {useLocale} from 'next-intl'
+import {useTranslations} from 'next-intl'
 
 
 export function Pages(total) {
+	const t = useTranslations("Pages")
 	const locale = useLocale()
 	const pathname = usePathname()
 	const isSeed = pathname === `/${locale}/seed-list`
@@ -32,7 +34,7 @@ export function Pages(total) {
 		} 
   return (<>
           <S.Container >
-             Pages:
+             {t("pages")}:
                {[...Array(dynamicTotal)].map((e, i) => 
                   <Button $stata={activer(i+1)||idler(i+1)}
                            key={i} value={i+1} onClick={fetchUnits}>

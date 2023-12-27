@@ -6,13 +6,13 @@ export const Name = styled.p`background:black;color:white;
                              border-radius:10px;font-size:23px;
                              height:29.5px;
                              padding:17px;padding-bottom:14px;
-                             margin:11px;margin-right:-2px;
+                             margin:8px 11px 11px -5px;
                     @media (max-width: 600px) {margin:6px 20% 0% -20%;}
                     @media (max-width: 400px) {}`
-export const LogBut = styled.div`padding:15px 2% 13px 2%;
+export const LogBut = styled.div`padding:15px 5% 13px 5%;
                                  text-align:center;
-                                 margin-top:11px;
-                                 height:29px;
+                                 margin:8px 0px 0px -25%;
+                                 height:29px;width:120%;
                                  border:2px solid olive;border-radius:10px;
                                  cursor:pointer;
                                  font-size:24px;
