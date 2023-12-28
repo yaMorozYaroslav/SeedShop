@@ -11,19 +11,21 @@ export const LangSwitch =()=> {
   const [open, setOpen] = React.useState(false)
   
   let langStrings = ["en","ua","ru"]
-  let filteredStrings = langStrings.filter(elem=>elem !== locale)
- 
-   console.log(filteredStrings)
+  
+  const [strings, setStrings] = React.useState(langStrings)
   
   const handSwitch =(thing)=> {router.push(p, {locale: thing });
-	                            filteredStrings.unshift(thing)
-	                           }
-                                 
+	                        const filteredStrings = langStrings.filter(
+	                                                           elem=>elem !== thing)
+	                            setStrings([thing,...filteredStrings])
+	                           	   console.log(strings)   }              
+  const shouldShow =(str)=> !open&&str!==locale                       	                           
+              //~ {!open && locale}                   
   return <S.Ul onClick={()=>setOpen(!open)}>
-                     {!open && locale}
-                     {filteredStrings.map((string, i)=>
+                     
+                     {strings.map((string, i)=>
 				           <S.Li key={i} onClick={()=>handSwitch(string)}
-				                 value={string} hidden={!open}
+				                 value={string} hidden={shouldShow(string)}
 			                                                  >{string}</S.Li>)}
         </S.Ul>
          

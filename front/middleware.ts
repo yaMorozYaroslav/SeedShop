@@ -6,13 +6,13 @@ import {locales, localePrefix} from './navigation';
 //~ }
 export default createMiddleware({
   //~ locales: ['en', 'ua'],
-  defaultLocale: 'en',
+  defaultLocale: 'ua',
   localePrefix,
   locales
 });
  
 export const config = {
   // Match only internationalized pathnames
-  matcher: ['/', '/(ua|en|ru)/:path*']
-   //~ matcher: ['/((?!api|_next|.*\\..*).*)']
+  //~ matcher: ['/', '/(ua|en|ru)/:path*']
+   matcher: ['/((?!api|_next|.*\\..*).*)']
 };
