@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import {Link} from '../../navigation'
 import Image from 'next/image'
 
-export const Container = styled.div`position:absolute;
-                                    text-align: center;top:115px; display: grid;
+export const Container = styled.div`text-align: center;margin-top:25px; display: grid;
                                     grid-template-columns: repeat(7, 1fr);
                                     grid-template-rows: 0fr 1fr 1.5fr;
                                     column-gap: 10px;

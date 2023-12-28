@@ -11,12 +11,12 @@ export function Header(){
   
   React.useEffect(()=>{
 	    },[])
-	return <><S.HeadCont>
+	return <div style={{position:'absolute',width:'98%'}}><S.HeadCont>
 	                <S.MainCont><S.MainTitle>{t("title")}</S.MainTitle></S.MainCont>              
 	                   <CartBadge/> 
 	                   <LangSwitch/>
 	                   <AuthPanel/>
 	                           </S.HeadCont>
 	          
-	       </>
+	       </div>
 	}

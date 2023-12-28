@@ -24,9 +24,8 @@ export function List({servData}){
 	const locale = useLocale()
 	const pathname = usePathname()
 	const router = useRouter()
-	console.log(pathname)
 	const isSeed = pathname === `/${locale}/seed-list`
-	console.log(pathname.slice(0,3))
+	
 	const urlSingle = isSeed?'seeds':'items'
 	
 	const [open, setOpen] = React.useState(false)

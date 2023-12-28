@@ -21,14 +21,14 @@ export const LangSwitch =()=> {
 	                           	   console.log(strings)   }              
   const shouldShow =(str)=> !open&&str!==locale                       	                           
               //~ {!open && locale}                   
-  return <S.Ul onClick={()=>setOpen(!open)}>
+  return  <S.Ul onClick={()=>setOpen(!open)} onMouseLeave={()=>setOpen(false)}>
+               
                      
                      {strings.map((string, i)=>
 				           <S.Li key={i} onClick={()=>handSwitch(string)}
 				                 value={string} hidden={shouldShow(string)}
 			                                                  >{string}</S.Li>)}
-        </S.Ul>
-         
+          </S.Ul>
 	     
 	}
 
