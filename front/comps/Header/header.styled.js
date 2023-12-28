@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import {Link} from '../../navigation'
 
-export const HeadCont = styled.section`display: flex;
-                                       text-align:center;
+export const HeadCont = styled.section`display: flex;position:absolute;
+                                       width:98%;text-align:center;
                                        justify-content: space-around;
                                                                            
                         @media (max-width: 600px) {display:grid;

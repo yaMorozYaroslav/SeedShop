@@ -3,10 +3,9 @@ import styled from 'styled-components'
 import {Link} from '../../navigation'
 import Image from 'next/image'
 
-export const Container = styled.div`margin-top:30px;padding-bottom:50px;
-                         @media (max-width:600px) {margin-top:45px;}`
-export const CartList = styled.div`width: 60%;
-                                   margin-left:20%;margin-bottom:30px;
+export const Container = styled.div`position:absolute;top:100px;width:100%;
+                         @media (max-width:600px) {top:170px;}`
+export const CartList = styled.section`width: 60%;margin:0px 0% 30px 20%;
                         @media (max-width: 1000px) {margin-left:15%;width:70%}
                         @media (max-width: 800px) {margin-left:5%;width:90%}
                         @media (max-width: 600px) {margin-left:3%;width:94%;}`
