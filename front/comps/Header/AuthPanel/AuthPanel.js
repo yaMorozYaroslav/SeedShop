@@ -4,16 +4,18 @@ import React from 'react'
 import decode from 'jwt-decode'
 import * as S from './auth-panel.styled'
 import {useTranslations} from 'next-intl'
+import {useRouter} from '../../../navigation'
 
 import {useUserContext} from '../../../context/user/UserState'
  
 export function AuthPanel(){
+ const r = useRouter()
  const t = useTranslations('Header')
  const {userData, setFromStorage, signIn,
 	    signUp, logout, error, clearError} =  useUserContext()
     	
     	const removeProfile = () => localStorage.removeItem('profile')
-    
+        const onLogin = () => r.push('/auth') 
     let profile
 	let currentUser
 	
@@ -62,8 +64,6 @@ export function AuthPanel(){
 	    {userData.user
 			?<S.LogBut className='styledLink'
 			           onClick={()=>{logout();removeProfile();}}>{t('logout')}</S.LogBut>
-			:<S.StyledLink className='styledLink'
-			                         href={'/auth'} className='styledLink'>
-			                                      <S.LogBut>{t('login')}</S.LogBut></S.StyledLink>}
+			:<S.LogBut onClick={()=>onLogin()}>{t('login')}</S.LogBut>}
 		 </>
 		}

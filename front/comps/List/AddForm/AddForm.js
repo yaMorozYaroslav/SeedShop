@@ -10,11 +10,16 @@ import * as S from './add-form.styled'
 import revalidator from '../revalidator'
 import {seedTypes, itemTypes} from '../select-types'
 import {useLocale} from 'next-intl'
+import {convertBase64} from './convert-base64'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
 
 export function AddForm({setOpen, currItem, setCurrItem}){
+	const uploadImage = async(e) => {
+		const file = e.target.file
+		console.log(file)
+		}
 	
 	const locale = useLocale()
 	const pathname = usePathname()
@@ -76,6 +81,13 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	    fetcher()
 	    revalidator()
 		        }
+	//~ <div className='file-base'>
+	   //~ <label>Photo: </label><br/>
+      //~ <FileBase          
+                         //~ type="file"
+                         //~ multiple={false}
+                         //~ onDone={({base64})=>setSource({
+                            //~ ...source, photo: base64})}/><br/></div>
 	 return(
 	<S.ExtraCont>
 	 <S.Container>
@@ -102,7 +114,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 				          {...source,
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
-	 
+	<input type='file' onChange={e=>uploadImage(e)}/>
 	 <label>Category:</label>
 	 <S.Category name='category'
 	         value={source.category}
@@ -119,13 +131,6 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 			   <option key={i} value={item}>{item}</option>)}
 	 </S.Category><br/>
 	
-	  <div className='file-base'>
-	   <label>Photo: </label><br/>
-      <FileBase          
-                         type="file"
-                         multiple={false}
-                         onDone={({base64})=>setSource({
-                            ...source, photo: base64})}/><br/></div>
                             
 	     <S.Submit onMouseOver={changeBorder} type='submit'>Save</S.Submit>
 	     <S.Close onMouseOver={changeBorder} 
