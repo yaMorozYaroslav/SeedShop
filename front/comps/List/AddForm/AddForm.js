@@ -16,10 +16,16 @@ const initialState = {title: '', description: '', price: '',
 	                  category: '', type: '', photo: ''}
 
 export function AddForm({setOpen, currItem, setCurrItem}){
+	const [source, setSource] = React.useState(initialState)
+	
 	const uploadImage = async(e) => {
-		const file = e.target.file
-		console.log(file)
+		const file = e.target.files[0]
+		if(file.size > 1000000){alert('File is bigger than 1MB.')
+		}else{
+		const base64 = await convertBase64(file)
+		setSource({...source, photo: base64})}
 		}
+		console.log(source)
 	
 	const locale = useLocale()
 	const pathname = usePathname()
@@ -30,7 +36,6 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	const {state} = useQueryContext()
 	
 	const ref = React.useRef()
-	const [source, setSource] = React.useState(initialState)
    
    const fetcher =()=> isSeed?fetchSeeds(state):fetchItems(state)
    
@@ -114,7 +119,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 				          {...source,
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
-	<input type='file' onChange={e=>uploadImage(e)}/>
+	<input type='file' value={source.photo} onChange={(e)=>uploadImage(e)}/><br/>
 	 <label>Category:</label>
 	 <S.Category name='category'
 	         value={source.category}

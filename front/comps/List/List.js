@@ -13,7 +13,6 @@ import {useUserContext} from '../../context/user/UserState'
 import {useCartContext} from '../../context/cart/CartState'
 
 import revalidator from './revalidator'
-import { useLocale } from 'next-intl'
 
 import { usePathname } from '../../navigation'
 import { useRouter } from '../../navigation'
@@ -21,10 +20,9 @@ import {useTranslations} from 'next-intl'
 
 export function List({servData}){
 	const t = useTranslations('List')
-	const locale = useLocale()
 	const pathname = usePathname()
 	const router = useRouter()
-	const isSeed = pathname === `/${locale}/seed-list`
+	const isSeed = pathname === `/seed-list`
 	
 	const urlSingle = isSeed?'seeds':'items'
 	
