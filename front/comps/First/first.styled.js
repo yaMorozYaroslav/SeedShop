@@ -29,7 +29,7 @@ export const SeedLink = styled(Link)`grid-column:3/4;grid-row:3;
                                      margin-top:-80px;font-size:26px;
                         @media (max-width: 600px) {margin-top:-100px;}
                         @media (max-width: 400px) {}`
-export const StyledImage = styled(Image)`width:100px;height:100px;
-                                         border-style: groove;padding:25px;
+export const StyledImage = styled(Image)`width:150px;height:150px;
+                                         border-style: groove;
                            @media (max-width: 400px) {padding:5px;}`
 

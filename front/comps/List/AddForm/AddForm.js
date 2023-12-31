@@ -1,15 +1,16 @@
 'use client'
 import React from 'react'
-import Link from 'next/link'
-import FileBase from 'react-file-base64'
-import { usePathname } from 'next/navigation';
+//~ import Link from 'next/link'
+//~ import FileBase from 'react-file-base64'
+import { usePathname } from '../../../navigation';
 import {useSeedContext} from '../../../context/seeds/SeedState'
 import {useItemContext} from '../../../context/items/ItemState'
 import {useQueryContext} from '../../../context/queries/QueryState'
 import * as S from './add-form.styled'
 import revalidator from '../revalidator'
 import {seedTypes, itemTypes} from '../select-types'
-import {useLocale} from 'next-intl'
+
+import {useTranslations} from 'next-intl'
 import {convertBase64} from './convert-base64'
 
 const initialState = {title: '', description: '', price: '', 
@@ -27,9 +28,8 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 		}
 		console.log(source)
 	
-	const locale = useLocale()
 	const pathname = usePathname()
-	const isSeed = pathname === `/${locale}/seed-list`
+	const isSeed = pathname === '/seed-list'
 	
 	const {addSeed, updateSeed, fetchSeeds} = useSeedContext()
 	const {addItem, updateItem, fetchItems} = useItemContext()
@@ -119,6 +119,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 				          {...source,
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
+	 <label>Photo:</label>
 	<input type='file' value={source.photo} onChange={(e)=>uploadImage(e)}/><br/>
 	 <label>Category:</label>
 	 <S.Category name='category'

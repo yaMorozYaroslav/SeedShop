@@ -12,7 +12,6 @@
         "goods": "Goods"
 	},
  "List": {
-	    "show_filters": "Filters",
 	    "add_butt": "Add",
 	    "menu": "Menu",
 	    "category": "category",
@@ -20,5 +19,13 @@
 	    "price": "price"		    
 	 },
  "Pages":{"pages":"Pages"},
- "Cart": {}
+ "Cart": {},
+ "Filter":{
+	    "show": "Filters",
+	    "category": "Category",
+	    "type": "Type",
+	    "sort": "Sort by price",
+	    "search": "Search by text",
+	    "reset": "Reset"    	
+	 }
         }

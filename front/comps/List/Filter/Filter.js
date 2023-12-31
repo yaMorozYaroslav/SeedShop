@@ -11,7 +11,7 @@ import {useTranslations} from 'next-intl'
 
 export const Filter =(props)=> {
     
-	const t = useTranslations('List')
+	const t = useTranslations('Filter')
 	const locale = useLocale()   
 	const pathname = usePathname()
 	const isSeed = pathname === `/${locale}/seed-list`
@@ -79,7 +79,7 @@ export const Filter =(props)=> {
 	   
 	      <S.Panel>
 		         
-		  <S.Label>Category</S.Label>
+		  <S.Label>{t("category")}</S.Label>
 		 <S.Select name='category'
 		           value={state.category}
 	               onChange={onCategory}>
@@ -87,26 +87,26 @@ export const Filter =(props)=> {
 		                                 value={item}>{item}</option>)}
 	 </S.Select><br/>
 	     
-	       <S.Label>Type</S.Label>
+	       <S.Label>{t("type")}</S.Label>
 	     <S.Select name='type'
 	               onChange={onType}>
 	     {currType && currType.map((item,i) => 
 			   <option key={i}
 				    value={item}>{!item?'all':item}</option>)}
 	 </S.Select><br/>
-	     <S.Label>Sort By Price</S.Label>
+	     <S.Label>{t("sort")}</S.Label>
 	     <S.FiltBut onClick={onSort}>
 	               {state.reverse?'Minimum':'Maximum'}</S.FiltBut><br/>
 	     
 	     <S.Input value={state.search} 
 	              onChange={onSearch} 
-	              placeholder='Search By Text'/><br/>
+	              placeholder={t("search")}/><br/>
 	     <S.FiltBut onClick={resetFilt} 
-	                onMouseOver={changeBorder}>Reset</S.FiltBut>
+	                onMouseOver={changeBorder}>{t("reset")}</S.FiltBut>
 	     </S.Panel></Fade>
 	     
 	    <S.ShowBut onMouseOver={changeBorder}  
 		           onClick={()=>setShow(!show)}>
-		                 {!show?t("show_filters"):'X'}</S.ShowBut>
+		                 {!show?t("show"):'X'}</S.ShowBut>
 	     </S.Container>
 	}

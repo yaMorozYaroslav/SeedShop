@@ -15,12 +15,12 @@ export const First = () => {
                                                {t('seeds')} <br/> 
           
            
-            <S.StyledImage alt='seeds' src='/next.svg' 
+            <S.StyledImage alt='seeds' src='/first/seeds.jpg' 
                            width={0} height={0}/>
           </S.SeedLink>
             <S.ItemLink className='styledLink' href={'/item-list'}>
                                                    {t('goods')} <br/>
-            <S.StyledImage alt='items' src='/next.svg' 
+            <S.StyledImage alt='items' src='/first/prods.jpg' 
                            width={0} height={0}/></S.ItemLink>
         
   </S.Container>)}
