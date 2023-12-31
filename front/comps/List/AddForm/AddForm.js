@@ -120,7 +120,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
 	 <label>Photo:</label>
-	<input type='file' value={source.photo} onChange={(e)=>uploadImage(e)}/><br/>
+	<input type='file'  onChange={(e)=>uploadImage(e)}/><br/>
 	 <label>Category:</label>
 	 <S.Category name='category'
 	         value={source.category}

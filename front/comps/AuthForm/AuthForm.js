@@ -4,13 +4,15 @@ import * as S from './auth-form.styled'
 import {Label} from './auth-form.styled'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '../../navigation'
+import {useTranslations} from 'next-intl'
 
 import {useUserContext} from '../../context/user/UserState'
 
 const initialState = {name: '', email: '', password: '', confPass: ''}
 
 export function AuthForm(){
+	const t = useTranslations("AuthForm")
 	const router = useRouter()
 	
 	const {userData, setFromStorage, signIn, signUp, logout,
@@ -37,7 +39,7 @@ export function AuthForm(){
 		
   return  <S.Container>
     <S.Form onSubmit={handSubmit} id='form'>
-     <S.Title>{!registered?'Registration':'Authentication'}</S.Title>
+     <S.Title>{registered?t("sign_up"):t("sign_in")}</S.Title>
 	 <S.Label>Email:</S.Label>
 	 <S.Input name='email' placeholder='Write Your Email'
 	          onChange={handChange} required/><br/>
@@ -58,8 +60,8 @@ export function AuthForm(){
 	</S.Form>
 	 <S.Toggler className='styledLink'
 	            onClick={()=>setRegistered(!registered)}>
-	                        {!registered?'Sign In'
-								        :'Sign Up'}</S.Toggler>
+	                        {registered?t("sign_in")
+								        :t("sign_up")}</S.Toggler>
 								        
 	  <S.StyledLink className='styledLink' href={'/'}>Menu</S.StyledLink>
   </S.Container>

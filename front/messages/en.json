@@ -27,5 +27,9 @@
 	    "sort": "Sort by price",
 	    "search": "Search by text",
 	    "reset": "Reset"    	
+	 },
+ "AuthForm":{
+	 "sign_in": "Sign In",
+	 "sign_up": "Sign Up"
 	 }
         }
