@@ -2,6 +2,7 @@
 import * as S from './first.styled'
 import {useTranslations} from 'next-intl'
 import {Link} from '../../navigation'
+import Image from 'next/image'
 
         
 export const First = () => { 
@@ -13,14 +14,17 @@ export const First = () => {
           
         <S.SeedLink className='styledLink' href={'/seed-list'}>
                                                {t('seeds')} <br/> 
-          
-           
-            <S.StyledImage alt='seeds' src='/first/seeds.jpg' 
-                           width={0} height={0}/>
-          </S.SeedLink>
-            <S.ItemLink className='styledLink' href={'/item-list'}>
+           <S.ImageCont>
+            <Image alt='seeds' src='/first/seeds.jpg' 
+                   sizes="(max-width: 768px) 100vw" fill={true} priority/>
+           </S.ImageCont>
+        </S.SeedLink>
+        <S.ItemLink className='styledLink' href={'/item-list'}>
                                                    {t('goods')} <br/>
-            <S.StyledImage alt='items' src='/first/prods.jpg' 
-                           width={0} height={0}/></S.ItemLink>
+            <S.ImageCont>                                     
+             <Image alt='items' src='/first/prods.jpg' 
+                    sizes="(max-width: 768px) 100vw" fill={true}/>
+            </S.ImageCont>
+        </S.ItemLink>
         
   </S.Container>)}

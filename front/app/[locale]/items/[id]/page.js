@@ -1,14 +1,14 @@
 import {Single} from '../../../../comps/Single/Single'
 
-//~ export const dynamicParams = false
+export const dynamicParams = false
 
-export async function generateStaticParams(){
-  const items = await fetch(
-    'https://seed-shop-back-78049b8c30bb.herokuapp.com/items?category=')
-                                        .then((res) => res.json())
+//~ export async function generateStaticParams(){
+  //~ const items = await fetch(
+    //~ 'https://seed-shop-back-78049b8c30bb.herokuapp.com/items?category=')
+                                        //~ .then((res) => res.json())
                                         
-    return items.data.map((item) => ({id: item._id}))
-	}
+    //~ return items.data.map((item) => ({id: item._id}))
+	//~ }
  async function getItem(params) {
   
    const item = await fetch(

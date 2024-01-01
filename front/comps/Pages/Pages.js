@@ -1,20 +1,18 @@
 'use client'
 import React from 'react'
-import { usePathname } from 'next/navigation';
+import { usePathname } from '../../navigation';
 import {useSeedContext} from '../../context/seeds/SeedState'
 import {useItemContext} from '../../context/items/ItemState'
 import {useQueryContext} from '../../context/queries/QueryState'
 import * as S from './pages.styled.js'
 import {Button} from './pages.styled.js'
-import {useLocale} from 'next-intl'
 import {useTranslations} from 'next-intl'
 
 
 export function Pages(total) {
 	const t = useTranslations("Pages")
-	const locale = useLocale()
 	const pathname = usePathname()
-	const isSeed = pathname === `/${locale}/seed-list`
+	const isSeed = pathname === '/seed-list'
 	
 	//~ console.log(isSeed)
 	//console.log(total)

@@ -22,7 +22,7 @@ export function List({servData}){
 	const t = useTranslations('List')
 	const pathname = usePathname()
 	const router = useRouter()
-	const isSeed = pathname === `/seed-list`
+	const isSeed = pathname === '/seed-list'
 	
 	const urlSingle = isSeed?'seeds':'items'
 	
@@ -98,8 +98,7 @@ return (<S.Container>
               </S.Cell>
           ))}       
         </S.List>}
-        {!shown.length&&<S.NoData>No products found for this request</S.NoData>}
+         {!shown.length&&<S.NoData>No products found for this request</S.NoData>}
          {loading &&  <S.SpinCont><S.Spinner/></S.SpinCont>}
-         
        </S.Container>)
 } 
