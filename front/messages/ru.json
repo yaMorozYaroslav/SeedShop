@@ -2,6 +2,7 @@
  "Header": {
 	    "title":"Флора",
 	    "badge":"Карт",
+	    "guest":"Гость",
 	    "login":"Логин",
 	    "logout":"Выйти"
 	 },

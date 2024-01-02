@@ -75,6 +75,7 @@ return (<S.Container>
 		              currItem={currItem}
 		              setCurrItem={setCurrItem}
 		               />}  
+	   {loading &&  <S.SpinCont><S.Spinner/></S.SpinCont>}
        {shown && shown.length>0 && !loading && <S.List>
           
           
@@ -99,6 +100,5 @@ return (<S.Container>
           ))}       
         </S.List>}
          {!shown.length&&<S.NoData>No products found for this request</S.NoData>}
-         {loading &&  <S.SpinCont><S.Spinner/></S.SpinCont>}
        </S.Container>)
 } 

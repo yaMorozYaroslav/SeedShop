@@ -2,6 +2,7 @@
  "Header": {
 	    "title":"Flora",
 	    "badge":"Cart",
+	    "guest":"Guest",
 	    "login":"Login",
 	    "logout":"Logout"
 	 },

@@ -42,7 +42,8 @@ export const TitleLink = styled(Link)`font-size: 22px;
                          @media (max-width: 600px) {font-size: 18px;}`
 export const Parag = styled.p`margin: 12px;`
 export const AddButt = styled.button`border-style:groove;margin:2px;font-size:21px;`
-export const NoData = styled.p`margin-top:30px;height:200px;
+export const NoData = styled.p`margin-top:30px;padding-top:140px;height:213px;
+                               font-size:32px;
                                text-align:center;position:relative;z-index:-1;`
 export const SpinCont = styled.div`display:flex;justify-content:center;height:415px;
                         @media (max-width: 1000px) {height:520px;}

@@ -1,6 +1,6 @@
 export const seedTypes = {                  
-       subVegies : ['', 'early', 'late'],
        subFlowers : ['', 'annual', 'multi-year'],
+       subVegies : ['', 'early', 'late'],
        subSeedlings : ['', 'fruit', 'vegies', 'flowers']
 	   }
 export const itemTypes = {

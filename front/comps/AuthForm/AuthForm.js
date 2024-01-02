@@ -54,7 +54,7 @@ export function AuthForm(){
 	 <S.Label>Password:</S.Label>
 	 <S.Input placeholder='Confirm Password' name='confPass'
 	          onChange={handChange} required/>
-	                   </>)}   
+	                   <br/></>)}   
 	 <S.Submit type='submit'>Submit</S.Submit><br/>          
 	 
 	</S.Form>

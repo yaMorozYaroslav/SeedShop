@@ -23,6 +23,7 @@ export function Pages(total) {
 	const idler   = (s) => !seeds.currPage&&!items.currPage&&s===1
 	const dynamicTotal = !seeds.totalPages && !items.totalPages?total.total
 	                                  :(seeds.totalPages||items.totalPages)
+	  console.log(items)
     //console.log(state)                       
     function fetchUnits(e){
 		e.preventDefault()

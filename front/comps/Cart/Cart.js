@@ -21,7 +21,7 @@ export const Cart =()=> {
 		                   setOpen(false);push('/')}
 	const remover = (e, id) => {e.preventDefault()
 		                        removeFromCart(id)
-		                     if(cartItems.length === 1)push('/')}
+		                     if(cartItems.length === 1)cleaner()}
 		
 	function counter(){
 		let total
