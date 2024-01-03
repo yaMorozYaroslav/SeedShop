@@ -63,6 +63,6 @@ export function AuthForm(){
 	                        {registered?t("sign_in")
 								        :t("sign_up")}</S.Toggler>
 								        
-	  <S.StyledLink className='styledLink' href={'/'}>Menu</S.StyledLink>
+	  <S.StyledLink className='styledLink' href={'/'}>{t('menu')}</S.StyledLink>
   </S.Container>
 	}
