@@ -17,6 +17,7 @@ const initialState = {title: '', description: '', price: '',
 	                  category: '', type: '', photo: ''}
 
 export function AddForm({setOpen, currItem, setCurrItem}){
+	const tc = useTranslations("categories")
 	const [source, setSource] = React.useState(initialState)
 	
 	const uploadImage = async(e) => {
@@ -40,7 +41,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
    const fetcher =()=> isSeed?fetchSeeds(state):fetchItems(state)
    
     let categories
-    if(isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
+    if(isSeed){ categories = ['', 'flowers', 'veggies', 'seedlings']
 	}else{categories = ['', 'soils', 'supplements', 'equipment']}
     
     React.useEffect(()=>{		
@@ -125,7 +126,8 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	 <S.Category name='category'
 	         value={source.category}
 	         onChange={handChange} >
-	{categories.map((item, i) => <option key={i} value={item}>{item}</option>)}
+	{categories.map((item, i) => 
+		<option key={i} value={item}>{!item?null:tc(`${item}`)}</option>)}
 	 </S.Category><br/>
 	 
 	 <label>Type:</label>

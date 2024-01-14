@@ -33,5 +33,10 @@
 	 "sign_in": "Реєстрація",
 	 "sign_up": "Вхід",
 	 "menu": "Меню"
+	 },
+ "categories":{
+	 "flowers": "квіти",
+	 "veggies": "овочі",
+	 "seedlings": "саджанці"
 	 }
         }

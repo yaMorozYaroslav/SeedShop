@@ -15,10 +15,11 @@ export const MainCont = styled.div`background-image:url('/grass.jpg');
                                    background-size: cover;
                                    width:30%;height:30px;padding:20px;
                                    border:solid;border-radius:10px;
-                                   margin:3px -40px 0px 0px;
-                        @media (max-width: 1000px) {margin-right:0px;}
-                        @media (max-width: 600px) {grid-column: 1/3;width:90%;}
-                        @media (max-width: 400px) {width:85%;margin-left:15px;}`
+                                   margin:3px -4% 0px 0px;
+                        @media (max-width: 1000px) {margin: 3px 0% 0px -1%;}
+                        @media (max-width: 600px) {grid-column: 1/3;width:90%;
+                                                   margin-left:2%;}
+                        @media (max-width: 400px) {width:85%;margin-left:7%;}`
 export const MainTitle = styled.h6`color:white;font-size:55px;margin:-15px 10px 0px 0px;
                                   width:30%;
                           @media (max-width: 800px) {font-size:50px;

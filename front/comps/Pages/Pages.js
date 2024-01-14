@@ -22,14 +22,13 @@ export function Pages(total) {
 	const {items, fetchItems} = useItemContext()
 	
 	const notExist = seeds.message||items.message?true:false
-	console.log(notExist)
     
 	const activer = (s) => isSeed && seeds.currPage === s||!isSeed && items.currPage === s
 	const idler   = (s) => !seeds.currPage&&!items.currPage&&s===1
 	const dynamicTotal = !seeds.totalPages && !items.totalPages && !notExist
 	                                  ?total.total
 	                                  :(seeds.totalPages||items.totalPages)
-	  console.log(items.message, seeds.message)
+	  //~ console.log(items.message, seeds.message)
     //console.log(state)                       
     function fetchUnits(e){
 		e.preventDefault()

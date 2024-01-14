@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import {Link} from '../../navigation'
 import Image from 'next/image'
 
-export const Container = styled.div`padding:1px;
+export const Container = styled.div`padding-top:1px;
+                                    width:100%;
                                     margin-bottom:5px;
                          @media (max-width:600px) {margin-top:25px;}
                          @media (max-width:400px) {}`
@@ -20,21 +21,23 @@ export const NotLink = styled.p`margin:5px; cursor:pointer;
                         @media (max-width: 400px){font-size:20px; padding: 18px;
                                                   padding-left:5px;padding-right:5px}`                                    
 export const List = styled.ul` display: grid;
-                               grid-template-columns: repeat(4,1fr);
+                               grid-template-columns: repeat(4,24%);
                                grid-template-rows: 400px;
-                               width: 90%;
-                               margin: 0% 2% 15px 2%;
+                               column-gap:0.5%;
+                               margin: 0% 0% 15px 0.5%;
                                list-style: none;
-                    @media (max-width: 1000px) {grid-template-columns: repeat(2, 50%);
-                                                margin-left:0%;} 
-                    @media (max-width: 600px) {margin-left:-5%;}
+                    @media (max-width: 1000px) {grid-template-columns: repeat(2, 49%);
+                                                margin-left:3%;}
+                    @media (max-width: 800px) {} 
+                    @media (max-width: 600px) {margin-left:-3%;column-gap:3%;row-gap:5px;}
                     @media (max-width: 400px) {display:block;
                                                margin-left:-5%;}`
 export const Cell = styled.li`font-size: 20px; border: 2px solid black;
                                text-align:center;height: 365px;
-                              width:85%;padding:10px;margin:10px;background:white;
+                               width:85%;padding:10px;
+                               margin-top:10px;background:white;
                     @media (max-width: 600px) {font-size: 18px;padding:3px;
-                                               width:90%;height:385px;}
+                                               width:95%;height:385px;}
                     @media (max-width: 400px) {font-size: 20px;width:85%;height:360px;}`
 export const StyledImage = styled(Image)`margin:10px;width:100px;`
 export const TitleLink = styled(Link)`font-size: 22px;

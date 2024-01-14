@@ -12,6 +12,7 @@ import {useTranslations} from 'next-intl'
 export const Filter =(props)=> {
     
 	const t = useTranslations('Filter')
+	const tc = useTranslations('categories')
 	const locale = useLocale()   
 	const pathname = usePathname()
 	const isSeed = pathname === `/${locale}/seed-list`
@@ -27,8 +28,8 @@ export const Filter =(props)=> {
 	//const size = ScreenSize()
 	
 	let categories
-    if(isSeed){ categories = ['', 'flowers', 'vegies', 'seedlings']
-	}else{categories = ['', 'soils', 'supplements', 'equipment']}
+    if(isSeed){ categories = ['', tc('flowers'), tc('veggies'), tc('seedlings')]
+	}else{categories = ['', tc('soils'), tc('supplements'), tc('equipment')]}
 	
 	  let currType
 	{categories.map((item,i) => {
