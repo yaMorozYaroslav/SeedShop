@@ -37,6 +37,27 @@
  "categories":{
 	 "flowers": "flowers",
 	 "veggies": "veggies",
-	 "seedlings": "seedlings"
+	 "seedlings": "seedlings",
+	 "soils": "soils",
+	 "supplements": "supplements",
+	 "equipment": "equipment"
+	 },
+ "types":{
+	 "annual": "annual",
+	 "multi-year": "multi-year",
+	 "early": "early",
+	 "late": "late",
+	 "fruit": "fruit",
+	 "veggies": "veggies",
+	 "flowers": "flowers",
+	 "for flowers": "for flowers",
+	 "for veggies": "for veggies",
+	 "for fruit": "for fruit",
+	 "fertilizers": "fertilizers",
+	 "pesticides": "pesticides",
+	 "other": "other",
+	 "gloves": "gloves",
+	 "tools": "tools",
+	 "gear": "gear"
 	 }
         }

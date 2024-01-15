@@ -20,6 +20,9 @@ import {useTranslations} from 'next-intl'
 
 export function List({servData}){
 	const t = useTranslations('List')
+	const tc = useTranslations('categories')
+	const tt = useTranslations('types')
+	
 	const pathname = usePathname()
 	const router = useRouter()
 	const isSeed = pathname === '/seed-list'
@@ -36,6 +39,8 @@ export function List({servData}){
 	const {fetchItems, loadingItems, items, removeItem, resetItems} = useItemContext()
 	const {fetchSeeds, loadingSeeds, seeds, removeSeed, resetSeeds} = useSeedContext()
 	const {state, category} = useQueryContext()
+	
+	
 	const units = !items.length?seeds:items
 	const loading = loadingItems||loadingSeeds
 	
@@ -50,12 +55,12 @@ export function List({servData}){
 	
 	function fetchUnits(){if(isSeed){fetchSeeds(state)}
 		                       else{fetchItems(state)} } 
-		                       
+    console.log(state)                       
 	function delUnit(e, id){
 		e.preventDefault();
 		if(isSeed){removeSeed(id)}else{removeItem(id)}
 		revalidator()
-		fetchUnits()
+		setTimeout(()=>{fetchUnits()},500)
 		}	
 
    React.useEffect(()=>{ if(seeds.data && isSeed){setShown(seeds.data)}
@@ -86,8 +91,8 @@ return (<S.Container>
                               width={100} height={100} priority={true}/><br/>
                <S.TitleLink href={`/${urlSingle}/${item._id}`}
 				            className='styledLink'>{item.title.slice(0, 12)}</S.TitleLink>
-               <S.Parag>{t('category')}: {item.category||'undefined'}</S.Parag>
-               <S.Parag>{t('type')}: {item.type||'undefined'}</S.Parag>
+               <S.Parag>{t('category')}: {item.category?tc(item.category):'---'}</S.Parag>
+               <S.Parag>{t('type')}: {item.type?tt(item.type):'---'}</S.Parag>
                <S.Parag>{t('price')}: {item.price}</S.Parag>
                
                <S.AddButt onClick={(e)=>handAdd(e,item)}>AddToCart</S.AddButt><br/>
@@ -95,7 +100,7 @@ return (<S.Container>
 				&&<><S.AddButt onClick={(e)=>
 					      delUnit(e, item._id)}>Remove</S.AddButt>
 				  <S.AddButt onClick={(e)=>handEdit(e, item)}>Edit</S.AddButt></>}
-               
+                 <button onClick={()=>fetchUnits()}>fetchUnits</button>
               </S.Cell>
           ))}       
         </S.List>}

@@ -1,21 +1,21 @@
 import React from 'react'
-import { usePathname } from 'next/navigation';
+import { usePathname } from '../../../navigation';
 import {useQueryContext} from '../../../context/queries/QueryState'
 import {useItemContext} from '../../../context/items/ItemState'
 import {useSeedContext} from '../../../context/seeds/SeedState'
 import * as S from './filter.styled'
-import {seedTypes, itemTypes} from '../select-types'
+import {categories, seedTypes, itemTypes} from '../select-types'
 import Fade from '@mui/material/Fade';
-import { useLocale } from 'next-intl'
+//~ import { useLocale } from 'next-intl'
 import {useTranslations} from 'next-intl'
 
 export const Filter =(props)=> {
     
 	const t = useTranslations('Filter')
 	const tc = useTranslations('categories')
-	const locale = useLocale()   
+	//~ const locale = useLocale()   
 	const pathname = usePathname()
-	const isSeed = pathname === `/${locale}/seed-list`
+	const isSeed = pathname === 'seed-list'
 	
 	const [show, setShow] = React.useState(false)
 	
@@ -27,15 +27,14 @@ export const Filter =(props)=> {
 	
 	//const size = ScreenSize()
 	
-	let categories
-    if(isSeed){ categories = ['', tc('flowers'), tc('veggies'), tc('seedlings')]
-	}else{categories = ['', tc('soils'), tc('supplements'), tc('equipment')]}
+	const shownCategories = isSeed?categories.seedCategories:categories.itemCategories
 	
 	  let currType
-	{categories.map((item,i) => {
+	{shownCategories.map((item,i) => {
 		            if(state.category === item&&item.length){
-						           currType = Object.values(
-		                           isSeed?seedTypes:itemTypes)[isSeed?i-1:i-1]}})}
+		//~ currType = Object.values(isSeed?seedTypes:itemTypes)[isSeed?i-1:i-1]
+		currType = Object.values(isSeed?seedTypes:itemTypes)[i-1]
+		                                                     }})}
 		                           
     function fetchUnits(source){if(isSeed){fetchSeeds(source)
 		                       }else{fetchItems(source)     }}
@@ -46,7 +45,7 @@ export const Filter =(props)=> {
 	
 	const resetFilt =()=> {
 		reset()
-		//fetchItems('', '', 1, '', false)
+		
 		fetchUnits({category:'',type:'',page:1, search:'', reverse:false})
 		}
 	function onCategory(event){
@@ -84,7 +83,7 @@ export const Filter =(props)=> {
 		 <S.Select name='category'
 		           value={state.category}
 	               onChange={onCategory}>
-	{categories.map((item, i) => <option key={i} 
+	{shownCategories.map((item, i) => <option key={i} 
 		                                 value={item}>{item}</option>)}
 	 </S.Select><br/>
 	     

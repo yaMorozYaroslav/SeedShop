@@ -14,23 +14,26 @@ const SeedReducer = (state, action) => {
 
   
     case ADD_SEED:
-       if(!state.seeds.data){return {...state, seeds:  [...state.seeds, action.payload]}
-	    }else{return {...state, seeds: {...state.seeds,
-	                  data: [...state.seeds.data, action.payload]}  }}
+       return state
+       //~ if(!state.seeds.data){return {...state, seeds:  [...state.seeds, action.payload]}
+	    //~ }else{return {...state, seeds: {...state.seeds,
+	                  //~ data: [...state.seeds.data, action.payload]}  }}
 		                
 		                
     case UPDATE_SEED: 
-      if(!state.seeds.data){return {...state, seeds: action.payload}
-    }else{return{...state, seeds: {...state.seeds, 
-			 data: state.seeds.data.map((seed) =>
-         (seed._id === action.payload._id ? action.payload : seed))}  }}
+       return state
+      //~ if(!state.seeds.data){return {...state, seeds: action.payload}
+    //~ }else{return{...state, seeds: {...state.seeds, 
+			 //~ data: state.seeds.data.map((seed) =>
+         //~ (seed._id === action.payload._id ? action.payload : seed))}  }}
 
     case REMOVE_SEED:
-    console.log(action.payload)
-      if(!state.seeds.data){return state
-     }else{return {...state, seeds: {...state.seeds,
-		                   data: state.seeds.data.filter((item) =>
-			                       item._id !== action.payload._id)}  }}
+       return state
+    //~ console.log(action.payload)
+      //~ if(!state.seeds.data){return state
+     //~ }else{return {...state, seeds: {...state.seeds,
+		                   //~ data: state.seeds.data.filter((item) =>
+			                       //~ item._id !== action.payload._id)}  }}
     case ERROR:
 	return{...state, error: action.payload, loading: false}
 	

@@ -37,6 +37,27 @@
  "categories":{
 	 "flowers": "цветы",
 	 "veggies": "овощи",
-	 "seedlings": "рассада"
+	 "seedlings": "рассада",
+	 "soils": "почвы",
+	 "supplements": "добавки",
+	 "equipment": "снаряжение"
+	 },
+ "types":{
+	 "annual": "однолетний",
+	 "multi-year": "многолетний",
+	 "early": "ранний",
+	 "late": "поздний",
+	 "fruit": "фрукты",
+	 "veggies": "овощи",
+	 "flowers": "цветы",
+	 "for flowers": "для цветов",
+	 "for veggies": "для овощей",
+	 "for fruit": "для фруктов",
+	 "fertilizers": "удобрения",
+	 "pesticides": "пестициды",
+	 "other": "другое",
+	 "gloves": "перчатки",
+	 "tools": "инструменты",
+	 "gear": "снаряжение"
 	 }
         }

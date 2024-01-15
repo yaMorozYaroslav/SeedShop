@@ -27,7 +27,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 		const base64 = await convertBase64(file)
 		setSource({...source, photo: base64})}
 		}
-		console.log(source)
+		//~ console.log(source)
 	
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'

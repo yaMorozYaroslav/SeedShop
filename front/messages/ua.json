@@ -37,6 +37,27 @@
  "categories":{
 	 "flowers": "квіти",
 	 "veggies": "овочі",
-	 "seedlings": "саджанці"
+	 "seedlings": "саджанці",
+	 "soils": "ґрунти",
+	 "supplements": "додатки",
+	 "equipment": "обладнання"
+	 },
+ "types":{
+	 "annual": "однорічний",
+	 "multi-year": "багаторічний",
+	 "early": "ранні",
+	 "late": "пізні",
+	 "fruit": "фрукти",
+	 "veggies": "овочі",
+	 "flowers": "квіти",
+	 "for flowers": "для квітів",
+	 "for veggies": "для овочів",
+	 "for fruit": "для фруктів",
+	 "fertilizers": "добрива",
+	 "pesticides": "пестициди",
+	 "other": "інше",
+	 "gloves": "рукавиці",
+	 "tools": "інструменти",
+	 "gear": "знаряддя"
 	 }
         }
