@@ -1,7 +1,4 @@
 const nextConfig = {
-  experimental: {
-    serverActions: true
-  },
   compiler: {
     styledComponents: true
   },
