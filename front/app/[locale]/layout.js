@@ -12,10 +12,11 @@ import {Russo_One} from 'next/font/google'
 
 const lora = Russo_One({ subsets: ['cyrillic'], weight: ['400'] })
 //~ import {useLocale} from 'next-intl'
+//~ 
 import {notFound} from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 
-const locales = ['en', 'ua'];
+const locales = ['en', 'ua']
 //~ const lora = Lora({ subsets: ['latin'] })
 //~ const lora = Yeseva_One({subsets: ['cyrillic'], weight: '400' })
 export const metadata = {
