@@ -100,7 +100,6 @@ return (<S.Container>
 				&&<><S.AddButt onClick={(e)=>
 					      delUnit(e, item._id)}>Remove</S.AddButt>
 				  <S.AddButt onClick={(e)=>handEdit(e, item)}>Edit</S.AddButt></>}
-                 <button onClick={()=>fetchUnits()}>fetchUnits</button>
               </S.Cell>
           ))}       
         </S.List>}

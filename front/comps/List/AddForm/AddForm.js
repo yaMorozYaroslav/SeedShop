@@ -18,6 +18,7 @@ const initialState = {title: '', description: '', price: '',
 
 export function AddForm({setOpen, currItem, setCurrItem}){
 	const tc = useTranslations("categories")
+	const tt = useTranslations("types")
 	const [source, setSource] = React.useState(initialState)
 	
 	const uploadImage = async(e) => {
@@ -136,7 +137,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	         onChange={handChange}
 	          >
 	     {currType && currType.map((item,i) => 
-			   <option key={i} value={item}>{item}</option>)}
+			   <option key={i} value={item}>{!item?null:tt(`${item}`)}</option>)}
 	 </S.Category><br/>
 	
                             
