@@ -11,6 +11,7 @@ import {useUserContext} from '../../../context/user/UserState'
 export function AuthPanel(){
  const r = useRouter()
  const t = useTranslations('Header')
+ const [update, setUpdate] = React.useState(0)
  const {userData, setFromStorage, signIn,
 	    signUp, logout, error, clearError} =  useUserContext()
     	
@@ -40,24 +41,33 @@ export function AuthPanel(){
 	    }
 		},[userData, profile, setFromStorage])
 		
-		React.useEffect(()=>{
+   React.useEffect(()=>{
 		 if(error)alert(error)
 	     if(error)clearError() 
 			},[error])
-
+   
+     
    React.useEffect(()=>{
-	            let token
+	              let token
 	        	if(userData)token = userData.token
 	        	if(token){
 	        		const decodedToken = decode(token)
 	        		//console.log(decodedToken)
-	        		if(decodedToken.exp * 1000 < new Date().getTime()){
+	        		//~ if(decodedToken.exp * 1000 < new Date().getTime()){
+	        		if(decodedToken.exp * 999.9979 < new Date().getTime()){
 	        		 logout()
 	        		 removeProfile()
 	        		 alert('Token has expired')
 	              }
 	        	}
-	        },[userData, profile, logout])
+	        	const interval = setInterval(()=>{
+					                          setUpdate(update+1)
+					                          console.log(update)
+					                        if(update>5){clearInterval(interval)}
+					                                       },5000)
+	        	
+	        	return () => clearInterval(interval)
+	        },[userData, profile, logout, update])
 	       // console.log(userData)
 	    return <>
 	    <S.Name>{userData.user?userData.user.name.slice(0,4):t('guest')}</S.Name>

@@ -17,6 +17,7 @@ const initialState = {title: '', description: '', price: '',
 	                  category: '', type: '', photo: ''}
 
 export function AddForm({setOpen, currItem, setCurrItem}){
+	const t = useTranslations("AddForm")
 	const tc = useTranslations("categories")
 	const tt = useTranslations("types")
 	const [source, setSource] = React.useState(initialState)
@@ -102,28 +103,28 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	 <S.Title>{!isSeed?'Item':'Seed'}</S.Title>
 	<S.Form onSubmit={handSubmit} ref={ref}>
 	
-	 <label>Title:</label>
+	 <label>{t('title')}:</label>
 	 <S.Input name='title' 
 	          value={source.title}    
 	          onChange={handChange}
 	                     required/><br/>
 	 
-	 <label>Description:</label><br/>
+	 <label>{t('description')}:</label><br/>
 	 <S.Textarea name='description'
 	              value={source.description} 
 	              onChange={handChange}
 	                              required/><br/>
 	 
-	 <label>Price:</label>
+	 <label>{t('price')}:</label>
 	 <S.Input name='price'
 	        value={source.price}
 	        onChange={e=>setSource(
 				          {...source,
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
-	 <label>Photo:</label>
+	 <label>{t('photo')}:</label><br/>
 	<input type='file'  onChange={(e)=>uploadImage(e)}/><br/>
-	 <label>Category:</label>
+	 <label>{t('category')}:</label>
 	 <S.Category name='category'
 	         value={source.category}
 	         onChange={handChange} >
@@ -131,7 +132,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 		<option key={i} value={item}>{!item?null:tc(`${item}`)}</option>)}
 	 </S.Category><br/>
 	 
-	 <label>Type:</label>
+	 <label>{t('type')}:</label>
 	 <S.Category name='type'
 	         value={source.type}
 	         onChange={handChange}

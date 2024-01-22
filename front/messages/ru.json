@@ -21,6 +21,14 @@
 	 },
  "Pages":{"pages":"Страницы"},
  "Cart": {},
+ "AddForm":{
+	    "title":"Название",
+	    "description":"Описание",
+	    "price":"Цена",
+	    "photo":"Фото",
+	    "category":"Категория",
+	    "type":"Тип"
+	 },
  "Filter":{
 	    "show": "Фильтры",
 	    "category": "Категория",

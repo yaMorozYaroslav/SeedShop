@@ -21,6 +21,14 @@
 	 },
  "Pages":{"pages":"Pages"},
  "Cart": {},
+ "AddForm":{
+	    "title":"Title",
+	    "description":"Description",
+	    "price":"Price",
+	    "photo":"Photo",
+	    "category":"Category",
+	    "type":"Type"
+	 },
  "Filter":{
 	    "show": "Filters",
 	    "category": "Category",
