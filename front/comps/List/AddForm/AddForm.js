@@ -24,14 +24,14 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	
 	const uploadImage = async(e) => {
 		const file = e.target.files[0]
-		if(file.size > 2000000){alert('File is bigger than 2MB.')
+		if(file.size > 10000000){alert('File is bigger than 10MB.')
 		}else{
 		const base64 = await convert64(file)
-		var stringLength = base64String.length - 'data:image/png;base64,'.length;
+		var stringLength = base64.length - 'data:image/png;base64,'.length;
 
         var sizeInBytes = 4 * Math.ceil((stringLength / 3))*0.5624896334383812;
         var sizeInKb=sizeInBytes/1000;
-		console.log(base64)
+		console.log(sizeInKb)
 		setSource({...source, photo: base64})}
 		}
 		 //~ console.log(source)
