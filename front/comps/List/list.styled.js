@@ -13,7 +13,8 @@ export const ListButts = styled.section`display:flex;margin-top:90px;
 export const AddAdmin = styled.button`font-size:23px;border-style: dashed;padding:10px;
                                       background: white;height:63px;margin-top:5px;
                         @media (max-width: 600px) {font-size:20px;}
-                        @media (max-width: 400px) {font-size:18px;padding:5px;}`
+                        @media (max-width: 400px) {font-size:18px;padding:5px;
+                                                   margin-left:-7px;}`
 export const NotLink = styled.p`margin:5px; cursor:pointer;
                                 font-size: 24px;padding: 15px;
                                 border:1px solid olive;

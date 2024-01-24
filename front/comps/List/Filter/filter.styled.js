@@ -27,7 +27,9 @@ export const ShowBut = styled.button`font-size:22px;
                                      width:92%;
 			                         border: 2px solid groove;
 			           @media (max-width: 600px) {font-size:20px}
-			           @media (max-width: 400px) {font-size:18px;padding:5px;}`
+			           @media (max-width: 400px) {font-size:18px;padding:10px;
+			                                      padding-left:2px;
+			                                      margin-left:-5px}`
 			                         
 export const FiltBut = styled.button`font-size:22px; 
                                      margin:10px;

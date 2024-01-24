@@ -11,7 +11,7 @@ import revalidator from '../revalidator'
 import {seedTypes, itemTypes} from '../select-types'
 
 import {useTranslations} from 'next-intl'
-import {convertBase64} from './convert-base64'
+import {convert64} from './convert-base64'
 
 const initialState = {title: '', description: '', price: '', 
 	                  category: '', type: '', photo: ''}
@@ -24,12 +24,17 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	
 	const uploadImage = async(e) => {
 		const file = e.target.files[0]
-		if(file.size > 1000000){alert('File is bigger than 1MB.')
+		if(file.size > 2000000){alert('File is bigger than 2MB.')
 		}else{
-		const base64 = await convertBase64(file)
+		const base64 = await convert64(file)
+		var stringLength = base64String.length - 'data:image/png;base64,'.length;
+
+        var sizeInBytes = 4 * Math.ceil((stringLength / 3))*0.5624896334383812;
+        var sizeInKb=sizeInBytes/1000;
+		console.log(base64)
 		setSource({...source, photo: base64})}
 		}
-		//~ console.log(source)
+		 //~ console.log(source)
 	
 	const pathname = usePathname()
 	const isSeed = pathname === '/seed-list'
