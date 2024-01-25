@@ -27,11 +27,12 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 		if(file.size > 10000000){alert('File is bigger than 10MB.')
 		}else{
 		const base64 = await convert64(file)
+		
 		var stringLength = base64.length - 'data:image/png;base64,'.length;
-
         var sizeInBytes = 4 * Math.ceil((stringLength / 3))*0.5624896334383812;
         var sizeInKb=sizeInBytes/1000;
 		console.log(sizeInKb)
+		console.log(source)
 		setSource({...source, photo: base64})}
 		}
 		 //~ console.log(source)
@@ -128,7 +129,10 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
 	 <label>{t('photo')}:</label><br/>
-	<input type='file'  onChange={(e)=>uploadImage(e)}/><br/>
+	<label htmlFor="inputField">Try me</label>
+  
+	<input type='file' id="inputField" style={{display:"none"}}
+	       onChange={(e)=>uploadImage(e)}/><br/>
 	 <label>{t('category')}:</label>
 	 <S.Category name='category'
 	         value={source.category}
