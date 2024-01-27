@@ -20,6 +20,7 @@ export const Input = styled.input`fontSize:22px;margin:7px;width:40%`
 export const Textarea = styled.textarea`fontSize:22px;margin-left:-10px;
                                         height:50px;width:50%;
                         @media (max-width:600px){width:70%;}`
+export const Selector = styled.section`display:flex;`
 export const Category = styled.select`fontSize:22px;margin:7px;cursor:pointer`
 export const Submit = styled.button`font-size:26px;margin:14px;cursor:pointer;
                       @media (max-width:400px){margin:5px;}`

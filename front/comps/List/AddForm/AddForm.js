@@ -21,10 +21,12 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	const tc = useTranslations("categories")
 	const tt = useTranslations("types")
 	const [source, setSource] = React.useState(initialState)
+	const [label, setLabel] = React.useState('not selected')
 	
 	const uploadImage = async(e) => {
 		const file = e.target.files[0]
-		if(file.size > 10000000){alert('File is bigger than 10MB.')
+		console.log(file)
+		if(file && file.size > 10000000){alert('File is bigger than 10MB.')
 		}else{
 		const base64 = await convert64(file)
 		
@@ -34,6 +36,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 		console.log(sizeInKb)
 		console.log(source)
 		setSource({...source, photo: base64})}
+		setLabel(file.name)
 		}
 		 //~ console.log(source)
 	
@@ -129,14 +132,16 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
 	 <label>{t('photo')}:</label><br/>
-	<label htmlFor="inputField">Try me</label>
-  
-	<input type='file' id="inputField" style={{display:"none"}}
+   <S.Selector>
+	<label htmlFor="input">select: </label>
+	<section>{label}</section>
+	<input type='file' id="input" style={{display:"none"}}
 	       onChange={(e)=>uploadImage(e)}/><br/>
+   </S.Selector>     
 	 <label>{t('category')}:</label>
 	 <S.Category name='category'
-	         value={source.category}
-	         onChange={handChange} >
+	             value={source.category}
+	             onChange={handChange} >
 	{categories.map((item, i) => 
 		<option key={i} value={item}>{!item?null:tc(`${item}`)}</option>)}
 	 </S.Category><br/>
