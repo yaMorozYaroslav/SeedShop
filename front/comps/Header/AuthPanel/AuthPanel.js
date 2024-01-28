@@ -54,7 +54,7 @@ export function AuthPanel(){
 	        		const decodedToken = decode(token)
 	        		//~ console.log(decodedToken)
 	        		//~ if(decodedToken.exp * 1000 < new Date().getTime()){
-	        		if(decodedToken.exp * 999.9979 < new Date().getTime()){
+	        		if(decodedToken.exp * 999.998 < new Date().getTime()){
 	        		 logout()
 	        		 removeProfile()
 	        		 alert('Token has expired')

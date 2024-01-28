@@ -22,6 +22,8 @@
  "Pages":{"pages": "Сторінки"},
  "Cart": {},
  "AddForm":{
+	    "seed": "Насіння",
+	    "item": "Товари",
 	    "title":"Назва",
 	    "description":"Опис",
 	    "price":"Ціна",

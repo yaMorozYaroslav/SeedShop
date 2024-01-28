@@ -22,6 +22,8 @@
  "Pages":{"pages":"Pages"},
  "Cart": {},
  "AddForm":{
+	    "seed": "Seed",
+	    "item": "Item",
 	    "title":"Title",
 	    "description":"Description",
 	    "price":"Price",

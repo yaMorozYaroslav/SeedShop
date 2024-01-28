@@ -109,7 +109,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	<S.ExtraCont>
 	 <S.Container>
 	 
-	 <S.Title>{!isSeed?'Item':'Seed'}</S.Title>
+	 <S.Title>{!isSeed?t('item'):t('seed')}</S.Title>
 	<S.Form onSubmit={handSubmit} ref={ref}>
 	
 	 <label>{t('title')}:</label>
@@ -131,9 +131,9 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 				          {...source,
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
-	 <label>{t('photo')}:</label><br/>
    <S.Selector>
-	<label htmlFor="input">select: </label>
+    <label>{t('photo')}:&#160;</label>
+	<S.PhotoBut htmlFor="input">select </S.PhotoBut>
 	<section>{label}</section>
 	<input type='file' id="input" style={{display:"none"}}
 	       onChange={(e)=>uploadImage(e)}/><br/>

@@ -22,6 +22,8 @@
  "Pages":{"pages":"Страницы"},
  "Cart": {},
  "AddForm":{
+	    "seed": "Семена",
+	    "item": "Товары",
 	    "title":"Название",
 	    "description":"Описание",
 	    "price":"Цена",
