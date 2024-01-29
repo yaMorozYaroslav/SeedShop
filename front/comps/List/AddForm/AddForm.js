@@ -21,7 +21,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	const tc = useTranslations("categories")
 	const tt = useTranslations("types")
 	const [source, setSource] = React.useState(initialState)
-	const [label, setLabel] = React.useState('not selected')
+	const [label, setLabel] = React.useState(t('no file'))
 	
 	const uploadImage = async(e) => {
 		const file = e.target.files[0]
@@ -132,28 +132,30 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 						   price: Number(e.target.value)||0})}
 	                                               required/>$<br/>
    <S.Selector>
-    <label>{t('photo')}:&#160;</label>
-	<S.PhotoBut htmlFor="input">select </S.PhotoBut>
-	<section>{label}</section>
-	<input type='file' id="input" style={{display:"none"}}
-	       onChange={(e)=>uploadImage(e)}/><br/>
-   </S.Selector>     
-	 <label>{t('category')}:</label>
-	 <S.Category name='category'
+      <label>{t('photo')}:&#160;</label>
+	  <S.PhotoBut htmlFor="input">{t('select')}</S.PhotoBut>
+	  <S.Selected>{label}</S.Selected>
+	  <input type='file' id="input" style={{display:"none"}}
+	         onChange={(e)=>uploadImage(e)}/><br/>
+   </S.Selector> 
+       
+	 <S.CatLabel>{t('category')}:</S.CatLabel>
+	 <S.CatSelect name='category'
 	             value={source.category}
 	             onChange={handChange} >
+	             
 	{categories.map((item, i) => 
 		<option key={i} value={item}>{!item?null:tc(`${item}`)}</option>)}
-	 </S.Category><br/>
+	 </S.CatSelect><br/>
 	 
-	 <label>{t('type')}:</label>
-	 <S.Category name='type'
+	 <S.TypeLabel>{t('type')}:</S.TypeLabel>
+	 <S.TypeSelect name='type'
 	         value={source.type}
 	         onChange={handChange}
 	          >
 	     {currType && currType.map((item,i) => 
 			   <option key={i} value={item}>{!item?null:tt(`${item}`)}</option>)}
-	 </S.Category><br/>
+	 </S.TypeSelect><br/>
 	
                             
 	     <S.Submit onMouseOver={changeBorder} type='submit'>Save</S.Submit>

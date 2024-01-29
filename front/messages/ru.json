@@ -28,6 +28,8 @@
 	    "description":"Описание",
 	    "price":"Цена",
 	    "photo":"Фото",
+	    "select":"выбрать",
+	    "no file":"нет файла",
 	    "category":"Категория",
 	    "type":"Тип"
 	 },

@@ -28,6 +28,8 @@
 	    "description":"Description",
 	    "price":"Price",
 	    "photo":"Photo",
+	    "select":"select",
+	    "no file":"no file",
 	    "category":"Category",
 	    "type":"Type"
 	 },
