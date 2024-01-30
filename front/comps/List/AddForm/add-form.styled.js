@@ -26,17 +26,21 @@ export const Selector = styled.section`display:flex;justify-content:center;
 export const PhotoBut = styled.label`border:solid;margin-right:2%;
                                      height:30px;
                                      background:lightgrey;border-radius:12px;
-                                     padding-left:5px;padding-right:5px;
-                                     font-size:20px;cursor:pointer;`
+                                     padding:4px 5px 0px 5px;
+                                     font-size:20px;cursor:pointer;
+                        @media (max-width:1000px){padding-top:0px;}`
 export const Selected = styled.section`margin-top:10px;`
-export const CatLabel = styled.label`
-                        @media (max-width:400px){position:relative;top:-30px;}`
-export const CatSelect = styled.select`fontSize:22px;margin:7px;cursor:pointer;
-                        @media (max-width:400px){position:relative;top:-30px;}`
-export const TypeLabel = styled.label`
-                         @media (max-width:400px){position:relative;top:-30px;}`
-export const TypeSelect = styled.select`fontSize:22px;margin:7px;cursor:pointer;
-                    @media (max-width:400px){position:relative;top:-30px;}`
+export const CatLabel = styled.label`position:relative;top:7px;
+                        @media (max-width:1000px){top:-20px;}`
+export const CatSelect = styled.select`position:relative;top:7px;
+                                       font-size:23px;margin:7px;cursor:pointer;
+                        @media (max-width:1000px){top:-20px;}`
+export const TypeLabel = styled.label`position:relative;top:5px;
+                         @media (max-width:1000px){top:-20px;}`
+export const TypeSelect = styled.select`position:relative;top:5px;
+                                        font-size:23px;margin:7px;cursor:pointer;
+                    @media (max-width:1000px){top:-20px;}`
+export const Option = styled.option`font-size:20px;`
 export const Submit = styled.button`font-size:26px;margin:14px;cursor:pointer;
                       @media (max-width:400px){margin:5px;}`
 export const Close = styled.button`font-size:26px;margin:14px;cursor:pointer;

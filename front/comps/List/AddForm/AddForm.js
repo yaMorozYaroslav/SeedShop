@@ -145,7 +145,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	             onChange={handChange} >
 	             
 	{categories.map((item, i) => 
-		<option key={i} value={item}>{!item?null:tc(`${item}`)}</option>)}
+		<S.Option key={i} value={item}>{!item?null:tc(`${item}`)}</S.Option>)}
 	 </S.CatSelect><br/>
 	 
 	 <S.TypeLabel>{t('type')}:</S.TypeLabel>
@@ -154,7 +154,7 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	         onChange={handChange}
 	          >
 	     {currType && currType.map((item,i) => 
-			   <option key={i} value={item}>{!item?null:tt(`${item}`)}</option>)}
+			   <S.Option key={i} value={item}>{!item?null:tt(`${item}`)}</S.Option>)}
 	 </S.TypeSelect><br/>
 	
                             
