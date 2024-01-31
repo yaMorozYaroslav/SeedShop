@@ -10,12 +10,14 @@ export const Container = styled.div`
 		                            text-align:center;
 		                            width:40%;
 		                            border:solid;
+		                 @media (max-width:1000px) {width:50%;}
 		                 @media (max-width:800px) {width:55%;}
-		                 @media (max-width:600px) {width:70%;top:200px;}
-		                 @media (max-width:400px) {width:85%;top:200px;}
+		                 @media (max-width:600px) {width:70%;top:180px;}
+		                 @media (max-width:400px) {width:85%;top:180px;}
                        `
 export const Title = styled.h1`font-size:30px`
-export const Form = styled.form`font-size:24px;padding:5px;`
+export const Form = styled.form`font-size:24px;padding:5px;
+                    @media (max-width:800px){}`
 export const Input = styled.input`fontSize:22px;margin:7px;width:40%`
 export const Textarea = styled.textarea`fontSize:22px;margin-left:-10px;
                                         height:50px;width:50%;
@@ -42,6 +44,8 @@ export const TypeSelect = styled.select`position:relative;top:5px;
                     @media (max-width:1000px){top:-20px;}`
 export const Option = styled.option`font-size:20px;`
 export const Submit = styled.button`font-size:26px;margin:14px;cursor:pointer;
-                      @media (max-width:400px){margin:5px;}`
-export const Close = styled.button`font-size:26px;margin:14px;cursor:pointer;
-                     @media (max-width:400px){margin:5px;}`
+                      @media (max-width:400px){font-size:24px;margin:3px;}
+                      @media (max-width:1000px){position:relative;top:-12px;}`
+export const Close = styled.button`font-size:26px;margin:10px;cursor:pointer;
+                     @media (max-width:1000px){position:relative;top:-12px;}
+                     @media (max-width:400px){font-size:24px;margin:5px;}`
