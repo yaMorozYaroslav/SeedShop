@@ -37,8 +37,8 @@ export const Toggler = styled.section`grid-column: 3/3;margin-top:-2px; font-siz
                                       border:2px solid brown;border-right:none;
                                       text-align:center;padding:10px; color:blue;
                               &:hover {cursor: grab;}
-                       @media (max-width: 1000px) {grid-column:2/4}
-                       @media (max-width: 600px) {grid-column:1/4}`
+                       @media (max-width: 1000px) {grid-column:2/4;font-size:20px;}
+                       @media (max-width: 600px) {grid-column:1/5}`
 
 export const StyledLink = styled(Link)`grid-column:4/4;
                                        margin-top:-2px;
@@ -48,4 +48,4 @@ export const StyledLink = styled(Link)`grid-column:4/4;
                                        border:2px solid brown;
                                        padding: 10px;
                           @media (max-width: 1000px) {grid-column:4/6}
-                          @media (max-width: 600px) {grid-column:4/7}`
+                          @media (max-width: 600px) {grid-column:5/7;font-size:20px;}`

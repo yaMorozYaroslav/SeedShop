@@ -31,7 +31,9 @@
 	    "select":"select",
 	    "no file":"no file",
 	    "category":"Category",
-	    "type":"Type"
+	    "type":"Type",
+	    "save":"Save",
+	    "close":"Close"
 	 },
  "Filter":{
 	    "show": "Filters",

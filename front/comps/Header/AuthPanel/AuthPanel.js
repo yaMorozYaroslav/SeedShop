@@ -61,10 +61,10 @@ export function AuthPanel(){
 	              }
 	        	}
 	        	const interval = setInterval(()=>{setUpdate(update+1);
-					                              //~ console.log(update);
+					                              console.log(update);
 					                                       },10000)
-	        	if(!token)clearInterval(interval)
-	        	return () => clearInterval(interval)
+	        	if(!token){clearInterval(interval);setUpdate(0);}
+	        	return () => clearInterval(interval);
 	        },[userData, profile, logout, update])
 	       // console.log(userData)
 	    return <>

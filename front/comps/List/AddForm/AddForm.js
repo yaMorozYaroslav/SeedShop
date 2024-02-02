@@ -158,9 +158,9 @@ export function AddForm({setOpen, currItem, setCurrItem}){
 	 </S.TypeSelect><br/>
 	
                             
-	     <S.Submit onMouseOver={changeBorder} type='submit'>Save</S.Submit>
+	     <S.Submit onMouseOver={changeBorder} type='submit'>{t('save')}</S.Submit>
 	     <S.Close onMouseOver={changeBorder} 
-	              onClick={handClose}>CloseForm</S.Close>
+	              onClick={handClose}>{t('close')}</S.Close>
 	
 	   </S.Form>
 	 </S.Container>

@@ -55,7 +55,7 @@ export function List({servData}){
 	
 	function fetchUnits(){if(isSeed){fetchSeeds(state)}
 		                       else{fetchItems(state)} } 
-    console.log(state)                       
+                       
 	function delUnit(e, id){
 		e.preventDefault();
 		if(isSeed){removeSeed(id)}else{removeItem(id)}

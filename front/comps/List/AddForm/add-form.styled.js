@@ -34,7 +34,7 @@ export const PhotoBut = styled.label`border:solid;margin-right:2%;
 export const Selected = styled.section`margin-top:10px;`
 export const CatLabel = styled.label`position:relative;top:7px;
                         @media (max-width:1000px){top:-20px;}`
-export const CatSelect = styled.select`position:relative;top:7px;
+export const CatSelect = styled.select`position:relative;top:7px;width:80px;
                                        font-size:23px;margin:7px;cursor:pointer;
                         @media (max-width:1000px){top:-20px;}`
 export const TypeLabel = styled.label`position:relative;top:5px;
