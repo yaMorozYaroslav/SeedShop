@@ -16,7 +16,7 @@ export const Filter =(props)=> {
 	const tt = useTranslations('types')
 	//~ const locale = useLocale()   
 	const pathname = usePathname()
-	const isSeed = pathname === 'seed-list'
+	const isSeed = pathname === '/seed-list'
 	
 	const [show, setShow] = React.useState(false)
 	
@@ -27,7 +27,7 @@ export const Filter =(props)=> {
 	const {seeds, fetchSeeds} = useSeedContext()
 	
 	//const size = ScreenSize()
-	
+	console.log(isSeed)
 	const shownCats = isSeed?allCats.seedCats:allCats.itemCats
 	
 	  let currType
