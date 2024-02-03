@@ -1,6 +1,6 @@
-export const categories = {
-       seedCategories: ['', 'flowers', 'veggies', 'seedlings'],
-       itemCategories: ['', 'soils', 'supplements', 'equipment']	
+export const allCats = {
+       seedCats: ['', 'flowers', 'veggies', 'seedlings'],
+       itemCats: ['', 'soils', 'supplements', 'equipment']	
 	   }
 export const seedTypes = {                  
        subFlowers : ['', 'annual', 'multi-year'],

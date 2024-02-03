@@ -4,7 +4,7 @@ import {useQueryContext} from '../../../context/queries/QueryState'
 import {useItemContext} from '../../../context/items/ItemState'
 import {useSeedContext} from '../../../context/seeds/SeedState'
 import * as S from './filter.styled'
-import {categories, seedTypes, itemTypes} from '../select-types'
+import {allCats, seedTypes, itemTypes} from '../select-types'
 import Fade from '@mui/material/Fade';
 //~ import { useLocale } from 'next-intl'
 import {useTranslations} from 'next-intl'
@@ -13,6 +13,7 @@ export const Filter =(props)=> {
     
 	const t = useTranslations('Filter')
 	const tc = useTranslations('categories')
+	const tt = useTranslations('types')
 	//~ const locale = useLocale()   
 	const pathname = usePathname()
 	const isSeed = pathname === 'seed-list'
@@ -27,10 +28,10 @@ export const Filter =(props)=> {
 	
 	//const size = ScreenSize()
 	
-	const shownCategories = isSeed?categories.seedCategories:categories.itemCategories
+	const shownCats = isSeed?allCats.seedCats:allCats.itemCats
 	
 	  let currType
-	{shownCategories.map((item,i) => {
+	{shownCats.map((item,i) => {
 		            if(state.category === item&&item.length){
 		//~ currType = Object.values(isSeed?seedTypes:itemTypes)[isSeed?i-1:i-1]
 		currType = Object.values(isSeed?seedTypes:itemTypes)[i-1]
@@ -83,8 +84,8 @@ export const Filter =(props)=> {
 		 <S.Select name='category'
 		           value={state.category}
 	               onChange={onCategory}>
-	{shownCategories.map((item, i) => <option key={i} 
-		                                 value={item}>{item}</option>)}
+	{shownCats.map((item, i) => <option key={i} 
+		                                 value={item}>{!item?null:tc(`${item}`)}</option>)}
 	 </S.Select><br/>
 	     
 	       <S.Label>{t("type")}</S.Label>
@@ -92,7 +93,7 @@ export const Filter =(props)=> {
 	               onChange={onType}>
 	     {currType && currType.map((item,i) => 
 			   <option key={i}
-				    value={item}>{!item?'all':item}</option>)}
+				    value={item}>{!item?null:tt(`${item}`)}</option>)}
 	 </S.Select><br/>
 	     <S.Label>{t("sort")}</S.Label>
 	     <S.FiltBut onClick={onSort}>
